@@ -1,6 +1,6 @@
 import React from "react";
 
-// Import all of the thumbnails for the technologies we use
+
 import html from "../assets/html.png";
 import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
@@ -12,11 +12,8 @@ import tailwind from "../assets/tailwind.png";
 
 
 
-// The Experience component in the app
 const Experience = () => {
 
-  // Array of Technologies in the Experience section
-  // Each technology item has an id, image, title and html color style
   const techs = [
     {
       id: 1,
@@ -52,7 +49,7 @@ const Experience = () => {
       id: 6,
       src: node,
       title: "Node JS",
-      style: "shadow-white",
+      style: "shadow-green-400",
     },
     {
       id: 7,
@@ -70,44 +67,22 @@ const Experience = () => {
 
 
 
-  // Return the Experience component
+
   return (
-
-    /* EXPERIENCE COMPONENT */
-    /* A gradient is added to the background */
     <div name="experience" className="bg-gradient-to-b from-gray-800 to-black w-full h-fit pt-40">
-
-      {/* Container for experience title, description and icons */}
       <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full text-white">
-        
-        {/* Container for title and description */}
         <div>
-
-          {/* Experience title */}
           <p className="text-4xl font-bold border-b-4 border-gray-500 p-2 inline">
             Experience
-
-          {/* Experience description */}
           </p>
           <p className="py-6">
             These are the technologies I've worked with
           </p>
         </div>
-
-        {/* Container of Experience Thumbnails */}
-        <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-8 text-center py-8 px-12 sm:px-0">
-          
-          {/* Display experience thumbnails */}
-          {/* Set the id and src for the thumbnail image */}
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-8 text-center py-8 px-12 sm:px-0"> 
           {techs.map(({ id, src, title, style }) => (
-            
-            /* Container for the individual thumbnail image and text */
             <div key={id} className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${style}`}>
-              
-              {/* Image */}
               <img src={src} alt="" className="w-20 mx-auto" />
-             
-              {/* Title */}
               <p className="mt-4">{title}</p>
             </div>
           ))}
