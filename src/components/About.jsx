@@ -26,10 +26,10 @@ const About = () => {
         <br />
 
         <p className="text-xl">
-        One of my notable projects is the Crypto Price Tracker, 
-        a React web application that allows users to monitor various cryptocurrencies available in the market.
+        One of my notable projects is the Docker Automation platform using docker SDK, 
+        a React web application that allows users to monitor various Docker containers, and also Implemented a microservices architecture by deploying the React frontend and Node.js backend.
         By utilizing React components like useState and useEffect, I ensured efficient DOM manipulation, while incorporating Axios for API data retrieval. 
-        This project showcases my ability to work with diverse technologies such as ReactJS, HTML, CSS, and JavaScript to deliver a dynamic and engaging user interface.
+        This project showcases my ability to work with diverse technologies such as ReactJS, AWS, Docker to deliver a dynamic and engaging user interface.
         </p>
       </div>
     </div>
