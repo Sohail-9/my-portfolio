@@ -21,8 +21,8 @@ const Home = () => {
           </h2>
 
           <p className="text-gray-500 py-4 max-w-md">
-            I have 6 Months of experience building and designing software.
-            Currently, I'm working on web application using technologies like React, Tailwind and Node JS.
+            I have 2 Years of experience building and designing software applications.
+            Currently, I'm working on web applications and my tech stack is React,js, Next.js, Express.js and TypeScript.
           </p>
 
 
