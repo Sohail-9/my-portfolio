@@ -1,8 +1,8 @@
 import React from "react";
 
 
-import html from "../assets/html.png";
-import css from "../assets/css.png";
+import aws from "../assets/aws.webp";
+import kubernetes from "../assets/kubernetes.webp";
 import javascript from "../assets/javascript.png";
 import reactImage from "../assets/react.png";
 import node from "../assets/node.png";
@@ -17,14 +17,14 @@ const Experience = () => {
   const techs = [
     {
       id: 1,
-      src: html,
-      title: "HTML",
-      style: "shadow-orange-500",
+      src: aws,
+      title: "AWS",
+      style: "shadow-black-500",
     },
     {
       id: 2,
-      src: css,
-      title: "CSS",
+      src: kubernetes,
+      title: "kubernetes",
       style: "shadow-blue-500",
     },
     {
@@ -63,6 +63,7 @@ const Experience = () => {
       title: "GitHub",
       style: "shadow-gray-400",
     },
+
   ];
 
 
