@@ -19,7 +19,7 @@ const Experience = () => {
       id: 1,
       src: aws,
       title: "AWS",
-      style: "shadow-black-500",
+      style: "shadow-white-500",
     },
     {
       id: 2,
