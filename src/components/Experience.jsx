@@ -9,6 +9,7 @@ import node from "../assets/node.png";
 import python from "../assets/python.png";
 import github from "../assets/github.png";
 import tailwind from "../assets/tailwind.png";
+import typescript from "../assets/typescript.png"
 
 
 
@@ -19,7 +20,7 @@ const Experience = () => {
       id: 1,
       src: aws,
       title: "AWS",
-      style: "shadow-white-500",
+      style: "shadow-yellow-500",
     },
     {
       id: 2,
@@ -63,7 +64,12 @@ const Experience = () => {
       title: "GitHub",
       style: "shadow-gray-400",
     },
-
+    {
+      id: 9,
+      src: typescript,
+      title: "typescript",
+      style: "shadow-blue-400",
+    },
   ];
 
 
