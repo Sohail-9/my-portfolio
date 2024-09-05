@@ -1,14 +1,15 @@
 import React from "react";
 
 
-import html from "../assets/html.png";
-import css from "../assets/css.png";
+import aws from "../assets/aws.webp";
+import kubernetes from "../assets/kubernetes.webp";
 import javascript from "../assets/javascript.png";
 import reactImage from "../assets/react.png";
 import node from "../assets/node.png";
 import python from "../assets/python.png";
 import github from "../assets/github.png";
 import tailwind from "../assets/tailwind.png";
+import typescript from "../assets/typescript.png"
 
 
 
@@ -17,14 +18,14 @@ const Experience = () => {
   const techs = [
     {
       id: 1,
-      src: html,
-      title: "HTML",
-      style: "shadow-orange-500",
+      src: aws,
+      title: "AWS",
+      style: "shadow-yellow-500",
     },
     {
       id: 2,
-      src: css,
-      title: "CSS",
+      src: kubernetes,
+      title: "kubernetes",
       style: "shadow-blue-500",
     },
     {
@@ -62,6 +63,12 @@ const Experience = () => {
       src: github,
       title: "GitHub",
       style: "shadow-gray-400",
+    },
+    {
+      id: 9,
+      src: typescript,
+      title: "typescript",
+      style: "shadow-blue-400",
     },
   ];
 

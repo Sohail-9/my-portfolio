@@ -21,8 +21,13 @@ const Home = () => {
           </h2>
 
           <p className="text-gray-500 py-4 max-w-md">
+<<<<<<< HEAD
             I have 1 Year of experience building and designing software applications.
             Currently, I'm working on AI, Devops, Full stack and my tech stack is React,js, Next.js, Express.js and TypeScript, Generative AI, Agentic AI.
+=======
+            I have 2 Years of experience building and designing software applications.
+            Currently, I'm working on web applications and my tech stack is React,js, Next.js, Express.js, TypeScript.
+>>>>>>> c3c2f6d3c4a7332549e9b29724574e0e7926a799
           </p>
 
 
