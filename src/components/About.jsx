@@ -17,7 +17,7 @@ const About = () => {
           </p>
         </div>
         <p className="text-xl mt-20">
-        I am an accomplished Full-Stack Developer and a Devops Engineer with a passion for creating innovative solutions and delivering exceptional user experiences. 
+        I am SDE & AI Engineer @ omniqAI and a Devops Engineer with a passion for creating innovative solutions and delivering exceptional user experiences. 
         With a solid foundation in cloud technologies like AWS, Kubernetes, Docker, Jenkins. I have honed my skills in front-end and back-end development, 
         as well as in popular frameworks such as ReactJS, ExpessJS and NodeJS. My goal is to leverage my technical expertise and creativity to drive impactful projects 
         and contribute to the success of organizations.
