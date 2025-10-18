@@ -5,6 +5,58 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  background-color: #020617;
+  min-height: 100vh;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.12) 0, transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(244, 114, 182, 0.12) 0, transparent 50%),
+    radial-gradient(circle at 25% 80%, rgba(16, 185, 129, 0.12) 0, transparent 55%);
+  filter: blur(0px);
+}
+
+body::after {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 0),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 0);
+  background-size: 120px 120px;
+  opacity: 0.12;
+  z-index: -3;
+}
+
+a {
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+a:hover {
+  transform: translateY(-1px);
+}
+
 /* ✅ Custom Scrollbar — Dark & Minimal */
 ::-webkit-scrollbar {
   width: 6px;

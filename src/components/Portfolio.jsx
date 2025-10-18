@@ -1,5 +1,26 @@
 import React from "react";
 
+const insights = [
+  {
+    id: 1,
+    title: "Strategy × Delivery",
+    copy: "Every build pairs stakeholder outcomes with a shipped, observable product. Expect measurable wins, not slideware.",
+    accent: "from-emerald-500/20 to-emerald-500/5",
+  },
+  {
+    id: 2,
+    title: "Engineering Depth",
+    copy: "Cloud-native pipelines, secure AI workflows, and production telemetry keep teams iterating with confidence.",
+    accent: "from-sky-500/20 to-sky-500/5",
+  },
+  {
+    id: 3,
+    title: "Recruiter Ready",
+    copy: "Each case study links to GitHub, metrics, and resume proof points so hiring managers can verify instantly.",
+    accent: "from-fuchsia-500/20 to-fuchsia-500/5",
+  },
+];
+
 const caseStudies = [
   {
     id: 1,
@@ -24,6 +45,14 @@ const caseStudies = [
     badgeClass: "border border-emerald-200/50 bg-emerald-500/10 text-emerald-100",
     chipClass: "border border-emerald-200/40 bg-emerald-500/10 text-emerald-100",
     buttonGradient: "bg-gradient-to-r from-emerald-500 to-sky-500",
+    businessValue: [
+      "Delivers trustworthy early guidance that nudges patients toward dermatologists sooner.",
+      "Gives leadership auditable insight into how AI recommendations are produced and consumed.",
+    ],
+    engineeringFocus: [
+      "CNN ensemble with drift monitoring dashboards and human-in-the-loop feedback.",
+      "Edge-case capture pipeline using OpenCV to flag uncertain predictions for review.",
+    ],
     demoLink: "https://github.com/Sohail-9/SkinAI",
     codeLink: "https://github.com/Sohail-9/SkinAI",
   },
@@ -50,6 +79,14 @@ const caseStudies = [
     badgeClass: "border border-sky-200/50 bg-sky-500/10 text-sky-100",
     chipClass: "border border-sky-300/40 bg-sky-500/10 text-sky-100",
     buttonGradient: "bg-gradient-to-r from-sky-500 to-blue-600",
+    businessValue: [
+      "Eliminated manual container firefighting so product squads can ship without waiting on ops.",
+      "Provided compliance-ready audit trails and guardrails for runtime changes across environments.",
+    ],
+    engineeringFocus: [
+      "Docker SDK automations with granular RBAC, Slack alerting, and health orchestration.",
+      "Decoupled React + Node.js microservices provisioned via Terraform for reproducibility.",
+    ],
     demoLink: "https://github.com/Sohail-9/Docker-Automation",
     codeLink: "https://github.com/Sohail-9/Docker-Automation",
   },
@@ -76,6 +113,14 @@ const caseStudies = [
     badgeClass: "border border-amber-200/50 bg-amber-500/10 text-amber-100",
     chipClass: "border border-emerald-200/40 bg-emerald-500/10 text-emerald-100",
     buttonGradient: "bg-gradient-to-r from-amber-500 to-emerald-500",
+    businessValue: [
+      "Accelerated release cadence while reducing regression risk for feature teams.",
+      "Enabled consistent delivery playbooks that satisfy infosec and compliance requirements.",
+    ],
+    engineeringFocus: [
+      "Declarative Jenkins pipelines with Docker build agents, caching, and shared library stages.",
+      "Integrated SAST/DAST, container scanning, and Helm-based promotions with automated rollback.",
+    ],
     demoLink: "https://github.com/Sohail-9/Jenkins-ci-cd-pipeline",
     codeLink: "https://github.com/Sohail-9/Jenkins-ci-cd-pipeline",
   },
@@ -102,6 +147,14 @@ const caseStudies = [
     badgeClass: "border border-fuchsia-200/50 bg-fuchsia-500/10 text-fuchsia-100",
     chipClass: "border border-sky-300/40 bg-sky-500/10 text-sky-100",
     buttonGradient: "bg-gradient-to-r from-fuchsia-500 to-sky-500",
+    businessValue: [
+      "Unlocked real-time pricing prompts and inventory sync for high-volume retailers.",
+      "Reduced shrinkage and spoilage through proactive stock reconciliation dashboards.",
+    ],
+    engineeringFocus: [
+      "YOLOv5 custom training with continuous labeling pipeline and experiment tracking.",
+      "Flask MJPEG streaming service delivering low-latency overlays from edge devices.",
+    ],
     demoLink: "https://github.com/Sohail-9/product.recognition.using.smart.vision",
     codeLink: "https://github.com/Sohail-9/product.recognition.using.smart.vision",
   },
@@ -144,6 +197,20 @@ const Portfolio = () => {
             leaders, founders, and design teams.
           </p>
         </header>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {insights.map(({ id, title, copy, accent }) => (
+            <div
+              key={id}
+              className={`rounded-3xl border border-white/10 bg-gradient-to-br ${accent} p-6 text-left shadow-[0_18px_60px_rgba(15,23,42,0.45)] backdrop-blur transition hover:border-white/40 hover:shadow-[0_26px_80px_rgba(15,23,42,0.55)]`}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-300">
+                {title}
+              </p>
+              <p className="mt-3 text-sm text-gray-200 leading-relaxed">{copy}</p>
+            </div>
+          ))}
+        </div>
 
         <article className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/15 via-white/5 to-transparent shadow-[0_35px_120px_rgba(16,185,129,0.25)] backdrop-blur-xl transition hover:border-emerald-300/60 hover:shadow-[0_45px_140px_rgba(16,185,129,0.32)] md:grid md:grid-cols-[1.05fr,0.95fr]">
           <div className="relative">
@@ -200,6 +267,33 @@ const Portfolio = () => {
                   <p className="text-lg font-semibold text-white">{value}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="grid gap-4 rounded-2xl border border-white/10 bg-black/30 p-6 md:grid-cols-2">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-400">
+                  Business impact
+                </p>
+                <ul className="mt-3 space-y-2 text-sm text-gray-200">
+                  {heroCase.businessValue.map((item, index) => (
+                    <li key={index} className="leading-relaxed">
+                      • {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-400">
+                  Engineering depth
+                </p>
+                <ul className="mt-3 space-y-2 text-sm text-gray-200">
+                  {heroCase.engineeringFocus.map((item, index) => (
+                    <li key={index} className="leading-relaxed">
+                      • {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <ul className="space-y-2 text-sm text-gray-200">
@@ -296,6 +390,33 @@ const Portfolio = () => {
                     </li>
                   ))}
                 </ul>
+
+                <div className="grid gap-4 rounded-2xl border border-white/10 bg-black/25 p-4">
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-gray-400">
+                      Business impact
+                    </p>
+                    <ul className="mt-2 space-y-2 text-xs text-gray-200">
+                      {project.businessValue.map((item, index) => (
+                        <li key={index} className="leading-relaxed">
+                          • {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-gray-400">
+                      Engineering depth
+                    </p>
+                    <ul className="mt-2 space-y-2 text-xs text-gray-200">
+                      {project.engineeringFocus.map((item, index) => (
+                        <li key={index} className="leading-relaxed">
+                          • {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
                 <div className="mt-auto flex flex-wrap gap-4 pt-2">
                   <a
