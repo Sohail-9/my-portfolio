@@ -11,7 +11,7 @@ const contactMethods = [
   {
     id: 2,
     label: "Location",
-    value: "Hyderabad, India · Remote friendly",
+    value: "Bengaluru, Karnataka · Remote friendly",
     description: "Happy to collaborate across time zones.",
   },
   {

@@ -1,10 +1,5 @@
 import React from "react";
 
-import reactParallax from "../assets/portfolio/reactParallax.jpg";
-import installNode from "../assets/portfolio/installNode.jpg";
-import reactSmooth from "../assets/portfolio/reactSmooth.jpg";
-import reactWeather from "../assets/portfolio/reactWeather.jpg";
-
 const caseStudies = [
   {
     id: 1,
@@ -24,7 +19,11 @@ const caseStudies = [
       "Encrypted medical imagery at rest/in transit, aligning with healthcare data-handling guidelines.",
     ],
     tech: ["React", "TypeScript", "FastAPI", "MongoDB", "OpenCV"],
-    image: reactParallax,
+    background:
+      "radial-gradient(circle at 20% 20%, rgba(16,185,129,0.55) 0, transparent 60%), radial-gradient(circle at 80% 90%, rgba(56,189,248,0.35) 0, transparent 55%), linear-gradient(135deg, rgba(13,17,23,0.95) 0, rgba(30,41,59,0.65) 100%)",
+    badgeClass: "border border-emerald-200/50 bg-emerald-500/10 text-emerald-100",
+    chipClass: "border border-emerald-200/40 bg-emerald-500/10 text-emerald-100",
+    buttonGradient: "bg-gradient-to-r from-emerald-500 to-sky-500",
     demoLink: "https://github.com/Sohail-9/SkinAI",
     codeLink: "https://github.com/Sohail-9/SkinAI",
   },
@@ -46,7 +45,11 @@ const caseStudies = [
       "Split React frontend and Node.js orchestration service into independently deployable units.",
     ],
     tech: ["React", "Node.js", "Express", "Docker SDK", "AWS"],
-    image: installNode,
+    background:
+      "radial-gradient(circle at 15% 15%, rgba(59,130,246,0.5) 0, transparent 58%), radial-gradient(circle at 80% 25%, rgba(14,165,233,0.4) 0, transparent 50%), linear-gradient(140deg, rgba(13,17,23,0.95) 0, rgba(12,74,110,0.65) 100%)",
+    badgeClass: "border border-sky-200/50 bg-sky-500/10 text-sky-100",
+    chipClass: "border border-sky-300/40 bg-sky-500/10 text-sky-100",
+    buttonGradient: "bg-gradient-to-r from-sky-500 to-blue-600",
     demoLink: "https://github.com/Sohail-9/Docker-Automation",
     codeLink: "https://github.com/Sohail-9/Docker-Automation",
   },
@@ -68,7 +71,11 @@ const caseStudies = [
       "Integrated quality gates (linting, tests, image scans) before promoting to Kubernetes.",
     ],
     tech: ["AWS", "Jenkins", "Docker", "Kubernetes", "Terraform"],
-    image: reactSmooth,
+    background:
+      "radial-gradient(circle at 80% 20%, rgba(251,146,60,0.38) 0, transparent 60%), radial-gradient(circle at 20% 80%, rgba(74,222,128,0.32) 0, transparent 55%), linear-gradient(140deg, rgba(15,23,42,0.95) 0, rgba(30,41,59,0.6) 100%)",
+    badgeClass: "border border-amber-200/50 bg-amber-500/10 text-amber-100",
+    chipClass: "border border-emerald-200/40 bg-emerald-500/10 text-emerald-100",
+    buttonGradient: "bg-gradient-to-r from-amber-500 to-emerald-500",
     demoLink: "https://github.com/Sohail-9/Jenkins-ci-cd-pipeline",
     codeLink: "https://github.com/Sohail-9/Jenkins-ci-cd-pipeline",
   },
@@ -90,13 +97,19 @@ const caseStudies = [
       "Connected recognition events to inventory APIs, unlocking automated stock reconciliation.",
     ],
     tech: ["YOLOv5", "PyTorch", "Flask", "OpenCV", "Azure Blob"],
-    image: reactWeather,
+    background:
+      "radial-gradient(circle at 20% 20%, rgba(192,38,211,0.45) 0, transparent 60%), radial-gradient(circle at 80% 80%, rgba(59,130,246,0.35) 0, transparent 55%), linear-gradient(145deg, rgba(15,23,42,0.95) 0, rgba(24,24,27,0.6) 100%)",
+    badgeClass: "border border-fuchsia-200/50 bg-fuchsia-500/10 text-fuchsia-100",
+    chipClass: "border border-sky-300/40 bg-sky-500/10 text-sky-100",
+    buttonGradient: "bg-gradient-to-r from-fuchsia-500 to-sky-500",
     demoLink: "https://github.com/Sohail-9/product.recognition.using.smart.vision",
     codeLink: "https://github.com/Sohail-9/product.recognition.using.smart.vision",
   },
 ];
 
 const Portfolio = () => {
+  const [heroCase, ...otherCases] = caseStudies;
+
   return (
     <section
       name="portfolio"
@@ -113,6 +126,14 @@ const Portfolio = () => {
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-cyan-200/80">
             Case studies
           </span>
+          <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
+            Engineer crafting AI-driven products that go from idea to impact.
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300 sm:text-xl">
+            I design and ship resilient automation platforms and cloud-native
+            experiences. From orchestrating container workloads to delivering
+            delightful interfaces, I help teams move faster with confidence.
+          </p>
           <h2 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
             A portfolio of AI products, platform tooling, and resilient delivery
             pipelines.
@@ -124,39 +145,46 @@ const Portfolio = () => {
           </p>
         </header>
 
-        <article className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/15 via-white/5 to-transparent shadow-[0_35px_120px_rgba(0,255,255,0.15)] backdrop-blur-xl transition hover:border-cyan-400/60 hover:shadow-[0_45px_140px_rgba(0,255,255,0.25)] md:grid md:grid-cols-[1.05fr,0.95fr]">
+        <article className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/15 via-white/5 to-transparent shadow-[0_35px_120px_rgba(16,185,129,0.25)] backdrop-blur-xl transition hover:border-emerald-300/60 hover:shadow-[0_45px_140px_rgba(16,185,129,0.32)] md:grid md:grid-cols-[1.05fr,0.95fr]">
           <div className="relative">
-            <img
-              src={caseStudies[0].image}
-              alt={caseStudies[0].title}
-              className="h-full w-full object-cover transition duration-700 hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent" />
-            <div className="absolute bottom-6 left-6">
-              <p className="inline-flex items-center rounded-full border border-white/20 bg-black/40 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-200 backdrop-blur">
-                {caseStudies[0].context}
-              </p>
+            <div className="relative flex min-h-[420px] w-full items-end justify-start overflow-hidden">
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: heroCase.background,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/35 to-transparent" />
+              <div className="absolute bottom-6 left-6 z-10">
+                <p
+                  className={`inline-flex items-center rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] backdrop-blur ${heroCase.badgeClass}`}
+                >
+                  {heroCase.context}
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-6 p-10 lg:p-14">
             <div>
               <h3 className="text-3xl font-semibold text-white">
-                {caseStudies[0].title}
+                {heroCase.title}
               </h3>
-              <p className="mt-2 text-base font-medium text-cyan-200">
-                {caseStudies[0].tagline}
+              <p className="mt-2 text-base font-medium text-gray-200">
+                {heroCase.tagline}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-gray-200">
-                {caseStudies[0].summary}
+                {heroCase.summary}
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {caseStudies[0].tech.map((item) => (
+              {heroCase.tech.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-100"
+                  className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] ${heroCase.chipClass}`}
                 >
                   {item}
                 </span>
@@ -164,7 +192,7 @@ const Portfolio = () => {
             </div>
 
             <div className="grid gap-3 rounded-2xl border border-white/10 bg-black/30 p-4 sm:grid-cols-3">
-              {caseStudies[0].metrics.map(({ label, value }) => (
+              {heroCase.metrics.map(({ label, value }) => (
                 <div key={label} className="space-y-1 text-center sm:text-left">
                   <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
                     {label}
@@ -175,7 +203,7 @@ const Portfolio = () => {
             </div>
 
             <ul className="space-y-2 text-sm text-gray-200">
-              {caseStudies[0].highlights.map((item, index) => (
+              {heroCase.highlights.map((item, index) => (
                 <li key={index} className="leading-relaxed">
                   • {item}
                 </li>
@@ -184,15 +212,15 @@ const Portfolio = () => {
 
             <div className="mt-auto flex flex-wrap gap-4 pt-4">
               <a
-                href={caseStudies[0].demoLink}
+                href={heroCase.demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 text-center text-sm font-semibold shadow-lg shadow-cyan-500/30 transition hover:translate-y-[-2px] hover:shadow-xl hover:shadow-cyan-500/40"
+                className={`flex-1 rounded-full px-5 py-2.5 text-center text-sm font-semibold text-white shadow-lg shadow-black/30 transition hover:translate-y-[-2px] hover:shadow-xl hover:shadow-black/40 ${heroCase.buttonGradient}`}
               >
                 Deep dive
               </a>
               <a
-                href={caseStudies[0].codeLink}
+                href={heroCase.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 rounded-full border border-white/20 px-5 py-2.5 text-center text-sm font-semibold text-white transition hover:border-cyan-400 hover:text-cyan-200"
@@ -204,19 +232,24 @@ const Portfolio = () => {
         </article>
 
         <div className="grid gap-10 lg:grid-cols-3">
-          {caseStudies.slice(1).map((project) => (
+          {otherCases.map((project) => (
             <article
               key={project.id}
-              className="group flex flex-col overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-[0_25px_80px_rgba(59,130,246,0.2)] backdrop-blur transition duration-300 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:shadow-[0_35px_110px_rgba(56,189,248,0.25)]"
+              className="group flex flex-col overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-[0_25px_80px_rgba(15,23,42,0.45)] backdrop-blur transition duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-[0_35px_110px_rgba(15,23,42,0.55)]"
             >
               <div className="relative h-48 w-full overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                <div
+                  className="absolute inset-0 transition duration-500 group-hover:scale-105"
+                  style={{
+                    backgroundImage: project.background,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                <p className="absolute bottom-4 left-4 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-200 backdrop-blur">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
+                <p
+                  className={`absolute bottom-4 left-4 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] backdrop-blur ${project.badgeClass}`}
+                >
                   {project.context}
                 </p>
               </div>
@@ -226,7 +259,7 @@ const Portfolio = () => {
                   <h3 className="text-2xl font-semibold text-white">
                     {project.title}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-cyan-200">
+                  <p className="mt-1 text-sm font-medium text-gray-200">
                     {project.tagline}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-gray-200">
@@ -250,10 +283,7 @@ const Portfolio = () => {
 
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-100"
-                    >
+                    <span key={item} className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] ${project.chipClass}`}>
                       {item}
                     </span>
                   ))}
@@ -272,7 +302,7 @@ const Portfolio = () => {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 text-center text-sm font-semibold shadow-lg shadow-cyan-500/30 transition hover:translate-y-[-2px] hover:shadow-xl hover:shadow-cyan-500/40"
+                    className={`flex-1 rounded-full px-5 py-2 text-center text-sm font-semibold text-white shadow-lg shadow-black/30 transition hover:translate-y-[-2px] hover:shadow-xl hover:shadow-black/40 ${project.buttonGradient}`}
                   >
                     Case study
                   </a>
