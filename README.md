@@ -1,71 +1,94 @@
-# Getting Started with Create React App
+# Sohail’s AI Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive, recruiter-ready portfolio for showcasing the work of **Sohail Shaik — SDE & AI Engineer @ omniqAI**.  
+Built with React and Tailwind, the site distills flagship projects like SkinAI, Docker Automation Platform, Jenkins CI/CD Pipelines, and SmartVision into metrics-driven case studies.
 
-## Available Scripts.
+![Hero Screenshot](public/hero-preview.png)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ What’s Inside
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Hero spotlight**: A narrative intro plus quantified impact stats (AI products in prod, ops time saved, recognition accuracy).
+- **Case study gallery**: Four deep dives with tech stacks, role context, and GitHub links.
+- **Experience matrix**: AI/Automation, Cloud/DevOps, and Full-stack pillars with live toolkits.
+- **Contact funnel**: Direct email CTA, LinkedIn, and download-ready resume (`public/Sohail_SDE.pdf`).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Frontend | Styling | Animation | Tooling |
+|----------|---------|-----------|---------|
+| React 18 | Tailwind CSS 3 | Framer-motion inspired interactions | React Icons, React Scroll |
 
-### `npm run build`
+> The portfolio is responsive, performance-conscious, and designed for a cinematic experience on desktop and mobile.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Quick Start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# 1. Install dependencies
+npm install
 
-### `npm run eject`
+# 2. Start the dev server
+npm start
+# -> http://localhost:3000
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 3. Build for production
+npm run build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Node.js 18+ recommended. Run `npm install --legacy-peer-deps` if your environment enforces strict peer checks.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📁 Project Structure
 
-## Learn More
+```
+my-portfolio/
+├── public/
+│   ├── Sohail_SDE.pdf        # Résumé exposed via CTA + social links
+│   └── resume assets…
+├── src/
+│   ├── components/           # Hero, Case Studies, Experience, Contact
+│   ├── assets/               # Imagery used across cards
+│   ├── App.js                # Layout composition
+│   └── index.js              # Entry point
+└── tailwind.config.js
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🧠 Featured Case Studies
 
-### Code Splitting
+| Project | Problem Solved | Highlights | Repo |
+|---------|----------------|------------|------|
+| **SkinAI** | Dermatology triage with AI guardrails | CNN ensemble + FastAPI, encrypted image handling, 1.7s inference | [Sohail-9/SkinAI](https://github.com/Sohail-9/SkinAI) |
+| **Docker Automation Platform** | Manual container ops | Docker SDK orchestration, Slack alerts, microservice deploys | [Sohail-9/Docker-Automation](https://github.com/Sohail-9/Docker-Automation) |
+| **Jenkins CI/CD Pipeline** | Slow releases & brittle pipelines | AWS-backed Jenkins, Docker agents, blue/green rollouts | [Sohail-9/Jenkins-ci-cd-pipeline](https://github.com/Sohail-9/Jenkins-ci-cd-pipeline) |
+| **SmartVision Product Recognition** | Real-time retail insights | YOLOv5 30 FPS detection, inventory sync, 92% SKU accuracy | [Sohail-9/product.recognition.using.smart.vision](https://github.com/Sohail-9/product.recognition.using.smart.vision) |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Each case study is built to signal your ability to own the full lifecycle: ideation → architecture → delivery → measurement.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🧭 Design & Content Principles
 
-### Making a Progressive Web App
+- **Story-first**: Content is pulled from Sohail’s résumé (SDE & AI Engineer @ omniqAI) and narrated to show leadership + measurable wins.
+- **Recruiter workflow**: Case studies, résumé download, and contact CTA are two clicks away at all times.
+- **Performance-aware**: Gradient overlays, blur effects, and responsive grids are balanced with Lighthouse-friendly Tailwind utilities.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 📬 Connect
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Portfolio: https://your-domain.com (deploy via `npm run build` + Vercel/Netlify)
+- LinkedIn: [shaiksohail96](https://www.linkedin.com/in/shaiksohail96/)
+- GitHub: [Sohail-9](https://github.com/Sohail-9)
+- Email: [s.suhail9849@gmail.com](mailto:s.suhail9849@gmail.com)
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-Deployed on Vercel for Configaration.
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Crafted with ❤️, gradients, and obsessive attention to detail so that your next recruiter scroll stops here. 🚀

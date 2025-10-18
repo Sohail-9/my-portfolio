@@ -8,17 +8,17 @@ const heroHighlights = [
   {
     id: 1,
     title: "SDE & AI Engineer",
-    subtitle: "Building agentic and full-stack products @ omniqAI",
+    subtitle: "Driving AI-first experiences & platform foundations @ omniqAI",
   },
   {
     id: 2,
     title: "Cloud Native",
-    subtitle: "AWS, Kubernetes, Docker, Observability-first mindset",
+    subtitle: "AWS, Kubernetes, Docker, Zero-downtime delivery playbooks",
   },
   {
     id: 3,
     title: "Product Velocity",
-    subtitle: "Shipping automation platforms & measurable impact",
+    subtitle: "Shipping automation platforms with measurable outcomes",
   },
 ];
 
@@ -43,6 +43,27 @@ const valuePillars = [
   },
 ];
 
+const impactStats = [
+  {
+    id: 1,
+    label: "AI products in prod",
+    value: "2",
+    caption: "SkinAI & SmartVision powering real user workflows.",
+  },
+  {
+    id: 2,
+    label: "Ops time saved",
+    value: "↓ 60%",
+    caption: "Docker automation & Jenkins pipelines speeding releases.",
+  },
+  {
+    id: 3,
+    label: "Detection accuracy",
+    value: "92%",
+    caption: "SmartVision improves SKU recognition in live streams.",
+  },
+];
+
 const Home = () => {
   return (
     <section
@@ -62,12 +83,13 @@ const Home = () => {
               Open to new opportunities
             </p>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
-              Engineer crafting AI-driven products that go from idea to impact.
+              Engineer crafting SkinAI, SmartVision, and the platforms that keep
+              them running.
             </h1>
             <p className="max-w-xl text-lg text-gray-300 sm:text-xl">
               I design and ship resilient automation platforms and cloud-native
-              experiences. From orchestrating container workloads to delivering
-              delightful interfaces, I help teams move faster with confidence.
+              experiences. From orchestrating container workloads to crafting
+              intelligent diagnostics, I help teams move faster with confidence.
             </p>
           </div>
 
@@ -125,6 +147,20 @@ const Home = () => {
                 </p>
                 <p className="text-sm text-gray-200 leading-relaxed">
                   {description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-4 rounded-3xl border border-white/5 bg-black/40 p-6 backdrop-blur sm:grid-cols-3">
+            {impactStats.map(({ id, label, value, caption }) => (
+              <div key={id} className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-400">
+                  {label}
+                </p>
+                <p className="text-2xl font-semibold text-cyan-200">{value}</p>
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  {caption}
                 </p>
               </div>
             ))}

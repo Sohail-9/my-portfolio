@@ -13,20 +13,20 @@ const careerHighlights = [
     role: "SDE & AI Engineer",
     company: "omniqAI",
     bullets: [
-      "Leading the build of agentic AI workflows that automate critical operations.",
-      "Designed a Docker Automation Platform with real-time visibility for distributed containers.",
-      "Scaled cloud infrastructure with AWS, Kubernetes, and robust CI/CD pipelines.",
+      "Leading SkinAI and SmartVision — AI platforms that power real-time diagnostics and visual intelligence.",
+      "Designed a Docker Automation Platform with real-time visibility for 120+ distributed containers.",
+      "Scaled AWS + Kubernetes infrastructure with observability-first pipelines and security guardrails.",
     ],
   },
   {
     id: 2,
     period: "2023 — 2024",
-    role: "Full-stack Engineer",
+    role: "Full-stack & DevOps Engineer",
     company: "Independent Projects",
     bullets: [
-      "Delivered end-to-end web applications with React, Express, and TypeScript.",
-      "Implemented analytics dashboards and real-time event streaming with Node.js.",
-      "Partnered with cross-functional teams to translate ideas into measurable impact.",
+      "Delivered automation-heavy applications using React, Express, and TypeScript with production telemetry.",
+      "Built a Jenkins CI/CD pipeline that ships to Kubernetes with automated quality and security gates.",
+      "Partnered with product and design to translate ambiguous ideas into measurable business impact.",
     ],
   },
 ];
@@ -85,6 +85,19 @@ const About = () => {
             wiring up resilient DevOps pipelines, or launching expressive React
             interfaces, I bring the same intent: ship impactful software, fast.
           </p>
+          <p className="mt-4 text-lg text-gray-300 sm:text-xl leading-relaxed">
+            Recent highlights include{" "}
+            <span className="font-semibold text-green-300">SkinAI</span> for
+            dermatology triage, a{" "}
+            <span className="font-semibold text-cyan-200">
+              SmartVision recognition service
+            </span>{" "}
+            for retail, and a{" "}
+            <span className="font-semibold text-blue-200">
+              Docker + Jenkins automation suite
+            </span>{" "}
+            that keeps deployments safe and fast.
+          </p>
         </header>
 
         <div className="grid gap-6 sm:grid-cols-3">
@@ -107,13 +120,21 @@ const About = () => {
               What I'm focused on
             </h3>
             <p className="text-base text-gray-200 leading-relaxed">
-              Recently, I designed a{" "}
+              Recently, I designed{" "}
               <span className="font-semibold text-green-300">
+                SkinAI
+              </span>{" "}
+              and{" "}
+              <span className="font-semibold text-green-300">
+                SmartVision
+              </span>{" "}
+              to turn complex AI models into approachable, trustworthy
+              interfaces. On the platform side, a{" "}
+              <span className="font-semibold text-cyan-200">
                 Docker Automation Platform
               </span>{" "}
-              powered by Docker SDK to offer real-time monitoring of container
-              fleets. It couples a React front-end with a decoupled Node.js API,
-              stitched together with lightweight messaging and intuitive UX.
+              with real-time fleet controls keeps releases resilient for every
+              team.
             </p>
             <p className="text-base text-gray-200 leading-relaxed">
               Beyond shipping features, I invest in observability, developer

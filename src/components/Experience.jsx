@@ -15,8 +15,8 @@ const coreStacks = [
     id: 1,
     title: "AI & Automation",
     description:
-      "Prompt engineering, agent orchestration, and intelligent tooling that turns manual workflows into autonomous systems.",
-    tags: ["LLMs", "LangChain", "Agentic AI", "Vector Stores"],
+      "Applied AI that blends model accuracy with human guardrails—SkinAI diagnostics, SmartVision recognition, and agentic workflows.",
+    tags: ["LLMs", "Computer Vision", "Agentic AI", "Model Ops"],
   },
   {
     id: 2,
@@ -31,6 +31,41 @@ const coreStacks = [
     description:
       "Delightful, performant experiences across web front-ends and resilient APIs that scale with the business.",
     tags: ["React", "Next.js", "Express", "Node.js", "TypeScript"],
+  },
+];
+
+const spotlights = [
+  {
+    id: 1,
+    label: "SkinAI",
+    summary:
+      "CNN ensemble + FastAPI backend mapped to a humane React experience that delivers dermatology insights responsibly.",
+    impact: "Scoped ethical guardrails and triage flows with clinicians in the loop.",
+    link: "https://github.com/Sohail-9/SkinAI",
+  },
+  {
+    id: 2,
+    label: "Docker Automation Platform",
+    summary:
+      "Automation hub streamlining provisioning, health checks, and remediation across 120+ containers.",
+    impact: "Cut on-call toil; enabled product squads to self-serve deploys safely.",
+    link: "https://github.com/Sohail-9/Docker-Automation",
+  },
+  {
+    id: 3,
+    label: "Jenkins CI/CD",
+    summary:
+      "Infrastructure-as-code playbook for spinning up Jenkins, Docker agents, and GitOps-style rollouts to Kubernetes.",
+    impact: "Baked quality gates, rollback paths, and blue/green deployments into every pipeline.",
+    link: "https://github.com/Sohail-9/Jenkins-ci-cd-pipeline",
+  },
+  {
+    id: 4,
+    label: "SmartVision",
+    summary:
+      "Computer-vision service that recognises produce in real time and syncs inventory with point-of-sale systems.",
+    impact: "Delivered 92% SKU accuracy with 30 FPS inference on commodity hardware.",
+    link: "https://github.com/Sohail-9/product.recognition.using.smart.vision",
   },
 ];
 
@@ -152,6 +187,27 @@ const Experience = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-4">
+          {spotlights.map(({ id, label, summary, impact, link }) => (
+            <a
+              key={id}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-7 shadow-[0_20px_70px_rgba(59,130,246,0.25)] transition hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:shadow-[0_30px_90px_rgba(56,189,248,0.3)]"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-200">
+                {label}
+              </p>
+              <p className="text-sm text-gray-200 leading-relaxed">{summary}</p>
+              <p className="text-sm font-medium text-cyan-100">{impact}</p>
+              <span className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-300 transition group-hover:text-cyan-200">
+                Explore →
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </section>
