@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=1200&q=80",
+        url: "/sohail.jpeg",
         width: 1200,
         height: 627,
         alt: "Portrait of Sohail Shaik"
@@ -24,7 +24,12 @@ export const metadata: Metadata = {
     title: "Sohail Shaik | Backend Engineer",
     description:
       "Building scalable FastAPI services, RAG intelligence, and Kubernetes-native platforms that ship faster and safer.",
-    images: ["https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=1200&q=80"]
+    images: ["/sohail.jpeg"]
+  },
+  icons: {
+    icon: "/sk-logo.svg",
+    shortcut: "/sk-logo.svg",
+    apple: "/sk-logo.svg"
   }
 };
 

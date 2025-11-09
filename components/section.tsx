@@ -24,13 +24,13 @@ export function Section({
   return (
     <motion.section
       id={id}
-      className={`relative py-16 sm:py-24 ${className ?? ""}`.trim()}
+      className={`relative py-10 sm:py-16 ${className ?? ""}`.trim()}
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className={`${base} space-y-6`}>
+      <div className={`${base} space-y-5`}>
         {eyebrow ? (
           <motion.p className="text-sm uppercase tracking-[0.3em] text-slate-400" variants={childVariants}>
             {eyebrow}
