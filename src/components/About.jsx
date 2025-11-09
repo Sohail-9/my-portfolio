@@ -24,33 +24,21 @@ const principles = [
   },
 ];
 
-const timeline = [
+const focusAreas = [
   {
     id: 1,
-    period: "Jan 2025 — Present",
-    role: "Software Development Engineer · OmniqAI",
-    points: [
-      "Architected and developed scalable Python backends using ASGI (Uvicorn) and async patterns for high concurrency.",
-      "Designed RESTful APIs and Socket.IO real-time services backed by Redis pub/sub for horizontal scalability.",
-      "Managed PostgreSQL and Redis with pooling, read replicas, caching, and zero-downtime Alembic migrations.",
-      "Implemented Celery task processing through Redis and RabbitMQ with idempotency, retries, and priority queues.",
-      "Integrated Prometheus, Grafana, OpenTelemetry, and centralized logging (ELK/Loki) for end-to-end observability.",
-      "Built GitHub Actions CI/CD pipelines delivering zero-downtime releases and reducing deployment time by 40%.",
-      "Created Helm charts with HPA, readiness probes, and tuned container resources for production EKS clusters.",
-      "Migrated on-premises workloads to AWS EKS while administering EC2, VPC, IAM, S3, CloudWatch, and Secrets Manager.",
-      "Automated infrastructure provisioning with Terraform and CloudFormation for repeatable environments.",
-      "Collaborated with development and operations to troubleshoot production issues, optimize performance, and drive disaster recovery drills.",
-    ],
+    title: "Traceable AI agents",
+    body: "Instrumented RAG, knowledge graphs, and guardrails so assistants stay explainable and reversible.",
   },
   {
     id: 2,
-    period: "Aug 2024 — Dec 2024",
-    role: "Software Development Engineering Intern · OmniqAI",
-    points: [
-      "Shipped Python microservices and REST APIs supporting AI production workloads.",
-      "Implemented Grafana + Prometheus monitoring that reduced incident response time by 30%.",
-      "Maintained alerting, dashboards, and health reports that informed platform decisions.",
-    ],
+    title: "Delivery calm",
+    body: "GitOps, progressive delivery, and rehearsed rollback drills keep releases boring even at peak traffic.",
+  },
+  {
+    id: 3,
+    title: "Infrastructure hygiene",
+    body: "Terraform + Helm baselines with budgets, policies, and automated scorecards to prevent drift.",
   },
 ];
 
@@ -101,37 +89,22 @@ const About = () => {
         </aside>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-300">
-          Experience
+          Focus for 2025
         </p>
-        <div className="relative pl-10">
-          <span className="absolute left-3 top-5 h-full w-px bg-white/10" />
-          {timeline.map(({ id, period, role, points }, index) => {
-            const isLast = index === timeline.length - 1;
-            return (
-              <div key={id} className="relative pb-10 last:pb-0">
-                <span
-                  className={`absolute left-0 top-4 h-3 w-3 -translate-x-1/2 rounded-full border border-white/40 bg-white/20 shadow-[0_0_12px_rgba(148,163,184,0.5)] ${
-                    isLast
-                      ? ""
-                      : "after:absolute after:left-1/2 after:top-3 after:h-[calc(100%-0.75rem)] after:w-px after:-translate-x-1/2 after:bg-white/10 after:content-['']"
-                  }`}
-                />
-                <article className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200 shadow-lg shadow-slate-900/40 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-300/40">
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                    {period}
-                  </p>
-                  <h3 className="mt-2 text-base font-semibold text-white">{role}</h3>
-                  <ul className="mt-4 space-y-2 leading-relaxed text-slate-300">
-                    {points.map((point, bulletIndex) => (
-                      <li key={bulletIndex}>• {point}</li>
-                    ))}
-                  </ul>
-                </article>
-              </div>
-            );
-          })}
+        <div className="grid gap-4 md:grid-cols-3">
+          {focusAreas.map(({ id, title, body }) => (
+            <article
+              key={id}
+              className="rounded-3xl border border-white/10 bg-white/5 p-5 text-sm text-slate-200 shadow-lg shadow-slate-900/40 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-300/40"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                {title}
+              </p>
+              <p className="mt-2 leading-relaxed text-slate-300">{body}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

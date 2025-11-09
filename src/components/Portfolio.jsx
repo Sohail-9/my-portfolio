@@ -1,129 +1,163 @@
 import React from "react";
+import { FiExternalLink, FiGithub, FiPlay } from "react-icons/fi";
 
-const summaryPoints = [
-  "Each build is production-minded with clear links for deeper dives.",
-  "AI agents, automation, and platform tooling that teams can trust.",
-];
-
-const projectThemes = {
-  "TraceFox AI": {
-    badge: "border-emerald-300/30 bg-emerald-400/10 text-emerald-100",
-    glow: "hover:border-emerald-300/40 hover:shadow-emerald-400/20",
-  },
-  SkinAI: {
-    badge: "border-sky-300/30 bg-sky-400/10 text-sky-100",
-    glow: "hover:border-sky-300/40 hover:shadow-sky-400/20",
-  },
-  "Docker Automation Platform": {
-    badge: "border-purple-300/30 bg-purple-400/10 text-purple-100",
-    glow: "hover:border-purple-300/40 hover:shadow-purple-400/20",
-  },
+const sectionIntro = {
+  eyebrow: "Projects",
+  title: "Operator-grade platforms that keep AI workstreams reliable.",
+  description:
+    "Each build blends product thinking with infra discipline—ship fast, observe everything, and design for calm on-call rotations.",
 };
 
 const projects = [
   {
     id: 1,
     title: "TraceFox AI",
-    subtitle: "AI-powered code review and test platform.",
-    description:
-      "FastAPI orchestrates modular services, webhooks, and async pipelines for pull-request analysis, automated test generation, and compliance drift detection. A Next.js mission control streams live telemetry.",
-    outcome:
-      "Automated multi-cloud setup, AI review flows, and execution artefacts—giving teams instant feedback and structured RCA.",
-    tech: [
-      "FastAPI",
-      "Python",
-      "Next.js",
-      "Redis",
-      "Postgres",
-      "Neo4j",
-      "Qdrant",
-      "Terraform",
-      "Docker",
+    tagline: "AI-assisted code review mission control",
+    summary:
+      "Async FastAPI services listen to GitHub events, spin up ephemeral runners, and stream Gemini-backed review notes, SLA checks, and RCA packets into one cockpit.",
+    highlights: [
+      "Multi-cloud agent orchestration with Terraform + Helm blueprints",
+      "LLM prompt hub that explains every suggestion with trace IDs",
+      "Playbooks and scorecards so releases stay auditable",
     ],
-    link: "https://github.com/Sohail-9/TraceFox-AI",
+    tech: ["FastAPI", "Redis", "Neo4j", "Next.js", "Terraform", "Docker"],
+    links: [
+      {
+        id: "demo-tracefox",
+        href: "https://github.com/Sohail-9/TraceFox-AI#readme",
+        label: "Demo",
+        icon: FiPlay,
+      },
+      {
+        id: "repo-tracefox",
+        href: "https://github.com/Sohail-9/TraceFox-AI",
+        label: "Code",
+        icon: FiGithub,
+      },
+    ],
   },
   {
     id: 2,
     title: "SkinAI",
-    subtitle: "Dermatology triage powered by responsible AI.",
-    description:
-      "CNN ensemble + FastAPI backend with a reassuring UI that keeps clinicians in the loop.",
-    outcome: "Delivers guidance in 1.7s with guardrails and encrypted storage throughout.",
-    tech: ["React", "TypeScript", "FastAPI", "OpenCV"],
-    link: "https://github.com/Sohail-9/SkinAI",
+    tagline: "Responsible dermatology triage",
+    summary:
+      "CNN ensembles pair with a FastAPI backend and React front-end to triage cases in seconds while keeping clinicians in the loop with transparent confidence bands.",
+    highlights: [
+      "PII-safe storage with encrypted object stores",
+      "Clinical review portal with audit-ready exports",
+      "Inference latency held under 2 seconds on commodity GPUs",
+    ],
+    tech: ["React", "TypeScript", "FastAPI", "OpenCV", "Docker"],
+    links: [
+      {
+        id: "live-skinai",
+        href: "https://github.com/Sohail-9/SkinAI#readme",
+        label: "Preview",
+        icon: FiExternalLink,
+      },
+      {
+        id: "repo-skinai",
+        href: "https://github.com/Sohail-9/SkinAI",
+        label: "Code",
+        icon: FiGithub,
+      },
+    ],
   },
   {
     id: 3,
     title: "Docker Automation Platform",
-    subtitle: "Operations console for 120+ containers.",
-    description:
-      "Self-service control plane covering provisioning, health, and runtime changes with RBAC.",
-    outcome: "Lowered MTTR to 15 minutes while enabling squads to ship independently.",
-    tech: ["React", "Node.js", "Docker SDK", "AWS"],
-    link: "https://github.com/Sohail-9/Docker-Automation",
+    tagline: "Self-serve ops for 120+ containers",
+    summary:
+      "A React + Node control plane that lets squads launch, patch, and observe services without paging infra—complete with RBAC, audit logs, and GitOps hooks.",
+    highlights: [
+      "Runtime patching + health dashboards backed by Prometheus",
+      "Safe rollout templates with automated smoke tests",
+      "MTTR dropped to 15 minutes through guided remediation",
+    ],
+    tech: ["React", "Node.js", "Docker SDK", "AWS", "Prometheus"],
+    links: [
+      {
+        id: "live-docker",
+        href: "https://github.com/Sohail-9/Docker-Automation#readme",
+        label: "Preview",
+        icon: FiExternalLink,
+      },
+      {
+        id: "repo-docker",
+        href: "https://github.com/Sohail-9/Docker-Automation",
+        label: "Code",
+        icon: FiGithub,
+      },
+    ],
   },
 ];
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" name="portfolio" className="space-y-12">
-      <header className="space-y-4">
+    <section id="portfolio" name="portfolio" className="space-y-10">
+      <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-          Selected work
+          {sectionIntro.eyebrow}
         </p>
-        <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-          AI platforms, automation tooling, and delivery systems worth talking about.
-        </h2>
-        <ul className="space-y-2 text-sm leading-relaxed text-slate-300 sm:text-base">
-          {summaryPoints.map((item, index) => (
-            <li key={index}>• {item}</li>
-          ))}
-        </ul>
+        <h2 className="text-3xl font-semibold text-white sm:text-4xl">{sectionIntro.title}</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+          {sectionIntro.description}
+        </p>
       </header>
 
-      <div className="space-y-6">
-        {projects.map(({ id, title, subtitle, description, outcome, tech, link }) => (
+      <div className="grid gap-5 sm:gap-6">
+        {projects.map(({ id, title, tagline, summary, highlights, tech, links }) => (
           <article
             key={id}
-            className={`group rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-slate-900/40 backdrop-blur transition ${projectThemes[title]?.glow ?? "hover:border-cyan-300/40"}`}
+            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent p-6 shadow-lg shadow-slate-900/50 backdrop-blur transition hover:border-white/20 hover:shadow-cyan-500/20"
           >
             <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <span
-                  className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.35em] ${projectThemes[title]?.badge ?? "border-cyan-300/30 bg-cyan-400/10 text-cyan-100"}`}
-                >
-                  <span className="h-2 w-2 rounded-full bg-current animate-pulse-slow" />
-                  {subtitle}
-                </span>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-300 transition hover:text-white"
-                >
-                  View project
-                  <span className="inline-block h-1 w-4 translate-y-[1px] rounded-full bg-slate-400 transition group-hover:w-6 group-hover:bg-white" />
-                </a>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-slate-400">
+                    {tagline}
+                  </p>
+                  <h3 className="mt-1 text-xl font-semibold text-white">{title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {links.map(({ id: linkId, href, label, icon: Icon }) => (
+                    <a
+                      key={linkId}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-slate-200 transition hover:border-white/40 hover:bg-white/10"
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span className="hidden sm:inline">{label}</span>
+                      <span className="sm:hidden">{label.slice(0, 4)}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-200">{description}</p>
-              </div>
+              <p className="text-sm leading-relaxed text-slate-200">{summary}</p>
 
-              <p className="text-sm font-medium text-white/90">{outcome}</p>
+              <ul className="space-y-2 text-sm text-slate-300">
+                {highlights.map((item, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300/70" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-300">
+            <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-300">
               {tech.map((item) => (
-                <li
+                <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.65rem] tracking-[0.3em] transition group-hover:border-white/30"
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.65rem]"
                 >
                   {item}
-                </li>
+                </span>
               ))}
-            </ul>
+            </div>
           </article>
         ))}
       </div>
