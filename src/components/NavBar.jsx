@@ -2,68 +2,98 @@ import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 
-const NavBar = () => {
-  const [nav, setNav] = useState(false);
+const links = [
+  { id: 1, label: "Home", target: "home" },
+  { id: 2, label: "About", target: "about" },
+  { id: 3, label: "Skills", target: "skills" },
+  { id: 4, label: "Work", target: "portfolio" },
+  { id: 5, label: "Experience", target: "experience" },
+  { id: 6, label: "Contact", target: "contact" },
+];
 
-  const links = [
-    { id: 1, link: "home" },
-    { id: 2, link: "about" },
-    { id: 3, link: "portfolio" },
-    { id: 4, link: "experience" },
-    { id: 5, link: "contact" },
-  ];
+const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <div className="fixed w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10 shadow-md">
-      <div className="flex justify-between items-center w-full h-20 px-4 max-w-screen-xl mx-auto text-white">
-        {/* Brighter, Glowing Brand Name */}
-        <h1 className="text-4xl font-signature tracking-wide bg-gradient-to-r from-white via-cyan-300 to-purple-400 bg-clip-text text-transparent hover:scale-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-transform duration-300">
-          Sohail
-        </h1>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          {links.map(({ id, link }) => (
-            <li
-              key={id}
-              className="text-lg font-medium text-gray-300 hover:text-white hover:scale-110 hover:drop-shadow-glow relative transition duration-300 cursor-pointer"
-            >
-              <Link to={link} smooth duration={500} className="relative group">
-                {link}
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-cyan-400 transition-all group-hover:w-full duration-300"></span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Icon */}
-        <div
-          onClick={() => setNav(!nav)}
-          className="cursor-pointer text-gray-300 md:hidden z-20"
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-700/60 bg-[#050b1a]/70 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-end justify-between gap-6 px-6 py-5 md:items-center md:px-10">
+        <Link
+          to="home"
+          smooth
+          duration={500}
+          className="cursor-pointer text-lg font-semibold uppercase tracking-[0.3em] text-slate-200"
+          onClick={closeMenu}
         >
-          {nav ? <FaTimes size={28} /> : <FaBars size={28} />}
-        </div>
+          Sohail Shaik
+        </Link>
 
-        {/* Mobile Menu */}
-        {nav && (
-          <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-900 text-gray-300 animate-fadeIn space-y-6 text-2xl">
-            {links.map(({ id, link }) => (
+        <nav className="hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
+          {links.map(({ id, label, target }) => (
+            <Link
+              key={id}
+              to={target}
+              smooth
+              duration={500}
+              className="uppercase tracking-[0.25em] transition hover:text-white"
+            >
+              {label}
+            </Link>
+          ))}
+          <Link
+            to="contact"
+            smooth
+            duration={500}
+            className="rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-100 transition hover:border-white/30 hover:text-white"
+          >
+            Let’s talk
+          </Link>
+        </nav>
+
+        <button
+          type="button"
+          onClick={toggleMenu}
+          className="text-slate-200 md:hidden"
+          aria-label="Toggle navigation"
+        >
+          {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+        </button>
+      </div>
+
+      {isOpen && (
+        <nav className="border-t border-slate-700/60 bg-[#050b1a]/95 px-6 py-6 md:hidden">
+          <ul className="flex flex-col gap-5 text-sm font-medium uppercase tracking-[0.2em] text-slate-200">
+            {links.map(({ id, label, target }) => (
               <li key={id}>
                 <Link
-                  to={link}
+                  to={target}
                   smooth
                   duration={500}
-                  onClick={() => setNav(false)}
-                  className="capitalize hover:text-cyan-400 transition"
+                  onClick={closeMenu}
+                  className="block"
                 >
-                  {link}
+                  {label}
                 </Link>
               </li>
             ))}
           </ul>
-        )}
-      </div>
-    </div>
+        </nav>
+      )}
+
+      <nav className="fixed inset-x-0 bottom-4 z-40 flex justify-center md:hidden">
+        <ul className="flex items-center gap-4 rounded-full border border-white/10 bg-[#050b1a]/80 px-6 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-slate-200 shadow-xl shadow-slate-900/50 backdrop-blur">
+          {links.map(({ id, label, target }) => (
+            <li key={id}>
+              <Link to={target} smooth duration={500} className="transition hover:text-white">
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

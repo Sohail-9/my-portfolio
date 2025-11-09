@@ -3,69 +3,53 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
-const SocialLinks = () => {
-  const links = [
-    {
-      id: 1,
-      child: (
-        <>
-          LinkedIn <FaLinkedin size={28} />
-        </>
-      ),
-      href: "https://www.linkedin.com/in/shaiksohail96/",
-      style: "rounded-tr-md",
-    },
-    {
-      id: 2,
-      child: (
-        <>
-          GitHub <FaGithub size={28} />
-        </>
-      ),
-      href: "https://github.com/Sohail-9",
-    },
-    {
-      id: 3,
-      child: (
-        <>
-          Mail <HiOutlineMail size={28} />
-        </>
-      ),
-      href: "mailto:s.suhail9849@gmail.com",
-    },
-    {
-      id: 4,
-      child: (
-        <>
-          Resume <BsFillPersonLinesFill size={28} />
-        </>
-      ),
-      href: "/Sohail_SDE.pdf",
-      style: "rounded-br-md",
-      download: true,
-    },
-  ];
+const links = [
+  {
+    id: 1,
+    label: "LinkedIn",
+    icon: <FaLinkedin size={18} />,
+    href: "https://www.linkedin.com/in/shaiksohail96/",
+  },
+  {
+    id: 2,
+    label: "GitHub",
+    icon: <FaGithub size={18} />,
+    href: "https://github.com/Sohail-9",
+  },
+  {
+    id: 3,
+    label: "Mail",
+    icon: <HiOutlineMail size={18} />,
+    href: "mailto:s.suhail9849@gmail.com",
+  },
+  {
+    id: 4,
+    label: "Résumé",
+    icon: <BsFillPersonLinesFill size={18} />,
+    href: "/Sohail_SDE.pdf",
+    download: true,
+  },
+];
 
+const SocialLinks = () => {
   return (
-    <div className="hidden lg:flex flex-col top-[35%] left-0 fixed z-50">
-      <ul>
-        {links.map(({ id, child, href, style, download }) => (
-          <li
+    <div className="fixed bottom-8 right-6 z-40 hidden sm:block">
+      <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 shadow-lg shadow-slate-900/40 backdrop-blur">
+        {links.map(({ id, label, icon, href, download }) => (
+          <a
             key={id}
-            className={`flex justify-between items-center w-48 h-14 px-4 ml-[-120px] hover:ml-0 hover:rounded-md transition-all duration-500 text-gray-200 bg-black/40 backdrop-blur-md border border-white/10 shadow-md ${style}`}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            download={download}
+            aria-label={label}
+            className="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200 transition hover:text-white"
           >
-            <a
-              href={href}
-              className="flex justify-between items-center w-full font-medium"
-              download={download}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {child}
-            </a>
-          </li>
+            {icon}
+            {label}
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
