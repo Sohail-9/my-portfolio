@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LuGithub, LuLinkedin, LuMail, LuTwitter, LuX } from "react-icons/lu";
+import { LuGithub, LuLinkedin, LuMail, LuTwitter } from "react-icons/lu";
 import { footer } from "@/lib/content";
 import { links } from "@/lib/links";
 
@@ -29,7 +29,6 @@ export function Footer() {
                 <Icon />
               </a>
             ))}
-            <LuX className="text-lg text-white/40" aria-hidden />
             <span className="h-8 w-px bg-white/10" aria-hidden />
             <div className="h-12 w-12 overflow-hidden rounded-2xl border border-white/10">
               <Image
@@ -42,7 +41,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-center text-sm text-slate-400">{footer.text}</p>
+        <p className="text-center text-sm text-slate-400">Crafted in async bursts by Sohail Shaik</p>
       </div>
     </footer>
   );
