@@ -1,15 +1,15 @@
 import { links } from "./links";
 
-export type SkillGroup = {
-  category: string;
-  items: string[];
-};
-
 export type ExperienceEntry = {
   company: string;
   role: string;
   timeframe: string;
   bullets: string[];
+};
+
+export type Skill = {
+  key: string;
+  label: string;
 };
 
 export type ProjectLink = {
@@ -44,41 +44,27 @@ export const present = {
   ctaText: "Contact me"
 };
 
-export const skills: SkillGroup[] = [
-  {
-    category: "Backend & APIs",
-    items: ["Python (FastAPI, Flask, asyncio)", "Node.js", "REST", "WebSockets"]
-  },
-  {
-    category: "Systems & Architecture",
-    items: ["Distributed Systems", "Microservices", "System Design"]
-  },
-  {
-    category: "Datastores",
-    items: [
-      "PostgreSQL (read replicas, pooling)",
-      "MongoDB",
-      "Redis (cache, pub/sub)",
-      "RabbitMQ",
-      "Neo4j"
-    ]
-  },
-  {
-    category: "Cloud & Infra",
-    items: ["AWS (EKS, EC2, VPC, IAM, S3, CloudWatch, Secrets Manager)"]
-  },
-  {
-    category: "Containers & Orchestration",
-    items: ["Docker", "Kubernetes (Helm, HPA, probes)"]
-  },
-  {
-    category: "DevOps & CI/CD",
-    items: ["GitHub Actions", "GitOps", "IaC (Terraform, CloudFormation)", "Prometheus", "Grafana"]
-  },
-  {
-    category: "Languages & Tools",
-    items: ["Python", "TypeScript", "C++", "Shell", "SQL", "Linux", "Git/GitHub"]
-  }
+export const skills: Skill[] = [
+  { key: "python", label: "Python" },
+  { key: "fastapi", label: "FastAPI" },
+  { key: "node", label: "Node.js" },
+  { key: "typescript", label: "TypeScript" },
+  { key: "cpp", label: "C++" },
+  { key: "nextjs", label: "Next.js" },
+  { key: "aws", label: "AWS" },
+  { key: "docker", label: "Docker" },
+  { key: "kubernetes", label: "Kubernetes" },
+  { key: "postgres", label: "PostgreSQL" },
+  { key: "mongo", label: "MongoDB" },
+  { key: "redis", label: "Redis" },
+  { key: "rabbitmq", label: "RabbitMQ" },
+  { key: "neo4j", label: "Neo4j" },
+  { key: "terraform", label: "Terraform" },
+  { key: "githubactions", label: "GitHub Actions" },
+  { key: "prometheus", label: "Prometheus" },
+  { key: "grafana", label: "Grafana" },
+  { key: "linux", label: "Linux" },
+  { key: "git", label: "Git/GitHub" }
 ];
 
 export const experience: ExperienceEntry[] = [

@@ -6,5 +6,6 @@ export const links = {
   phone: "+91 9642639515",
   tracefoxDemo: "https://youtu.be/tracefox-demo",
   tracefoxRepo: "https://github.com/Sohail-9/tracefox-ai",
-  callUrl: ""
+  callUrl: "",
+  twitter: "https://x.com/Suhail_S9"
 };

@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { LuGithub, LuLinkedin, LuMail, LuX } from "react-icons/lu";
+import { LuGithub, LuLinkedin, LuMail, LuTwitter, LuX } from "react-icons/lu";
 import { footer } from "@/lib/content";
 import { links } from "@/lib/links";
 
 const items = [
   { label: "LinkedIn", href: links.linkedin, icon: LuLinkedin },
   { label: "GitHub", href: links.github, icon: LuGithub },
+  { label: "Twitter", href: links.twitter, icon: LuTwitter },
   { label: "Contact", href: `mailto:${links.email}`, icon: LuMail }
 ];
 
