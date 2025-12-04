@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sohail Shaik | Backend Engineer",
+  title: "Sohail Shaik | Software Engineer",
   description:
-    "Backend engineer building FastAPI services, RAG pipelines, and Kubernetes-native systems with a focus on observability and developer velocity.",
+    "Software engineer building FastAPI services, RAG pipelines, and Kubernetes-native systems with a focus on observability and developer velocity.",
   openGraph: {
-    title: "Sohail Shaik | Backend Engineer",
+    title: "Sohail Shaik | Software Engineer",
     description:
-      "Backend engineer focused on FastAPI, async systems, RAG, and Kubernetes—crafting resilient infra and AI developer platforms.",
+      "Software engineer focused on FastAPI, async systems, RAG, and Kubernetes—crafting resilient infra and AI developer platforms.",
     type: "website",
     images: [
       {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sohail Shaik | Backend Engineer",
+    title: "Sohail Shaik | Software Engineer",
     description:
       "Building scalable FastAPI services, RAG intelligence, and Kubernetes-native platforms that ship faster and safer.",
     images: ["/sohail.jpeg"]

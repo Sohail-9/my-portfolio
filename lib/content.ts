@@ -27,20 +27,20 @@ export type Project = {
 
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
-  subtitle: "I’m a Backend Engineer",
+  subtitle: "I’m a Software Engineer",
   ctaText: "View my CV"
 };
 
 export const about = {
   heading: "About me",
   body:
-    "I’m a backend engineer focused on building scalable, resilient systems and AI-powered developer platforms. I’ve designed high-concurrency APIs, real-time WebSocket services, and RAG pipelines, and I enjoy solving hard problems across infra, data, and developer experience. Recently I’ve been architecting agents for resume/code analysis, tightening CI/CD, and pushing observability to ship faster and safer."
+    "I’m a Software engineer focused on building scalable, resilient systems and AI-powered developer platforms. I’ve designed high-concurrency APIs, real-time WebSocket services, and RAG pipelines, and I enjoy solving hard problems across infra, data, and developer experience. Recently I’ve been architecting agents for resume/code analysis, tightening CI/CD, and pushing observability to ship faster and safer."
 };
 
 export const present = {
   heading: "Present",
   body:
-    "I’m currently a Backend Engineer at OmniqAI (Jan 2025–Present), working on Python/FastAPI, async, RAG, agents, and Kubernetes on AWS. I’m open to collaborations and interesting backend/AI infra problems—let’s build.",
+    "I’m currently a Software Engineer at OmniqAI (Jan 2025–Present), working on Python/FastAPI, async, RAG, agents, and Kubernetes on AWS. I’m open to collaborations and interesting Software/AI infra problems—let’s build.",
   ctaText: "Contact me"
 };
 
@@ -70,7 +70,7 @@ export const skills: Skill[] = [
 export const experience: ExperienceEntry[] = [
   {
     company: "OmniqAI",
-    role: "Backend Engineer",
+    role: "Software Engineer",
     timeframe: "January 2025 – Present",
     bullets: [
       "Architected high-concurrency async APIs (FastAPI) and real-time WebSocket services for distributed workloads.",
@@ -87,7 +87,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "OmniqAI",
-    role: "Backend Engineer Intern",
+    role: "Software Engineer Intern",
     timeframe: "August 2024 – December 2024",
     bullets: [
       "Built/maintained Python microservices and production REST APIs.",
