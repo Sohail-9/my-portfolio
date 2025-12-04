@@ -40,7 +40,7 @@ export const about = {
 export const present = {
   heading: "Present",
   body:
-    "I’m currently a Software Engineer at OmniqAI (Jan 2025–Present), working on Python/FastAPI, async, RAG, agents, and Kubernetes on AWS. I’m open to collaborations and interesting Software/AI infra problems—let’s build.",
+    "I’m currently a Software Engineer at OmniqAI (Jan 2025– Dec 2025), working on Python/FastAPI, async, RAG, agents, and Kubernetes on AWS. I’m open to collaborations and interesting Software/AI infra problems—let’s build.",
   ctaText: "Contact me"
 };
 
@@ -71,16 +71,16 @@ export const experience: ExperienceEntry[] = [
   {
     company: "OmniqAI",
     role: "Software Engineer",
-    timeframe: "January 2025 – Present",
+    timeframe: "January 2025 – December 2025",
     bullets: [
       "Architected high-concurrency async APIs (FastAPI) and real-time WebSocket services for distributed workloads.",
       "Built RAG + semantic pipelines and vector search to power intelligent decision support.",
       "Developed autonomous interview agents: resume parsing, behavioral analysis, code evaluation, multi-step reasoning with memory.",
       "Optimized PostgreSQL/MongoDB/Redis (pooling, caching, schema migrations) with zero-downtime deploys.",
       "Migrated infra to Kubernetes on AWS; Dockerized workloads; Helm; HPA; secured VPC.",
-      "Implemented queues and async workflows (Redis/RabbitMQ + Celery).",
+      "Implemented queues and async workflows (Redis/RabbitMQ).",
       "CI/CD with GitHub Actions (zero-downtime releases, automated tests/migrations), cutting deploy time ~40%.",
-      "IaC with Terraform/CloudFormation across EKS/EC2/VPC/IAM/S3/Secrets Manager.",
+      "IaC with CloudFormation across EKS/EC2/VPC/IAM/S3/Secrets Manager.",
       "Full observability: Prometheus, Grafana, central logging, distributed tracing.",
       "Reduced infra costs ~20% while improving resilience; led incident response & performance tuning."
     ]
@@ -115,7 +115,6 @@ export const projects: Project[] = [
       "Next.js",
       "Redis",
       "PostgreSQL",
-      "Neo4j",
       "SQLite",
       "Terraform",
       "Docker",
