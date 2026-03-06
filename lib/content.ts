@@ -10,6 +10,7 @@ export type ExperienceEntry = {
 export type Skill = {
   key: string;
   label: string;
+  category: "Languages" | "AI & LLM" | "Backend" | "Infra";
 };
 
 export type ProjectLink = {
@@ -38,26 +39,35 @@ export const about = {
 };
 
 export const skills: Skill[] = [
-  { key: "python", label: "Python" },
-  { key: "fastapi", label: "FastAPI" },
-  { key: "node", label: "Node.js" },
-  { key: "typescript", label: "TypeScript" },
-  { key: "cpp", label: "C++" },
-  { key: "nextjs", label: "Next.js" },
-  { key: "aws", label: "AWS" },
-  { key: "docker", label: "Docker" },
-  { key: "kubernetes", label: "Kubernetes" },
-  { key: "postgres", label: "PostgreSQL" },
-  { key: "mongo", label: "MongoDB" },
-  { key: "redis", label: "Redis" },
-  { key: "rabbitmq", label: "RabbitMQ" },
-  { key: "neo4j", label: "Neo4j" },
-  { key: "terraform", label: "Terraform" },
-  { key: "githubactions", label: "GitHub Actions" },
-  { key: "prometheus", label: "Prometheus" },
-  { key: "grafana", label: "Grafana" },
-  { key: "linux", label: "Linux" },
-  { key: "git", label: "Git/GitHub" }
+  { key: "python", label: "Python", category: "Languages" },
+  { key: "typescript", label: "TypeScript", category: "Languages" },
+  { key: "cpp", label: "C++", category: "Languages" },
+  { key: "node", label: "Node.js", category: "Backend" },
+  { key: "fastapi", label: "FastAPI", category: "Backend" },
+  { key: "nextjs", label: "Next.js", category: "Backend" },
+  { key: "postgres", label: "PostgreSQL", category: "Backend" },
+  { key: "mongo", label: "MongoDB", category: "Backend" },
+  { key: "redis", label: "Redis", category: "Backend" },
+  { key: "redisstreams", label: "Redis Streams", category: "Backend" },
+  { key: "rabbitmq", label: "RabbitMQ", category: "Backend" },
+  { key: "grpc", label: "gRPC", category: "Backend" },
+  { key: "neo4j", label: "Neo4j", category: "Backend" },
+  { key: "llm", label: "LLMs", category: "AI & LLM" },
+  { key: "rag", label: "RAG", category: "AI & LLM" },
+  { key: "agenticai", label: "Agentic AI", category: "AI & LLM" },
+  { key: "openai", label: "OpenAI API", category: "AI & LLM" },
+  { key: "langgraph", label: "LangGraph", category: "AI & LLM" },
+  { key: "langchain", label: "LangChain", category: "AI & LLM" },
+  { key: "aws", label: "AWS", category: "Infra" },
+  { key: "docker", label: "Docker", category: "Infra" },
+  { key: "kubernetes", label: "Kubernetes", category: "Infra" },
+  { key: "terraform", label: "Terraform", category: "Infra" },
+  { key: "githubactions", label: "GitHub Actions", category: "Infra" },
+  { key: "prometheus", label: "Prometheus", category: "Infra" },
+  { key: "grafana", label: "Grafana", category: "Infra" },
+  { key: "linux", label: "Linux", category: "Infra" },
+  { key: "nginx", label: "Nginx", category: "Infra" },
+  { key: "git", label: "Git/GitHub", category: "Infra" }
 ];
 
 export const experience: ExperienceEntry[] = [

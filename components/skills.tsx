@@ -14,7 +14,9 @@ import {
   SiGrafana,
   SiKubernetes,
   SiLinux,
+  SiNginx,
   SiMongodb,
+  SiOpenai,
   SiNeo4J,
   SiNextdotjs,
   SiNodedotjs,
@@ -26,7 +28,7 @@ import {
   SiTerraform,
   SiTypescript
 } from "react-icons/si";
-import { LuServer } from "react-icons/lu";
+import { LuBot, LuBrain, LuNetwork, LuServer } from "react-icons/lu";
 import { skills } from "@/lib/content";
 import { childVariants } from "@/lib/animations";
 import { Section } from "./section";
@@ -36,6 +38,12 @@ const iconMap: Record<string, IconType> = {
   fastapi: SiFastapi,
   node: SiNodedotjs,
   typescript: SiTypescript,
+  llm: LuBrain,
+  rag: LuNetwork,
+  agenticai: LuBot,
+  openai: SiOpenai,
+  langgraph: LuNetwork,
+  langchain: LuNetwork,
   cpp: SiCplusplus,
   nextjs: SiNextdotjs,
   aws: SiAmazonwebservices,
@@ -44,13 +52,16 @@ const iconMap: Record<string, IconType> = {
   postgres: SiPostgresql,
   mongo: SiMongodb,
   redis: SiRedis,
+  redisstreams: SiRedis,
   rabbitmq: SiRabbitmq,
+  grpc: LuNetwork,
   neo4j: SiNeo4J,
   terraform: SiTerraform,
   githubactions: SiGithubactions,
   prometheus: SiPrometheus,
   grafana: SiGrafana,
   linux: SiLinux,
+  nginx: SiNginx,
   git: SiGit
 };
 
@@ -127,16 +138,40 @@ function SkillPill({ skill }: { skill: (typeof skills)[number] }) {
 }
 
 export function Skills() {
+  const grouped = skills.reduce<Record<string, (typeof skills)[number][]>>((acc, skill) => {
+    acc[skill.category] ??= [];
+    acc[skill.category].push(skill);
+    return acc;
+  }, {});
+
+  const categoryOrder = ["Languages", "AI & LLM", "Backend", "Infra"] as const;
+
   return (
     <Section id="skills" title="Skills">
-      <motion.div
-        className="flex flex-wrap gap-3 rounded-3xl border border-white/5 bg-slate-900/40 p-6 shadow-card"
-        variants={childVariants}
-      >
-        {skills.map((skill) => (
-          <SkillPill key={skill.key} skill={skill} />
-        ))}
-      </motion.div>
+      <div className="space-y-8">
+        {categoryOrder.map((category) => {
+          const items = grouped[category];
+          if (!items?.length) {
+            return null;
+          }
+          return (
+            <motion.div
+              key={category}
+              className="rounded-3xl border border-white/5 bg-slate-900/40 p-6 shadow-card"
+              variants={childVariants}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                {category}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {items.map((skill) => (
+                  <SkillPill key={skill.key} skill={skill} />
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
     </Section>
   );
 }
