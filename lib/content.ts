@@ -34,14 +34,7 @@ export const hero = {
 export const about = {
   heading: "About me",
   body:
-    "I’m a Software engineer focused on building scalable, resilient systems and AI-powered developer platforms. I’ve designed high-concurrency APIs, real-time WebSocket services, and RAG pipelines, and I enjoy solving hard problems across infra, data, and developer experience. Recently I’ve been architecting agents for resume/code analysis, tightening CI/CD, and pushing observability to ship faster and safer."
-};
-
-export const present = {
-  heading: "Present",
-  body:
-    "I’m currently a Software Engineer at OmniqAI (Jan 2025– Dec 2025), working on Python/FastAPI, async, RAG, agents, and Kubernetes on AWS. I’m open to collaborations and interesting Software/AI infra problems—let’s build.",
-  ctaText: "Contact me"
+    "I’m a Software engineer focused on building scalable, resilient systems and AI-agent developer platforms. I’ve designed high-concurrency APIs, real-time WebSocket services, and RAG pipelines, and I enjoy solving hard problems across infra, data, and developer experience. Recently I’ve been architecting agents for resume/code analysis, tightening CI/CD, and pushing observability to ship faster and safer."
 };
 
 export const skills: Skill[] = [
@@ -98,6 +91,29 @@ export const experience: ExperienceEntry[] = [
 
 export const projects: Project[] = [
   {
+    title: "Octaclaw",
+    subtitle: "Multi-Agent Orchestration Platform",
+    bullets: [
+      "Built a multi-agent orchestration engine that decomposes goals into DAGs and executes subtasks in parallel with a worker pool.",
+      "Implemented specialist agent routing (Researcher, Builder, Tester, CodeReviewer) with role-specific prompts and tool-augmented workflows.",
+      "Delivered local-first semantic + episodic memory with vector search and automated reflexion to improve task outcomes over time.",
+      "Added durable checkpointing so long-running graph executions can resume after interruption without data loss.",
+      "Shipped multi-channel interfaces (CLI, Discord, Telegram) via a unified channel router and daemon runtime."
+    ],
+    tech: [
+      "Node.js",
+      "TypeScript",
+      "LLMs",
+      "Vector Search",
+      "CLI",
+      "Discord API",
+      "Telegram API"
+    ],
+    links: [
+      { label: "View repo", href: "" }
+    ]
+  },
+  {
     title: "TraceFox AI",
     subtitle: "AI-Powered Code Review & Test Platform",
     bullets: [
@@ -122,7 +138,6 @@ export const projects: Project[] = [
       "LLMs"
     ],
     links: [
-      { label: "Watch demo", href: links.tracefoxDemo },
       { label: "View repo", href: links.tracefoxRepo }
     ]
   }
