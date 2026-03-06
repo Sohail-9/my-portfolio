@@ -148,7 +148,7 @@ export function Skills() {
 
   return (
     <Section id="skills" title="Skills">
-      <div className="space-y-8">
+      <div className="space-y-6">
         {categoryOrder.map((category) => {
           const items = grouped[category];
           if (!items?.length) {
@@ -157,13 +157,13 @@ export function Skills() {
           return (
             <motion.div
               key={category}
-              className="rounded-3xl border border-white/5 bg-slate-900/40 p-6 shadow-card"
+              className="group rounded-3xl border border-white/5 bg-slate-900/40 p-5 shadow-card transition hover:border-accent/40 hover:bg-slate-900/55 hover:shadow-[0_0_40px_rgba(56,189,248,0.18)]"
               variants={childVariants}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400 transition group-hover:text-accent">
                 {category}
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {items.map((skill) => (
                   <SkillPill key={skill.key} skill={skill} />
                 ))}

@@ -13,12 +13,16 @@ export function ProjectCard({ project }: { project: Project }) {
       whileHover="hover"
       animate="rest"
       variants={cardHover}
-      className="rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/60 to-slate-900/30 p-6 shadow-card"
+      className="group rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/60 to-slate-900/30 p-6 shadow-card transition hover:border-accent/40 hover:from-slate-900/70 hover:to-slate-900/40 hover:shadow-[0_0_40px_rgba(56,189,248,0.18)]"
     >
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div>
-          <p className="text-sm uppercase tracking-[0.25em] text-accent">{project.title}</p>
-          <h3 className="mt-2 font-display text-2xl font-semibold text-white">{project.subtitle}</h3>
+          <p className="text-sm uppercase tracking-[0.25em] text-accent/90 transition group-hover:text-accent">
+            {project.title}
+          </p>
+          <h3 className="mt-2 font-display text-xl font-semibold text-white transition group-hover:text-accent">
+            {project.subtitle}
+          </h3>
         </div>
         <ul className="space-y-3 text-sm text-slate-300">
           {project.bullets.map((bullet) => (
