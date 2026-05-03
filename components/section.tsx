@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { childVariants, sectionVariants } from "@/lib/animations";
 
-const base = "mx-auto w-full max-w-3xl px-4 sm:px-6";
+const base = "mx-auto w-full max-w-5xl px-4 sm:px-6";
 
 export function Section({
   id,

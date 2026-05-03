@@ -48,7 +48,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100"
+                className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
               >
                 {link.label}
               </motion.a>

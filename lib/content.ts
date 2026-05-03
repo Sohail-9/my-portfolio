@@ -6,6 +6,7 @@ export type ExperienceEntry = {
   timeframe: string;
   bullets: string[];
   logo?: string;
+  tech?: string[];
 };
 
 export type Skill = {
@@ -25,6 +26,7 @@ export type Project = {
   bullets: string[];
   tech: string[];
   links: ProjectLink[];
+  image?: string;
 };
 
 export const hero = {
@@ -36,7 +38,21 @@ export const hero = {
 export const about = {
   heading: "About me",
   body:
-    "I’m a Software Engineer focused on architecting autonomous agent platforms and full-stack AI generation systems. I specialize in building multi-agent orchestration layers, secure sandboxed execution environments, and scalable cloud infrastructure. Recently, I've been leading the core architecture at Prettiflow, designing foundational systems for autonomous workflows and one-click application deployment."
+    "I’m a Software Engineer focused on architecting autonomous agent platforms and full-stack AI generation systems. I specialize in building multi-agent orchestration layers, secure sandboxed execution environments, and scalable cloud infrastructure. Recently, I've been leading the core architecture at Prettiflow, designing foundational systems for autonomous workflows and one-click application deployment.",
+  specializations: [
+    {
+      title: "Agentic AI & LLMs",
+      description: "Architecting multi-agent orchestration layers, RAG pipelines, and autonomous workflow engines using state-of-the-art models."
+    },
+    {
+      title: "Backend & Systems",
+      description: "Building high-concurrency async services with FastAPI and distributed message queues like Kafka and RabbitMQ."
+    },
+    {
+      title: "Cloud & Infra",
+      description: "Scaling resilient infrastructure on AWS using Kubernetes, Terraform, and automated CI/CD pipelines with full observability."
+    }
+  ]
 };
 
 export const skills: Skill[] = [
@@ -51,8 +67,6 @@ export const skills: Skill[] = [
   { key: "redis", label: "Redis", category: "Backend" },
   { key: "kafka", label: "Kafka", category: "Backend" },
   { key: "rabbitmq", label: "RabbitMQ", category: "Backend" },
-  { key: "grpc", label: "gRPC", category: "Backend" },
-  { key: "neo4j", label: "Neo4j", category: "Backend" },
   { key: "llm", label: "LLMs", category: "AI & LLM" },
   { key: "rag", label: "RAG", category: "AI & LLM" },
   { key: "agenticai", label: "Agentic AI", category: "AI & LLM" },
@@ -76,6 +90,7 @@ export const experience: ExperienceEntry[] = [
     role: "Founding Engineer",
     timeframe: "February 2026 – Present",
     logo: "/pretti.png",
+    tech: ["TypeScript", "Next.js", "AWS", "Docker", "LLMs", "Agent Orchestration"],
     bullets: [
       "Architected the core platform for AI-generated full-stack applications and one-click deployment.",
       "Built the multi-agent orchestration and multi-model routing layer powering autonomous execution.",
@@ -91,6 +106,7 @@ export const experience: ExperienceEntry[] = [
     role: "Software Engineer",
     timeframe: "January 2025 – December 2025",
     logo: "/Omniqai.png",
+    tech: ["FastAPI", "Kubernetes", "AWS", "Terraform", "PostgreSQL", "RAG"],
     bullets: [
       "Architected high-concurrency async APIs (FastAPI) and real-time WebSocket services for distributed workloads.",
       "Built RAG + semantic pipelines and vector search to power intelligent decision support.",
@@ -109,6 +125,7 @@ export const experience: ExperienceEntry[] = [
     role: "Software Engineer Intern",
     timeframe: "August 2024 – December 2024",
     logo: "/Omniqai.png",
+    tech: ["Python", "Prometheus", "Grafana"],
     bullets: [
       "Built/maintained Python microservices and production REST APIs.",
       "Shipped monitoring/alerting with Prometheus/Grafana, cutting MTTD ~30% and improving response times."

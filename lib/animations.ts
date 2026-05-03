@@ -1,27 +1,28 @@
 import type { Variants } from "framer-motion";
 
 export const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 60 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 1.1,
+      ease: [0.16, 1, 0.3, 1],
       when: "beforeChildren",
-      staggerChildren: 0.08
+      staggerChildren: 0.12
     }
   }
 };
 
 export const childVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.35,
-      ease: "easeOut"
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1]
     }
   }
 };
