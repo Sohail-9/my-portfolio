@@ -23,10 +23,7 @@
   "menuAccent": "subtle",
   "registries": {
     "@aceternity": {
-      "url": "https://ui.aceternity.com/registry/{name}.json",
-      "headers": {
-        "Authorization": "Bearer aceternity_fa5b29fb9ddb57c2123ae9500d023140794b077062a9157967af1fb3fe3b57c8"
-      }
+      "url": "https://ui.aceternity.com/registry/{name}.json"
     }
   }
 }
