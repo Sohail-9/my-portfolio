@@ -2,16 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import { hero } from "@/lib/content";
 import { links } from "@/lib/links";
 import { buttonHover, childVariants, sectionVariants } from "@/lib/animations";
 
 const inlineLinks = [
-  { label: "Email", href: `mailto:${links.email}` },
-  { label: "LinkedIn", href: links.linkedin },
-  { label: "GitHub", href: links.github },
-  links.phone ? { label: "Phone", href: `tel:${links.phone.replace(/\s+/g, "")}` } : null
-].filter(Boolean) as { label: string; href: string }[];
+  { label: "Email", href: `mailto:${links.email}`, icon: FaEnvelope },
+  { label: "LinkedIn", href: links.linkedin, icon: FaLinkedin },
+  { label: "GitHub", href: links.github, icon: FaGithub },
+  links.phone ? { label: "Phone", href: `tel:${links.phone.replace(/\s+/g, "")}`, icon: FaPhone } : null
+].filter(Boolean) as { label: string; href: string; icon: any }[];
 
 export function Hero() {
   return (
@@ -24,9 +25,11 @@ export function Hero() {
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
         <div className="flex flex-col gap-10 md:flex-row md:items-center md:gap-12">
           <motion.div className="flex-1 space-y-6 text-center md:text-left" variants={childVariants}>
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Portfolio</p>
-            <h1 className="font-display text-4xl font-semibold text-white sm:text-5xl">
-              {hero.title}
+            <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Software Engineer</p>
+            <h1 className="font-display text-4xl font-semibold sm:text-5xl">
+              <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
+                {hero.title}
+              </span>
             </h1>
             <p className="text-xl text-slate-300">{hero.subtitle}</p>
             <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
@@ -40,21 +43,20 @@ export function Hero() {
                 {hero.ctaText}
               </motion.a>
             </div>
-            <div className="text-sm text-slate-400">
-              <span className="mr-2 font-semibold uppercase tracking-[0.3em] text-slate-500">Connect:</span>
-              <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-2 text-slate-300 md:justify-start">
-                {inlineLinks.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="underline-offset-4 transition hover:text-accent"
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href.startsWith("http") ? "noreferrer noopener" : undefined}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
+            <div className="flex flex-wrap justify-center gap-4 text-slate-300 md:justify-start">
+              {inlineLinks.map((item) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  whileHover={{ y: -2, color: "var(--accent)" }}
+                  className="rounded-xl border border-white/5 bg-white/5 p-3 text-xl transition hover:border-accent/40 hover:bg-slate-900/50"
+                  title={item.label}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noreferrer noopener" : undefined}
+                >
+                  <item.icon />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
           <motion.div

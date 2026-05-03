@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sohailshaik.me"), // Replace with your actual domain
   title: "Sohail Shaik | Software Engineer",
   description:
     "Software engineer building FastAPI services, RAG pipelines, and Kubernetes-native systems with a focus on observability and developer velocity.",

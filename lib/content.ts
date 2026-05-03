@@ -5,6 +5,7 @@ export type ExperienceEntry = {
   role: string;
   timeframe: string;
   bullets: string[];
+  logo?: string;
 };
 
 export type Skill = {
@@ -35,7 +36,7 @@ export const hero = {
 export const about = {
   heading: "About me",
   body:
-    "I’m a Software engineer focused on building scalable, resilient systems and AI-agent developer platforms. I’ve designed high-concurrency APIs, real-time WebSocket services, and RAG pipelines, and I enjoy solving hard problems across infra, data, and developer experience. Recently I’ve been architecting agents for resume/code analysis, tightening CI/CD, and pushing observability to ship faster and safer."
+    "I’m a Software Engineer focused on architecting autonomous agent platforms and full-stack AI generation systems. I specialize in building multi-agent orchestration layers, secure sandboxed execution environments, and scalable cloud infrastructure. Recently, I've been leading the core architecture at Prettiflow, designing foundational systems for autonomous workflows and one-click application deployment."
 };
 
 export const skills: Skill[] = [
@@ -48,16 +49,15 @@ export const skills: Skill[] = [
   { key: "postgres", label: "PostgreSQL", category: "Backend" },
   { key: "mongo", label: "MongoDB", category: "Backend" },
   { key: "redis", label: "Redis", category: "Backend" },
-  { key: "redisstreams", label: "Redis Streams", category: "Backend" },
+  { key: "kafka", label: "Kafka", category: "Backend" },
   { key: "rabbitmq", label: "RabbitMQ", category: "Backend" },
   { key: "grpc", label: "gRPC", category: "Backend" },
   { key: "neo4j", label: "Neo4j", category: "Backend" },
   { key: "llm", label: "LLMs", category: "AI & LLM" },
   { key: "rag", label: "RAG", category: "AI & LLM" },
   { key: "agenticai", label: "Agentic AI", category: "AI & LLM" },
-  { key: "openai", label: "OpenAI API", category: "AI & LLM" },
-  { key: "langgraph", label: "LangGraph", category: "AI & LLM" },
-  { key: "langchain", label: "LangChain", category: "AI & LLM" },
+  { key: "orchestration", label: "Agent Orchestration", category: "AI & LLM" },
+  { key: "mcp", label: "MCP", category: "AI & LLM" },
   { key: "aws", label: "AWS", category: "Infra" },
   { key: "docker", label: "Docker", category: "Infra" },
   { key: "kubernetes", label: "Kubernetes", category: "Infra" },
@@ -72,9 +72,25 @@ export const skills: Skill[] = [
 
 export const experience: ExperienceEntry[] = [
   {
+    company: "Prettiflow",
+    role: "Founding Engineer",
+    timeframe: "February 2026 – Present",
+    logo: "/pretti.png",
+    bullets: [
+      "Architected the core platform for AI-generated full-stack applications and one-click deployment.",
+      "Built the multi-agent orchestration and multi-model routing layer powering autonomous execution.",
+      "Designed the platform for secure sandboxed code execution and isolated multi-tenant workspaces.",
+      "Led development of scalable deployment infrastructure across AWS and automated app provisioning.",
+      "Built foundational systems for skill-based agents, workspace databases, and real-time platform runtime.",
+      "Owned platform reliability, DevOps, and core architecture for scalable production systems.",
+      "Architected extensible skill systems for structured planning and complex autonomous workflows."
+    ]
+  },
+  {
     company: "OmniqAI",
     role: "Software Engineer",
     timeframe: "January 2025 – December 2025",
+    logo: "/Omniqai.png",
     bullets: [
       "Architected high-concurrency async APIs (FastAPI) and real-time WebSocket services for distributed workloads.",
       "Built RAG + semantic pipelines and vector search to power intelligent decision support.",
@@ -92,6 +108,7 @@ export const experience: ExperienceEntry[] = [
     company: "OmniqAI",
     role: "Software Engineer Intern",
     timeframe: "August 2024 – December 2024",
+    logo: "/Omniqai.png",
     bullets: [
       "Built/maintained Python microservices and production REST APIs.",
       "Shipped monitoring/alerting with Prometheus/Grafana, cutting MTTD ~30% and improving response times."
