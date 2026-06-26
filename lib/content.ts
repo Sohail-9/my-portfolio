@@ -187,6 +187,3 @@ export const projects: Project[] = [
   }
 ];
 
-export const footer = {
-  text: "Made with ❤️ by Sohail Shaik"
-};

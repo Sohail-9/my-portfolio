@@ -12,7 +12,7 @@ export function Section({
   eyebrow,
   intro,
   children,
-  className
+  className,
 }: {
   id?: string;
   title: string;
@@ -28,30 +28,45 @@ export function Section({
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
     >
       <div className={`${base} space-y-5`}>
-        {eyebrow ? (
-          <motion.p className="text-sm uppercase tracking-[0.3em] text-slate-400" variants={childVariants}>
+        {eyebrow && (
+          <motion.p
+            className="text-sm uppercase tracking-[0.3em] text-slate-400"
+            variants={childVariants}
+          >
             {eyebrow}
           </motion.p>
-        ) : null}
-        <motion.h2
-          className="section-heading font-display text-3xl font-semibold text-white sm:text-4xl"
-          variants={childVariants}
-        >
-          {title}
-        </motion.h2>
-        {intro ? (
-          <motion.p className="text-base leading-relaxed text-slate-300" variants={childVariants}>
+        )}
+
+        <motion.div variants={childVariants}>
+          <h2 className="section-heading font-display text-3xl font-bold text-white sm:text-4xl mb-3">
+            {title}
+          </h2>
+          {/* Gradient accent underline */}
+          <div
+            className="h-0.5 w-14 rounded-full"
+            style={{
+              background: "linear-gradient(90deg, #38bdf8, rgba(56,189,248,0))",
+            }}
+          />
+        </motion.div>
+
+        {intro && (
+          <motion.p
+            className="text-base leading-relaxed text-slate-400"
+            variants={childVariants}
+          >
             {intro}
           </motion.p>
-        ) : null}
-        {children ? (
-          <motion.div className="space-y-6" variants={childVariants}>
+        )}
+
+        {children && (
+          <motion.div variants={childVariants}>
             {children}
           </motion.div>
-        ) : null}
+        )}
       </div>
     </motion.section>
   );

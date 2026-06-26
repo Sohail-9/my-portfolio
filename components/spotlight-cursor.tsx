@@ -29,13 +29,14 @@ export function SpotlightCursor() {
       }}
     >
       <motion.div
-        className="absolute h-[400px] w-[400px] rounded-full"
+        className="absolute h-[500px] w-[500px] rounded-full"
         style={{
           x: cursorX,
           y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
-          background: "radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(56,189,248,0.07) 0%, rgba(139,92,246,0.04) 50%, transparent 70%)",
         }}
       />
     </motion.div>
