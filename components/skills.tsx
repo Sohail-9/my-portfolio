@@ -27,7 +27,7 @@ import {
   SiTerraform,
   SiTypescript,
 } from "react-icons/si";
-import { LuBot, LuBrain, LuNetwork, LuServer } from "react-icons/lu";
+import { LuBot, LuBrain, LuNetwork, LuServer, LuShieldCheck } from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {
   python: SiPython,
@@ -49,6 +49,7 @@ const iconMap: Record<string, React.ElementType> = {
   redis: SiRedis,
   kafka: SiApachekafka,
   rabbitmq: SiRabbitmq,
+  pytest: LuShieldCheck,
   terraform: SiTerraform,
   githubactions: SiGithubactions,
   prometheus: SiPrometheus,
@@ -61,37 +62,29 @@ const iconMap: Record<string, React.ElementType> = {
 const categoryConfig = {
   "AI & LLM": {
     iconColor: "text-violet-400",
-    border: "border-violet-500/20",
-    hoverBorder: "hover:border-violet-400/55",
-    hoverBg: "hover:bg-violet-500/10",
-    glow: "hover:shadow-[0_0_24px_rgba(139,92,246,0.32)]",
+    border: "border-violet-500/10 hover:border-violet-400/40",
+    glow: "rgba(139,92,246,0.22)",
     accent: "#818cf8",
     dot: "bg-violet-400",
   },
   Languages: {
     iconColor: "text-sky-400",
-    border: "border-sky-500/20",
-    hoverBorder: "hover:border-sky-400/55",
-    hoverBg: "hover:bg-sky-500/10",
-    glow: "hover:shadow-[0_0_24px_rgba(56,189,248,0.32)]",
+    border: "border-sky-500/10 hover:border-sky-400/40",
+    glow: "rgba(56,189,248,0.22)",
     accent: "#38bdf8",
     dot: "bg-sky-400",
   },
   Backend: {
     iconColor: "text-emerald-400",
-    border: "border-emerald-500/20",
-    hoverBorder: "hover:border-emerald-400/55",
-    hoverBg: "hover:bg-emerald-500/10",
-    glow: "hover:shadow-[0_0_24px_rgba(52,211,153,0.32)]",
+    border: "border-emerald-500/10 hover:border-emerald-400/40",
+    glow: "rgba(52,211,153,0.22)",
     accent: "#34d399",
     dot: "bg-emerald-400",
   },
   Infra: {
     iconColor: "text-amber-400",
-    border: "border-amber-500/20",
-    hoverBorder: "hover:border-amber-400/55",
-    hoverBg: "hover:bg-amber-500/10",
-    glow: "hover:shadow-[0_0_24px_rgba(251,191,36,0.32)]",
+    border: "border-amber-500/10 hover:border-amber-400/40",
+    glow: "rgba(251,191,36,0.22)",
     accent: "#fbbf24",
     dot: "bg-amber-400",
   },
@@ -129,8 +122,8 @@ export function Skills() {
               />
             </div>
 
-            {/* Skill tiles */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+            {/* Skill tiles — Glass-neomorphism style */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3.5">
               {items.map((skill, i) => {
                 const Icon = iconMap[skill.key] ?? LuServer;
                 return (
@@ -139,17 +132,36 @@ export function Skills() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.04, duration: 0.4 }}
-                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                    className={`group flex flex-col items-center gap-2.5 rounded-2xl border ${config.border} ${config.hoverBorder} ${config.hoverBg} ${config.glow} p-4 backdrop-blur-sm transition-all duration-200 cursor-default`}
-                    style={{ background: "rgba(255,255,255,0.025)" }}
+                    transition={{ delay: i * 0.03, duration: 0.4 }}
+                    whileHover={{ 
+                      y: -4, 
+                      scale: 1.02,
+                      transition: { duration: 0.15 } 
+                    }}
+                    className={`group flex flex-col items-center gap-2.5 rounded-2xl border ${config.border} p-4.5 backdrop-blur-md transition-all duration-200 cursor-default`}
+                    style={{ 
+                      background: "rgba(9, 13, 26, 0.35)",
+                      boxShadow: `
+                        4px 4px 12px rgba(0, 0, 0, 0.45), 
+                        -3px -3px 10px rgba(255, 255, 255, 0.01), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.06)
+                      `
+                    }}
                   >
+                    {/* Hover glow effect via inline style dynamic change */}
+                    <div 
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        boxShadow: `0 0 20px ${config.glow}, inset 0 0 8px ${config.glow}`
+                      }}
+                    />
+
                     <span
-                      className={`text-2xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110`}
+                      className={`text-2xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110 relative z-10`}
                     >
                       <Icon />
                     </span>
-                    <span className="text-[11px] font-medium text-slate-400 group-hover:text-slate-200 transition-colors text-center leading-tight">
+                    <span className="text-[11px] font-medium text-slate-400 group-hover:text-slate-200 transition-colors text-center leading-tight relative z-10">
                       {skill.label}
                     </span>
                   </motion.div>

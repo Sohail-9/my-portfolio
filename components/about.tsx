@@ -9,30 +9,27 @@ import { Section } from "./section";
 const specConfig = [
   {
     Icon: LuBrain,
-    gradient: "from-violet-600/20 to-purple-900/5",
-    border: "border-violet-500/20",
+    gradient: "from-violet-600/10 to-purple-950/5",
+    border: "border-violet-500/20 hover:border-violet-500/40",
     iconColor: "text-violet-400",
-    iconBg: "bg-violet-500/15",
-    glowColor: "rgba(139,92,246,0.14)",
-    shimmerColor: "rgba(139,92,246,0.1)",
+    glowColor: "rgba(139,92,246,0.18)",
+    shimmerColor: "rgba(139,92,246,0.08)",
   },
   {
     Icon: LuServer,
-    gradient: "from-emerald-600/20 to-teal-900/5",
-    border: "border-emerald-500/20",
+    gradient: "from-emerald-600/10 to-teal-950/5",
+    border: "border-emerald-500/20 hover:border-emerald-500/40",
     iconColor: "text-emerald-400",
-    iconBg: "bg-emerald-500/15",
-    glowColor: "rgba(52,211,153,0.14)",
-    shimmerColor: "rgba(52,211,153,0.1)",
+    glowColor: "rgba(52,211,153,0.18)",
+    shimmerColor: "rgba(52,211,153,0.08)",
   },
   {
     Icon: LuCloud,
-    gradient: "from-sky-600/20 to-blue-900/5",
-    border: "border-sky-500/20",
+    gradient: "from-sky-600/10 to-blue-950/5",
+    border: "border-sky-500/20 hover:border-sky-500/40",
     iconColor: "text-sky-400",
-    iconBg: "bg-sky-500/15",
-    glowColor: "rgba(56,189,248,0.14)",
-    shimmerColor: "rgba(56,189,248,0.1)",
+    glowColor: "rgba(56,189,248,0.18)",
+    shimmerColor: "rgba(56,189,248,0.08)",
   },
 ];
 
@@ -41,39 +38,33 @@ export function About() {
     <Section id="about" title="About Me" className="py-24">
       <div className="mt-10 space-y-6">
 
-        {/* ── Main intro — glassmorphism ── */}
+        {/* ── Main intro — glass-neomorphism ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-3xl border border-white/8 p-8 sm:p-12"
-          style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-            backdropFilter: "blur(24px)",
-            boxShadow:
-              "0 0 80px rgba(56,189,248,0.05), inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.2)",
-          }}
+          className="relative overflow-hidden rounded-3xl p-8 sm:p-12 glass-neo-card"
         >
           {/* Corner accent glows */}
           <div
-            className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none opacity-40"
+            className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none opacity-45"
             style={{
-              background: "radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%)",
               filter: "blur(20px)",
             }}
           />
           <div
-            className="absolute bottom-0 left-0 w-60 h-60 rounded-full pointer-events-none opacity-30"
+            className="absolute bottom-0 left-0 w-60 h-60 rounded-full pointer-events-none opacity-35"
             style={{
-              background: "radial-gradient(circle, rgba(139,92,246,0.14) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)",
               filter: "blur(20px)",
             }}
           />
 
           {/* Decorative quote */}
           <div
-            className="relative z-10 text-8xl font-black leading-none mb-4 select-none"
+            className="relative z-10 text-8xl font-black leading-none mb-4 select-none pointer-events-none"
             style={{
               background: "linear-gradient(135deg, rgba(56,189,248,0.25), rgba(139,92,246,0.25))",
               WebkitBackgroundClip: "text",
@@ -88,10 +79,10 @@ export function About() {
           </p>
         </motion.div>
 
-        {/* ── Specialization cards — claymorphism ── */}
+        {/* ── Specialization cards — Clay/Glass-Neomorphism ── */}
         <div className="grid gap-5 sm:grid-cols-3">
           {about.specializations.map((spec, i) => {
-            const { Icon, gradient, border, iconColor, iconBg, glowColor, shimmerColor } = specConfig[i];
+            const { Icon, gradient, border, iconColor, glowColor, shimmerColor } = specConfig[i];
             return (
               <motion.div
                 key={spec.title}
@@ -99,11 +90,16 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.6 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className={`relative overflow-hidden rounded-3xl border ${border} bg-gradient-to-br ${gradient} p-7 cursor-default group`}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className={`relative overflow-hidden rounded-3xl border ${border} bg-gradient-to-br ${gradient} p-7 cursor-default group transition-all duration-300`}
                 style={{
-                  backdropFilter: "blur(16px)",
-                  boxShadow: `0 12px 40px rgba(0,0,0,0.32), 0 0 0 0 ${glowColor}, inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.18)`,
+                  backdropFilter: "blur(20px)",
+                  boxShadow: `
+                    12px 12px 30px rgba(0,0,0,0.5), 
+                    -6px -6px 20px rgba(255,255,255,0.015), 
+                    inset 0 1px 0 rgba(255,255,255,0.08),
+                    0 0 20px ${glowColor}
+                  `,
                 }}
               >
                 {/* Hover shimmer */}
@@ -114,10 +110,9 @@ export function About() {
                   }}
                 />
 
-                {/* Icon bubble */}
+                {/* Icon bubble — recessed neomorphism */}
                 <div
-                  className={`relative z-10 mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${iconBg} ${iconColor} text-2xl`}
-                  style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.12)" }}
+                  className={`relative z-10 mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl glass-neo-recessed ${iconColor} text-2xl border border-white/5`}
                 >
                   <Icon />
                 </div>

@@ -31,8 +31,7 @@ export type Project = {
 
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
-  subtitle: "I’m a Software Engineer",
-  ctaText: "View my CV"
+  subtitle: "I’m a Software Engineer"
 };
 
 export const about = {
@@ -42,15 +41,15 @@ export const about = {
   specializations: [
     {
       title: "Agentic AI & LLMs",
-      description: "Architecting multi-agent orchestration layers, RAG pipelines, and autonomous workflow engines using state-of-the-art models."
+      description: "Architecting multi-agent orchestration layers, RAG pipelines, and autonomous workflow engines with role-specific specialist routing."
     },
     {
       title: "Backend & Systems",
-      description: "Building high-concurrency async services with FastAPI and distributed message queues like Kafka and RabbitMQ."
+      description: "Building high-concurrency async services with FastAPI, robust testing suites (PyTest/Jest), and message queues (Kafka, RabbitMQ)."
     },
     {
       title: "Cloud & Infra",
-      description: "Scaling resilient infrastructure on AWS using Kubernetes, Terraform, and automated CI/CD pipelines with full observability."
+      description: "Scaling secure infrastructure on AWS with Kubernetes, Terraform, automated CI/CD pipelines, and GDPR-aware data governance."
     }
   ]
 };
@@ -67,6 +66,7 @@ export const skills: Skill[] = [
   { key: "redis", label: "Redis", category: "Backend" },
   { key: "kafka", label: "Kafka", category: "Backend" },
   { key: "rabbitmq", label: "RabbitMQ", category: "Backend" },
+  { key: "pytest", label: "PyTest / Jest", category: "Backend" },
   { key: "llm", label: "LLMs", category: "AI & LLM" },
   { key: "rag", label: "RAG", category: "AI & LLM" },
   { key: "agenticai", label: "Agentic AI", category: "AI & LLM" },
@@ -94,7 +94,7 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "Architected the core platform for AI-generated full-stack applications and one-click deployment.",
       "Built the multi-agent orchestration and multi-model routing layer powering autonomous execution.",
-      "Designed the platform for secure sandboxed code execution and isolated multi-tenant workspaces.",
+      "Designed the platform for secure sandboxed code execution and isolated multi-tenant workspaces (adhering to GDPR-friendly security standards).",
       "Led development of scalable deployment infrastructure across AWS and automated app provisioning.",
       "Built foundational systems for skill-based agents, workspace databases, and real-time platform runtime.",
       "Owned platform reliability, DevOps, and core architecture for scalable production systems.",
@@ -114,7 +114,7 @@ export const experience: ExperienceEntry[] = [
       "Optimized PostgreSQL/MongoDB/Redis (pooling, caching, schema migrations) with zero-downtime deploys.",
       "Migrated infra to Kubernetes on AWS; Dockerized workloads; Helm; HPA; secured VPC.",
       "Implemented queues and async workflows (Redis/RabbitMQ).",
-      "CI/CD with GitHub Actions (zero-downtime releases, automated tests/migrations), cutting deploy time ~40%.",
+      "CI/CD with GitHub Actions (zero-downtime releases, automated unit & integration testing), cutting deploy time ~40%.",
       "IaC with CloudFormation across EKS/EC2/VPC/IAM/S3/Secrets Manager.",
       "Full observability: Prometheus, Grafana, central logging, distributed tracing.",
       "Reduced infra costs ~20% while improving resilience; led incident response & performance tuning."
@@ -129,6 +129,19 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "Built/maintained Python microservices and production REST APIs.",
       "Shipped monitoring/alerting with Prometheus/Grafana, cutting MTTD ~30% and improving response times."
+    ]
+  },
+  {
+    company: "Stealth Startup",
+    role: "Full Stack Engineer",
+    timeframe: "July 2022 – July 2024",
+    tech: ["TypeScript", "Node.js", "PostgreSQL", "MySQL", "REST APIs", "Git"],
+    bullets: [
+      "Developed and maintained full-stack web applications end-to-end, from responsive UI to scalable backend services and data models.",
+      "Designed and integrated RESTful APIs, working extensively with relational databases (PostgreSQL, MySQL).",
+      "Collaborated cross-functionally in Agile sprints; tested, debugged, and optimized production features for performance and reliability.",
+      "Participated in code reviews, followed engineering best practices, and used Git for version control.",
+      "Assisted with deployment, production support, and feature delivery from design through release."
     ]
   }
 ];
