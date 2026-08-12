@@ -17,56 +17,61 @@ interface LogEntry {
   timestamp: string;
 }
 
-const octaclawLogs: Omit<LogEntry, "timestamp">[] = [
-  { text: "Initializing Octaclaw Orchestrator Engine v1.4.0...", type: "system" },
-  { text: "Decomposing user goal: 'Synthesize Next.js app and run tests'", type: "info" },
-  { text: "Goal decomposed into 4-node Directed Acyclic Graph (DAG):", type: "info" },
-  { text: "  [Node-1: CodeGen] -> [Node-2: Provision] -> [Node-3: Test] -> [Node-4: Deploy]", type: "info" },
-  { text: "Spawning specialist agents (Researcher, Builder, Tester)...", type: "info" },
-  { text: "Worker Pool initialized with 8 isolated threads", type: "success" },
-  { text: "Researcher Agent: Analyzing templates & dependencies...", type: "info" },
-  { text: "Builder Agent: Generating next.config.js, tailwind.config.js & routes...", type: "info" },
-  { text: "Syntax check: 1 error found in layout.tsx. Spawning Debugger Agent...", type: "warn" },
-  { text: "Debugger Agent: Self-corrected syntax error (missing closing tag). Reflexion successful.", type: "success" },
-  { text: "Tester Agent: Running pytest / jest suites...", type: "info" },
-  { text: "Test results: 14/14 passed (100% code coverage).", type: "success" },
-  { text: "Orchestration successful. DAG completed in 2410ms.", type: "success" }
+const terraformLogs: Omit<LogEntry, "timestamp">[] = [
+  { text: "Initializing Terraform Engine v1.5.7...", type: "system" },
+  { text: "Selected workspace: production-us-east-1", type: "info" },
+  { text: "Refreshing Terraform state...", type: "info" },
+  { text: "Plan: 18 resources to add, 0 to change, 0 to destroy.", type: "info" },
+  { text: "Executing terraform apply -auto-approve...", type: "system" },
+  { text: "Creating aws_vpc.production (10.0.0.0/16)...", type: "info" },
+  { text: "Creating aws_subnet.private_us_east_1a & 1b...", type: "info" },
+  { text: "Creating aws_eks_cluster.production_eks...", type: "info" },
+  { text: "Provisioning Amazon EKS Node Groups (m5.xlarge instances)...", type: "info" },
+  { text: "Setting up IAM OIDC provider for Service Accounts (IRSA)...", type: "success" },
+  { text: "Terraform Apply completed successfully! 18 resources added.", type: "success" }
 ];
 
-const tracefoxLogs: Omit<LogEntry, "timestamp">[] = [
-  { text: "Initializing TraceFox Code Review Hook...", type: "system" },
-  { text: "Webhook received: Pull Request #24 onto branch main", type: "info" },
-  { text: "Fetching repository details & diff payload...", type: "info" },
-  { text: "Invoking DeepSeek-R1 & Gemma-3 for code evaluation...", type: "info" },
-  { text: "Analyzing 4 modified files for GDPR data compliance...", type: "info" },
-  { text: "GDPR Check: Detected plain-text API keys in dev.env. Flagging...", type: "warn" },
-  { text: "Auto-remediation triggered: Moving credentials to AWS Secrets Manager...", type: "success" },
-  { text: "Generating 6 integration tests in python/fastapi using mock structures...", type: "info" },
-  { text: "Tests successfully written to tests/test_compliance.py.", type: "success" },
-  { text: "TraceFox Status: Approve with suggestions. Review completed in 1890ms.", type: "success" }
+const cicdLogs: Omit<LogEntry, "timestamp">[] = [
+  { text: "GitHub Actions Runner #832 triggered by push to main...", type: "system" },
+  { text: "Step 1: Checking out repository code...", type: "info" },
+  { text: "Step 2: Authenticating with AWS CLI & ECR Docker Registry...", type: "info" },
+  { text: "Step 3: Building multi-stage Docker image from Dockerfile...", type: "info" },
+  { text: "Image tagged as 9642639515.dkr.ecr.us-east-1.amazonaws.com/api-service:v2.1.0", type: "info" },
+  { text: "Docker Push: Uploading image layers to Amazon ECR...", type: "info" },
+  { text: "ECR upload complete. Scanning image for vulnerability CVEs...", type: "success" },
+  { text: "Scan results: 0 critical, 2 low vulnerabilities. Proceeding.", type: "success" },
+  { text: "Step 4: Upgrading Helm release 'api-service' in namespace 'prod'...", type: "info" },
+  { text: "Configuring readiness and liveness probes in Helm values...", type: "info" },
+  { text: "Rolling update: Spawning new pods & terminating outdated pods...", type: "info" },
+  { text: "Deployment verified. Ingress routing traffic via Traefik.", type: "success" },
+  { text: "Pipeline run succeeded in 4.8 seconds.", type: "success" }
 ];
 
-const prettiflowLogs: Omit<LogEntry, "timestamp">[] = [
-  { text: "Initializing Prettiflow Sandbox Runtime...", type: "system" },
-  { text: "Provisioning secure sandboxed execution environment (gVisor)...", type: "info" },
-  { text: "Container network isolation: Enabled (GDPR security compliant)", type: "success" },
-  { text: "Deploying multi-tenant database router for workspace...", type: "info" },
-  { text: "Syncing codebase volume & mounting Node/Python runtimes...", type: "info" },
-  { text: "Executing container health check on port 3000...", type: "info" },
-  { text: "Status: Live. Latency: 12ms. Routing production traffic...", type: "success" },
-  { text: "Sandbox active & isolated. Deployment successful in 1320ms.", type: "success" }
+const alertmanagerLogs: Omit<LogEntry, "timestamp">[] = [
+  { text: "Initializing Prometheus Alerts Listener daemon...", type: "system" },
+  { text: "Listening to Alertmanager endpoints in cluster production_eks...", type: "info" },
+  { text: "[Alert Active] Target: api-service. Namespace: prod. Alert: HTTP5xxRateHigh", type: "warn" },
+  { text: "Checking pod status: api-service-7f6d98c-8kw92 is in CrashLoopBackOff", type: "warn" },
+  { text: "Analyzing pod events: Liveness probe failed 3 times consecutively.", type: "warn" },
+  { text: "Executing cluster self-healing action daemon...", type: "system" },
+  { text: "HPA Trigger: Scaling out api-service replicas from 3 to 6 pods...", type: "info" },
+  { text: "Auto-diagnosing failure: Pod database pool exhausted. Recovering DB connections...", type: "info" },
+  { text: "Restarting failed pods & executing connection pool release...", type: "info" },
+  { text: "Pod api-service-7f6d98c-8kw92 transitioned back to Running status.", type: "success" },
+  { text: "All 6 replicas reporting healthy (200 OK). Traffic restored.", type: "success" },
+  { text: "Cluster state fully restored. Alert 'HTTP5xxRateHigh' cleared.", type: "success" }
 ];
 
 const scenarios = [
-  { id: "octaclaw", label: "Octaclaw Orchestrator", logs: octaclawLogs },
-  { id: "tracefox", label: "TraceFox Engine", logs: tracefoxLogs },
-  { id: "prettiflow", label: "Prettiflow Sandbox", logs: prettiflowLogs }
+  { id: "terraform", label: "Terraform Orchestrator", logs: terraformLogs },
+  { id: "cicd", label: "CI/CD Pipeline", logs: cicdLogs },
+  { id: "alertmanager", label: "Auto-Healing Daemon", logs: alertmanagerLogs }
 ];
 
 export function AgentSandbox() {
-  const [activeScenario, setActiveScenario] = useState("octaclaw");
+  const [activeScenario, setActiveScenario] = useState("terraform");
   const [logs, setLogs] = useState<LogEntry[]>(() => {
-    return octaclawLogs.map(l => ({
+    return terraformLogs.map(l => ({
       ...l,
       timestamp: new Date().toLocaleTimeString().split(" ")[0]
     }));
@@ -197,7 +202,7 @@ export function AgentSandbox() {
         <div className="flex items-center justify-between pb-2 border-b border-white/5 mb-2.5 flex-shrink-0">
           <div className="flex items-center gap-2 text-slate-400 text-[10px] font-bold font-mono">
             <LuTerminal />
-            <span>sandbox@founding-engine:~/{activeScenario}</span>
+            <span>sandbox@devops-node:~/{activeScenario}</span>
           </div>
           <span className="text-[10px] text-slate-500 font-mono font-bold">{progress}%</span>
         </div>

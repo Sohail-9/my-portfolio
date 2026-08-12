@@ -4,94 +4,103 @@ import React from "react";
 import { motion } from "framer-motion";
 import { skills } from "@/lib/content";
 import { Section } from "./section";
-import { FaAws } from "react-icons/fa";
+import { FaAws, FaMicrosoft } from "react-icons/fa";
 import {
-  SiCplusplus,
   SiDocker,
-  SiFastapi,
   SiGit,
   SiGithubactions,
   SiGrafana,
-  SiApachekafka,
   SiKubernetes,
   SiLinux,
   SiNginx,
-  SiMongodb,
-  SiNextdotjs,
-  SiNodedotjs,
   SiPostgresql,
   SiPrometheus,
   SiPython,
-  SiRabbitmq,
   SiRedis,
   SiTerraform,
-  SiTypescript,
+  SiCloudflare,
+  SiHelm,
+  SiTraefikproxy,
+  SiWireguard,
 } from "react-icons/si";
-import { LuBot, LuBrain, LuNetwork, LuServer, LuShieldCheck } from "react-icons/lu";
+import {
+  LuWorkflow,
+  LuSettings,
+  LuBell,
+  LuEye,
+  LuLock,
+  LuTerminal,
+  LuShieldCheck,
+  LuNetwork,
+  LuServer,
+} from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {
-  python: SiPython,
-  fastapi: SiFastapi,
-  node: SiNodedotjs,
-  typescript: SiTypescript,
-  llm: LuBrain,
-  rag: LuNetwork,
-  agenticai: LuBot,
-  orchestration: LuNetwork,
-  mcp: LuNetwork,
-  cpp: SiCplusplus,
-  nextjs: SiNextdotjs,
   aws: FaAws,
+  azure: FaMicrosoft,
+  cloudflare: SiCloudflare,
   docker: SiDocker,
   kubernetes: SiKubernetes,
-  postgres: SiPostgresql,
-  mongo: SiMongodb,
-  redis: SiRedis,
-  kafka: SiApachekafka,
-  rabbitmq: SiRabbitmq,
-  pytest: LuShieldCheck,
+  helm: SiHelm,
+  swarm: SiDocker, // Reuse Docker icon for swarm
   terraform: SiTerraform,
   githubactions: SiGithubactions,
+  cicd: LuWorkflow,
+  automation: LuSettings,
   prometheus: SiPrometheus,
   grafana: SiGrafana,
+  alertmanager: LuBell,
+  cloudwatch: LuEye,
+  traefik: SiTraefikproxy,
+  tls: LuShieldCheck,
+  wireguard: SiWireguard,
+  secrets: LuLock,
+  python: SiPython,
+  bash: LuTerminal,
   linux: SiLinux,
-  nginx: SiNginx,
+  postgres: SiPostgresql,
+  redis: SiRedis,
   git: SiGit,
 };
 
 const categoryConfig = {
-  "AI & LLM": {
-    iconColor: "text-violet-400",
-    border: "border-violet-500/10 hover:border-violet-400/40",
-    glow: "rgba(139,92,246,0.22)",
-    accent: "#818cf8",
-    dot: "bg-violet-400",
-  },
-  Languages: {
+  "Cloud & Containers": {
     iconColor: "text-sky-400",
     border: "border-sky-500/10 hover:border-sky-400/40",
     glow: "rgba(56,189,248,0.22)",
     accent: "#38bdf8",
     dot: "bg-sky-400",
   },
-  Backend: {
+  "IaC & CI/CD": {
     iconColor: "text-emerald-400",
     border: "border-emerald-500/10 hover:border-emerald-400/40",
     glow: "rgba(52,211,153,0.22)",
     accent: "#34d399",
     dot: "bg-emerald-400",
   },
-  Infra: {
+  "Observability & Security": {
     iconColor: "text-amber-400",
     border: "border-amber-500/10 hover:border-amber-400/40",
     glow: "rgba(251,191,36,0.22)",
     accent: "#fbbf24",
     dot: "bg-amber-400",
   },
+  "Scripting & Data": {
+    iconColor: "text-violet-400",
+    border: "border-violet-500/10 hover:border-violet-400/40",
+    glow: "rgba(139,92,246,0.22)",
+    accent: "#818cf8",
+    dot: "bg-violet-400",
+  },
 } as const;
 
 type Category = keyof typeof categoryConfig;
-const categories: Category[] = ["AI & LLM", "Languages", "Backend", "Infra"];
+const categories: Category[] = [
+  "Cloud & Containers",
+  "IaC & CI/CD",
+  "Observability & Security",
+  "Scripting & Data",
+];
 
 export function Skills() {
   const grouped = categories.map((cat) => ({

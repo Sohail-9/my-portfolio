@@ -2,27 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LuBrain, LuServer, LuCloud } from "react-icons/lu";
+import { LuCloud, LuWorkflow, LuActivity } from "react-icons/lu";
 import { about } from "@/lib/content";
 import { Section } from "./section";
 
 const specConfig = [
-  {
-    Icon: LuBrain,
-    gradient: "from-violet-600/10 to-purple-950/5",
-    border: "border-violet-500/20 hover:border-violet-500/40",
-    iconColor: "text-violet-400",
-    glowColor: "rgba(139,92,246,0.18)",
-    shimmerColor: "rgba(139,92,246,0.08)",
-  },
-  {
-    Icon: LuServer,
-    gradient: "from-emerald-600/10 to-teal-950/5",
-    border: "border-emerald-500/20 hover:border-emerald-500/40",
-    iconColor: "text-emerald-400",
-    glowColor: "rgba(52,211,153,0.18)",
-    shimmerColor: "rgba(52,211,153,0.08)",
-  },
   {
     Icon: LuCloud,
     gradient: "from-sky-600/10 to-blue-950/5",
@@ -30,6 +14,22 @@ const specConfig = [
     iconColor: "text-sky-400",
     glowColor: "rgba(56,189,248,0.18)",
     shimmerColor: "rgba(56,189,248,0.08)",
+  },
+  {
+    Icon: LuWorkflow,
+    gradient: "from-emerald-600/10 to-teal-950/5",
+    border: "border-emerald-500/20 hover:border-emerald-500/40",
+    iconColor: "text-emerald-400",
+    glowColor: "rgba(52,211,153,0.18)",
+    shimmerColor: "rgba(52,211,153,0.08)",
+  },
+  {
+    Icon: LuActivity,
+    gradient: "from-violet-600/10 to-purple-950/5",
+    border: "border-violet-500/20 hover:border-violet-500/40",
+    iconColor: "text-violet-400",
+    glowColor: "rgba(139,92,246,0.18)",
+    shimmerColor: "rgba(139,92,246,0.08)",
   },
 ];
 

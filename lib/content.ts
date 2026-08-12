@@ -12,7 +12,7 @@ export type ExperienceEntry = {
 export type Skill = {
   key: string;
   label: string;
-  category: "Languages" | "AI & LLM" | "Backend" | "Infra";
+  category: "Cloud & Containers" | "IaC & CI/CD" | "Observability & Security" | "Scripting & Data";
 };
 
 export type ProjectLink = {
@@ -31,172 +31,152 @@ export type Project = {
 
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
-  subtitle: "I’m a Software Engineer"
+  subtitle: "DevOps Engineer – Cloud Infrastructure, CI/CD & Kubernetes"
 };
 
 export const about = {
   heading: "About me",
   body:
-    "I’m a Software Engineer focused on architecting autonomous agent platforms and full-stack AI generation systems. I specialize in building multi-agent orchestration layers, secure sandboxed execution environments, and scalable cloud infrastructure. Recently, I've been leading the core architecture at Prettiflow, designing foundational systems for autonomous workflows and one-click application deployment.",
+    "DevOps and Cloud Infrastructure Engineer with 4+ years of production experience building and maintaining high-performance CI/CD pipelines, containerizing services, and running production-grade Kubernetes clusters (Amazon EKS, Helm) across AWS, Azure, and Cloudflare. Hands-on expert in Infrastructure as Code (Terraform), Linux networking, and automation scripting. Passionate about architecting zero-downtime migrations, secure ingress routing, and automated self-healing systems.",
   specializations: [
     {
-      title: "Agentic AI & LLMs",
-      description: "Architecting multi-agent orchestration layers, RAG pipelines, and autonomous workflow engines with role-specific specialist routing."
+      title: "Cloud & Kubernetes",
+      description: "Provisioning multi-region landing zones on AWS and Azure. Orchestrating scalable services with Kubernetes, Helm charts, and custom ingress configs."
     },
     {
-      title: "Backend & Systems",
-      description: "Building high-concurrency async services with FastAPI, robust testing suites (PyTest/Jest), and message queues (Kafka, RabbitMQ)."
+      title: "IaC & CI/CD Pipelines",
+      description: "Implementing reproducible infrastructure using Terraform. Designing automated, secure build-test-deploy pipelines via GitHub Actions."
     },
     {
-      title: "Cloud & Infra",
-      description: "Scaling secure infrastructure on AWS with Kubernetes, Terraform, automated CI/CD pipelines, and GDPR-aware data governance."
+      title: "Observability & Ingress",
+      description: "Configuring metrics collection (Prometheus, Grafana) and secure edge routing with Traefik, WireGuard VPNs, and active secrets management."
     }
   ]
 };
 
 export const skills: Skill[] = [
-  { key: "python", label: "Python", category: "Languages" },
-  { key: "typescript", label: "TypeScript", category: "Languages" },
-  { key: "cpp", label: "C++", category: "Languages" },
-  { key: "node", label: "Node.js", category: "Backend" },
-  { key: "fastapi", label: "FastAPI", category: "Backend" },
-  { key: "nextjs", label: "Next.js", category: "Backend" },
-  { key: "postgres", label: "PostgreSQL", category: "Backend" },
-  { key: "mongo", label: "MongoDB", category: "Backend" },
-  { key: "redis", label: "Redis", category: "Backend" },
-  { key: "kafka", label: "Kafka", category: "Backend" },
-  { key: "rabbitmq", label: "RabbitMQ", category: "Backend" },
-  { key: "pytest", label: "PyTest / Jest", category: "Backend" },
-  { key: "llm", label: "LLMs", category: "AI & LLM" },
-  { key: "rag", label: "RAG", category: "AI & LLM" },
-  { key: "agenticai", label: "Agentic AI", category: "AI & LLM" },
-  { key: "orchestration", label: "Agent Orchestration", category: "AI & LLM" },
-  { key: "mcp", label: "MCP", category: "AI & LLM" },
-  { key: "aws", label: "AWS", category: "Infra" },
-  { key: "docker", label: "Docker", category: "Infra" },
-  { key: "kubernetes", label: "Kubernetes", category: "Infra" },
-  { key: "terraform", label: "Terraform", category: "Infra" },
-  { key: "githubactions", label: "GitHub Actions", category: "Infra" },
-  { key: "prometheus", label: "Prometheus", category: "Infra" },
-  { key: "grafana", label: "Grafana", category: "Infra" },
-  { key: "linux", label: "Linux", category: "Infra" },
-  { key: "nginx", label: "Nginx", category: "Infra" },
-  { key: "git", label: "Git/GitHub", category: "Infra" }
+  // Cloud & Containers
+  { key: "aws", label: "AWS (EKS, VPC, ECS, S3)", category: "Cloud & Containers" },
+  { key: "azure", label: "Azure", category: "Cloud & Containers" },
+  { key: "cloudflare", label: "Cloudflare", category: "Cloud & Containers" },
+  { key: "docker", label: "Docker", category: "Cloud & Containers" },
+  { key: "kubernetes", label: "Kubernetes", category: "Cloud & Containers" },
+  { key: "helm", label: "Helm", category: "Cloud & Containers" },
+  { key: "swarm", label: "Docker Swarm", category: "Cloud & Containers" },
+
+  // IaC & CI/CD
+  { key: "terraform", label: "Terraform", category: "IaC & CI/CD" },
+  { key: "githubactions", label: "GitHub Actions", category: "IaC & CI/CD" },
+  { key: "cicd", label: "CI/CD Pipelines", category: "IaC & CI/CD" },
+  { key: "automation", label: "Infra Automation", category: "IaC & CI/CD" },
+
+  // Observability & Security
+  { key: "prometheus", label: "Prometheus", category: "Observability & Security" },
+  { key: "grafana", label: "Grafana", category: "Observability & Security" },
+  { key: "alertmanager", label: "Alertmanager", category: "Observability & Security" },
+  { key: "cloudwatch", label: "CloudWatch", category: "Observability & Security" },
+  { key: "traefik", label: "Traefik", category: "Observability & Security" },
+  { key: "tls", label: "TLS/SSL Termination", category: "Observability & Security" },
+  { key: "wireguard", label: "WireGuard VPN", category: "Observability & Security" },
+  { key: "secrets", label: "Secrets Management", category: "Observability & Security" },
+
+  // Scripting & Data
+  { key: "python", label: "Python", category: "Scripting & Data" },
+  { key: "bash", label: "Bash Scripting", category: "Scripting & Data" },
+  { key: "linux", label: "Linux Systems", category: "Scripting & Data" },
+  { key: "postgres", label: "PostgreSQL", category: "Scripting & Data" },
+  { key: "redis", label: "Redis", category: "Scripting & Data" },
+  { key: "git", label: "Git / GitHub", category: "Scripting & Data" }
 ];
 
 export const experience: ExperienceEntry[] = [
   {
-    company: "Prettiflow",
-    role: "Founding Engineer",
-    timeframe: "February 2026 – Present",
+    company: "PrettiFlow",
+    role: "Founding Engineer – DevOps & Infrastructure",
+    timeframe: "January 2026 – Present",
     logo: "/pretti.png",
-    tech: ["TypeScript", "Next.js", "AWS", "Docker", "LLMs", "Agent Orchestration"],
+    tech: ["AWS", "Azure", "Cloudflare", "Docker", "GitHub Actions", "Python", "Bash"],
     bullets: [
-      "Architected the core platform for AI-generated full-stack applications and one-click deployment.",
-      "Built the multi-agent orchestration and multi-model routing layer powering autonomous execution.",
-      "Designed the platform for secure sandboxed code execution and isolated multi-tenant workspaces (adhering to GDPR-friendly security standards).",
-      "Led development of scalable deployment infrastructure across AWS and automated app provisioning.",
-      "Built foundational systems for skill-based agents, workspace databases, and real-time platform runtime.",
-      "Owned platform reliability, DevOps, and core architecture for scalable production systems.",
-      "Architected extensible skill systems for structured planning and complex autonomous workflows."
+      "Owned the end-to-end DevOps lifecycle as sole infrastructure owner, architecting and managing multi-cloud infrastructure across AWS, Azure, and Cloudflare.",
+      "Built and maintained CI/CD pipelines end to end: containerized services with Docker and automated deployments using GitHub Actions.",
+      "Engineered pre-warmed, isolated cloud sandboxes for code execution, cutting infrastructure cold-start latency from ~3s to ~100ms (97% improvement).",
+      "Redesigned edge routing and ingress configuration to remove a redundant API gateway, eliminating hundreds of dollars a month in idle infrastructure cost.",
+      "Maintained 99.9% uptime across core infrastructure through proactive monitoring, alerting, and incident response."
     ]
   },
   {
     company: "OmniqAI",
-    role: "Software Engineer",
-    timeframe: "January 2025 – December 2025",
+    role: "DevOps Engineer",
+    timeframe: "August 2024 – December 2025",
     logo: "/Omniqai.png",
-    tech: ["FastAPI", "Kubernetes", "AWS", "Terraform", "PostgreSQL", "RAG"],
+    tech: ["AWS", "EKS", "Terraform", "Helm", "Docker Swarm", "Prometheus", "Grafana", "Traefik", "WireGuard"],
     bullets: [
-      "Architected high-concurrency async APIs (FastAPI) and real-time WebSocket services for distributed workloads.",
-      "Built RAG + semantic pipelines and vector search to power intelligent decision support.",
-      "Developed autonomous interview agents: resume parsing, behavioral analysis, code evaluation, multi-step reasoning with memory.",
-      "Optimized PostgreSQL/MongoDB/Redis (pooling, caching, schema migrations) with zero-downtime deploys.",
-      "Migrated infra to Kubernetes on AWS; Dockerized workloads; Helm; HPA; secured VPC.",
-      "Implemented queues and async workflows (Redis/RabbitMQ).",
-      "CI/CD with GitHub Actions (zero-downtime releases, automated unit & integration testing), cutting deploy time ~40%.",
-      "IaC with CloudFormation across EKS/EC2/VPC/IAM/S3/Secrets Manager.",
-      "Full observability: Prometheus, Grafana, central logging, distributed tracing.",
-      "Reduced infra costs ~20% while improving resilience; led incident response & performance tuning."
+      "Led an on-prem → AWS migration using Terraform and Amazon EKS, enabling zero-downtime deployments and fully automated CI/CD pipelines.",
+      "Performed end-to-end Kubernetes operations: Helm chart deployments, readiness/liveness probe configuration, and resolving ImagePullBackOff and pod scheduling issues.",
+      "Built observability stacks with Prometheus, Grafana, and Alertmanager across Docker Swarm and edge nodes, reducing incident detection time by 50%.",
+      "Hardened CI/CD and ingress: stabilized TLS termination with Traefik, managed cluster secrets, and strengthened deployment security posture.",
+      "Deployed WireGuard for secure remote connectivity and used Elasticflow (NetFlow) and Suricata (IDS/IPS) for network traffic analysis and threat detection."
     ]
   },
   {
-    company: "OmniqAI",
-    role: "Software Engineer Intern",
-    timeframe: "August 2024 – December 2024",
-    logo: "/Omniqai.png",
-    tech: ["Python", "Prometheus", "Grafana"],
-    bullets: [
-      "Built/maintained Python microservices and production REST APIs.",
-      "Shipped monitoring/alerting with Prometheus/Grafana, cutting MTTD ~30% and improving response times."
-    ]
-  },
-  {
-    company: "Stealth Startup",
-    role: "Full Stack Engineer",
+    company: "MountPoint Technologies Pvt. Ltd.",
+    role: "DevOps Engineer",
     timeframe: "July 2022 – July 2024",
-    tech: ["TypeScript", "Node.js", "PostgreSQL", "MySQL", "REST APIs", "Git"],
+    tech: ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux Servers", "Monitoring", "Logging"],
     bullets: [
-      "Developed and maintained full-stack web applications end-to-end, from responsive UI to scalable backend services and data models.",
-      "Designed and integrated RESTful APIs, working extensively with relational databases (PostgreSQL, MySQL).",
-      "Collaborated cross-functionally in Agile sprints; tested, debugged, and optimized production features for performance and reliability.",
-      "Participated in code reviews, followed engineering best practices, and used Git for version control.",
-      "Assisted with deployment, production support, and feature delivery from design through release."
+      "Managed and deployed applications across AWS cloud infrastructure.",
+      "Containerized applications using Docker and managed production deployments.",
+      "Worked with Kubernetes for application deployment, scaling, and service management.",
+      "Built and maintained CI/CD pipelines for automated build, test, and deployment workflows.",
+      "Managed cloud infrastructure, environments, configuration, and deployment processes.",
+      "Worked with Linux servers, troubleshooting application and infrastructure issues.",
+      "Implemented monitoring and logging to track application and infrastructure health."
     ]
   }
 ];
 
 export const projects: Project[] = [
   {
-    title: "Octaclaw",
-    subtitle: "Multi-Agent Orchestration Platform",
+    title: "AWS-EKS-GitOps",
+    subtitle: "Cloud Native EKS Landing Zone & GitOps Pipeline",
     bullets: [
-      "Built a multi-agent orchestration engine that decomposes goals into DAGs and executes subtasks in parallel with a worker pool.",
-      "Implemented specialist agent routing (Researcher, Builder, Tester, CodeReviewer) with role-specific prompts and tool-augmented workflows.",
-      "Delivered local-first semantic + episodic memory with vector search and automated reflexion to improve task outcomes over time.",
-      "Added durable checkpointing so long-running graph executions can resume after interruption without data loss.",
-      "Shipped multi-channel interfaces (CLI, Discord, Telegram) via a unified channel router and daemon runtime."
+      "Designed and provisioned a production-ready Amazon EKS landing zone using Terraform with secure VPC peering, public/private subnets, and IAM Roles for Service Accounts (IRSA).",
+      "Established automatic cert provisioning and TLS termination using Traefik and Cert-Manager, ensuring secure external endpoints.",
+      "Built multi-environment GitOps CD pipelines via GitHub Actions and Helm, supporting rollback mechanics and lint checks.",
+      "Secured cluster networking with WireGuard VPN for private API access and automated secret injection from AWS Secrets Manager."
     ],
     tech: [
-      "Node.js",
-      "TypeScript",
-      "LLMs",
-      "Vector Search",
-      "CLI",
-      "Discord API",
-      "Telegram API"
+      "AWS",
+      "EKS",
+      "Terraform",
+      "Helm",
+      "Traefik",
+      "GitHub Actions",
+      "WireGuard"
     ],
     links: [
-      { label: "View repo", href: "" }
+      { label: "View repo", href: "https://github.com/Sohail-9" }
     ]
   },
   {
-    title: "TraceFox AI",
-    subtitle: "AI-Powered Code Review & Test Platform",
+    title: "Cluster-Observability",
+    subtitle: "Production Observability & Auto-Healing Cluster",
     bullets: [
-      "End-to-end quality workflow orchestrated with FastAPI: webhooks, modular services, pipeline eventing for PR analysis, test generation, RCA, compliance, drift detection.",
-      "API gateway + dynamic service registry; retries/circuit breakers; structured event bus for decoupling.",
-      "Automated GitHub repo onboarding (clone/index), async task tracking, persistent state.",
-      "AI review & test generation with DeepSeek R1 and Gemma-3 27B-IT; deterministic JSON parsing; fallbacks; intelligent caching.",
-      "Next.js dashboard: real-time review data, test artifacts, RCA correlation, drift/compliance views.",
-      "Multi-cloud deploy with Docker Compose + Terraform; secure token/session; end-to-end logging."
+      "Built cluster-wide Prometheus, Grafana, and Alertmanager metrics-monitoring stacks across Amazon EKS, Docker Swarm, and edge nodes.",
+      "Decreased incident response times and mean time to detect (MTTD) by 50% through refined Alertmanager routing and PagerDuty integrations.",
+      "Engineered automated self-healing scripts reacting to Prometheus node/pod alerts to resolve scheduling issues and ImagePullBackOff errors.",
+      "Configured Horizontal Pod Autoscalers (HPA) and cluster-autoscaler rules to handle production traffic bursts smoothly."
     ],
     tech: [
-      "Python",
-      "FastAPI",
-      "Node.js",
-      "Next.js",
-      "Redis",
-      "PostgreSQL",
-      "SQLite",
-      "Terraform",
-      "Docker",
-      "GitHub API",
-      "LLMs"
+      "Kubernetes",
+      "Prometheus",
+      "Grafana",
+      "Alertmanager",
+      "Docker Swarm",
+      "Bash Scripting"
     ],
     links: [
-      { label: "View repo", href: links.tracefoxRepo }
+      { label: "View repo", href: "https://github.com/Sohail-9" }
     ]
   }
 ];
-

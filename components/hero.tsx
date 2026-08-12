@@ -47,7 +47,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
             >
-              <p className="mb-3 text-xs uppercase tracking-[0.35em] text-sky-400 font-bold text-cyber-glow">Founding Engineer</p>
+              <p className="mb-3 text-xs uppercase tracking-[0.35em] text-sky-400 font-bold text-cyber-glow">DevOps & Cloud Engineer</p>
               <h1 className="text-6xl font-black tracking-tight leading-[0.92] sm:text-7xl">
                 <span className="text-white">Sohail</span>
                 <br />
@@ -71,10 +71,10 @@ export function Hero() {
               transition={{ delay: 0.5 }}
               className="max-w-md mx-auto lg:mx-0 text-lg text-slate-400 leading-relaxed font-light"
             >
-              Building autonomous{" "}
-              <span className="text-sky-400 font-semibold text-cyber-glow">agent platforms</span>,{" "}
-              secure sandboxed code runtimes, and high-concurrency{" "}
-              <span className="text-violet-400 font-semibold">backend systems</span>.
+              Architecting production{" "}
+              <span className="text-sky-400 font-semibold text-cyber-glow">Kubernetes clusters</span>,{" "}
+              automated CI/CD pipelines, and high-availability{" "}
+              <span className="text-violet-400 font-semibold">multi-cloud infrastructure</span>.
             </motion.p>
 
             {/* CTAs */}
@@ -197,7 +197,7 @@ export function Hero() {
                       <LuStar className="text-amber-400 text-sm flex-shrink-0" />
                       <div>
                         <p className="text-[10px] text-slate-500 leading-none uppercase tracking-wider">Current Role</p>
-                        <p className="text-xs font-bold text-white leading-tight mt-0.5">Founding Engineer</p>
+                        <p className="text-xs font-bold text-white leading-tight mt-0.5">DevOps Engineer</p>
                       </div>
                     </motion.div>
                   </motion.div>

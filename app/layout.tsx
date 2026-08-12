@@ -13,13 +13,13 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohailshaik.me"),
-  title: "Sohail Shaik | Software Engineer",
+  title: "Sohail Shaik | DevOps & Cloud Infrastructure Engineer",
   description:
-    "Software engineer building FastAPI services, RAG pipelines, and Kubernetes-native systems with a focus on observability and developer velocity.",
+    "DevOps and Cloud Infrastructure Engineer with 4+ years of experience building CI/CD pipelines, containerizing workloads, and managing production Kubernetes across AWS & Azure.",
   openGraph: {
-    title: "Sohail Shaik | Software Engineer",
+    title: "Sohail Shaik | DevOps & Cloud Infrastructure Engineer",
     description:
-      "Software engineer focused on FastAPI, async systems, RAG, and Kubernetes—crafting resilient infra and AI developer platforms.",
+      "DevOps and Cloud Infrastructure Engineer focused on Amazon EKS, Terraform, zero-downtime migrations, and production observability stacks.",
     type: "website",
     images: [
       {
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sohail Shaik | Software Engineer",
+    title: "Sohail Shaik | DevOps & Cloud Infrastructure Engineer",
     description:
-      "Building scalable FastAPI services, RAG intelligence, and Kubernetes-native platforms that ship faster and safer.",
+      "Orchestrating production Kubernetes, automated GitOps pipelines, and high-availability multi-cloud infrastructure.",
     images: ["/sohail.jpeg"],
   },
   icons: {

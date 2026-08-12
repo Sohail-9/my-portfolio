@@ -54,7 +54,7 @@ export function Footer() {
           </h2>
 
           <p className="text-slate-400 max-w-md mx-auto text-base leading-relaxed">
-            Open for collaborations on RAG pipelines, FastAPI backends, and AI infrastructure.
+            Open for collaborations on cloud migrations, Kubernetes operations, CI/CD automation, and IaC architectures.
           </p>
 
           {/* Email CTA — glass pill */}
