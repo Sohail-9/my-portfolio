@@ -132,7 +132,7 @@ export function Skills() {
             </div>
 
             {/* Skill tiles — Glass-neomorphism style */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3.5">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3.5 sm:gap-4">
               {items.map((skill, i) => {
                 const Icon = iconMap[skill.key] ?? LuServer;
                 return (
@@ -147,7 +147,7 @@ export function Skills() {
                       scale: 1.02,
                       transition: { duration: 0.15 } 
                     }}
-                    className={`group flex flex-col items-center gap-2.5 rounded-2xl border ${config.border} p-4.5 backdrop-blur-md transition-all duration-200 cursor-default`}
+                    className={`group flex flex-col items-center gap-3 rounded-2xl border ${config.border} p-5 sm:p-5.5 backdrop-blur-md transition-all duration-200 cursor-default`}
                     style={{ 
                       background: "rgba(9, 13, 26, 0.35)",
                       boxShadow: `
@@ -166,11 +166,11 @@ export function Skills() {
                     />
 
                     <span
-                      className={`text-2xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110 relative z-10`}
+                      className={`text-2xl sm:text-3xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110 relative z-10`}
                     >
                       <Icon />
                     </span>
-                    <span className="text-[11px] font-medium text-slate-400 group-hover:text-slate-200 transition-colors text-center leading-tight relative z-10">
+                    <span className="text-xs font-semibold text-slate-400 group-hover:text-slate-200 transition-colors text-center leading-tight relative z-10">
                       {skill.label}
                     </span>
                   </motion.div>
