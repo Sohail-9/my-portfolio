@@ -6,9 +6,9 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { links } from "@/lib/links";
 
 const socials = [
-  { href: links.github,   icon: FaGithub,   label: "GitHub" },
+  { href: links.github, icon: FaGithub, label: "GitHub" },
   { href: links.linkedin, icon: FaLinkedin, label: "LinkedIn" },
-  { href: links.twitter,  icon: FaTwitter,  label: "Twitter" },
+  { href: links.twitter, icon: FaTwitter, label: "Twitter" },
 ];
 
 export function Footer() {
@@ -54,7 +54,7 @@ export function Footer() {
           </h2>
 
           <p className="text-slate-400 max-w-md mx-auto text-base leading-relaxed">
-            Open for collaborations on cloud migrations, Kubernetes operations, CI/CD automation, and IaC architectures.
+            Open for collaborations on high-concurrency backend systems, Python/FastAPI microservices, RAG pipelines, and multi-agent AI architectures.
           </p>
 
           {/* Email CTA — glass pill */}

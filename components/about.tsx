@@ -2,13 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LuCloud, LuWorkflow, LuActivity } from "react-icons/lu";
+import { LuServer, LuBrain, LuCloud } from "react-icons/lu";
 import { about } from "@/lib/content";
 import { Section } from "./section";
 
 const specConfig = [
   {
-    Icon: LuCloud,
+    Icon: LuServer,
     gradient: "from-sky-600/10 to-blue-950/5",
     border: "border-sky-500/20 hover:border-sky-500/40",
     iconColor: "text-sky-400",
@@ -16,20 +16,20 @@ const specConfig = [
     shimmerColor: "rgba(56,189,248,0.08)",
   },
   {
-    Icon: LuWorkflow,
-    gradient: "from-emerald-600/10 to-teal-950/5",
-    border: "border-emerald-500/20 hover:border-emerald-500/40",
-    iconColor: "text-emerald-400",
-    glowColor: "rgba(52,211,153,0.18)",
-    shimmerColor: "rgba(52,211,153,0.08)",
-  },
-  {
-    Icon: LuActivity,
+    Icon: LuBrain,
     gradient: "from-violet-600/10 to-purple-950/5",
     border: "border-violet-500/20 hover:border-violet-500/40",
     iconColor: "text-violet-400",
     glowColor: "rgba(139,92,246,0.18)",
     shimmerColor: "rgba(139,92,246,0.08)",
+  },
+  {
+    Icon: LuCloud,
+    gradient: "from-emerald-600/10 to-teal-950/5",
+    border: "border-emerald-500/20 hover:border-emerald-500/40",
+    iconColor: "text-emerald-400",
+    glowColor: "rgba(52,211,153,0.18)",
+    shimmerColor: "rgba(52,211,153,0.08)",
   },
 ];
 
@@ -44,7 +44,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-3xl p-8 sm:p-12 glass-neo-card"
+          className="relative overflow-hidden rounded-3xl p-6 sm:p-9 glass-neo-card"
         >
           {/* Corner accent glows */}
           <div
@@ -62,19 +62,7 @@ export function About() {
             }}
           />
 
-          {/* Decorative quote */}
-          <div
-            className="relative z-10 text-8xl font-black leading-none mb-4 select-none pointer-events-none"
-            style={{
-              background: "linear-gradient(135deg, rgba(56,189,248,0.25), rgba(139,92,246,0.25))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            &ldquo;
-          </div>
-          <p className="relative z-10 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-3xl font-light">
+          <p className="relative z-10 text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl font-light">
             {about.body}
           </p>
         </motion.div>

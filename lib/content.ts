@@ -9,10 +9,12 @@ export type ExperienceEntry = {
   tech?: string[];
 };
 
+export type SkillCategory = "Backend" | "AI & LLM" | "Databases" | "Cloud & DevOps" | "Frontend";
+
 export type Skill = {
   key: string;
   label: string;
-  category: "Cloud & Containers" | "IaC & CI/CD" | "Observability & Security" | "Scripting & Data";
+  category: SkillCategory;
 };
 
 export type ProjectLink = {
@@ -31,152 +33,144 @@ export type Project = {
 
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
-  subtitle: "DevOps Engineer – Cloud Infrastructure, CI/CD & Kubernetes"
+  subtitle: "Backend Engineer – Python/FastAPI, Distributed Systems & Agentic AI"
 };
 
 export const about = {
   heading: "About me",
   body:
-    "DevOps and Cloud Infrastructure Engineer with 4+ years of production experience building and maintaining high-performance CI/CD pipelines, containerizing services, and running production-grade Kubernetes clusters (Amazon EKS, Helm) across AWS, Azure, and Cloudflare. Hands-on expert in Infrastructure as Code (Terraform), Linux networking, and automation scripting. Passionate about architecting zero-downtime migrations, secure ingress routing, and automated self-healing systems.",
+    "Backend Engineer with 4+ years of experience building and scaling production backend systems powering AI platforms. Specializing in Python/FastAPI microservices, PostgreSQL architectures, LLM orchestration, pgvector RAG pipelines, and multi-agent systems. Founding Engineer at PrettiFlow, delivering 0→1 infrastructure that scaled to 4,000+ users.",
   specializations: [
     {
-      title: "Cloud & Kubernetes",
-      description: "Provisioning multi-region landing zones on AWS and Azure. Orchestrating scalable services with Kubernetes, Helm charts, and custom ingress configs."
+      title: "Backend & Distributed Systems",
+      description: "Python/FastAPI and Node.js microservices, PostgreSQL schemas, PgBouncer pooling, Redis job queues, and WebSocket streaming."
     },
     {
-      title: "IaC & CI/CD Pipelines",
-      description: "Implementing reproducible infrastructure using Terraform. Designing automated, secure build-test-deploy pipelines via GitHub Actions."
+      title: "Agentic AI & LLM Orchestration",
+      description: "Autonomous multi-agent DAGs, LangChain RAG pipelines, pgvector semantic search, sandboxed execution, and MCP servers."
     },
     {
-      title: "Observability & Ingress",
-      description: "Configuring metrics collection (Prometheus, Grafana) and secure edge routing with Traefik, WireGuard VPNs, and active secrets management."
+      title: "Cloud & Infrastructure Scale",
+      description: "Kubernetes (EKS) orchestration, Docker containers, automated CI/CD pipelines, zero-downtime migrations, and payment gateways."
     }
   ]
 };
 
 export const skills: Skill[] = [
-  // Cloud & Containers
-  { key: "aws", label: "AWS (EKS, VPC, ECS, S3)", category: "Cloud & Containers" },
-  { key: "azure", label: "Azure", category: "Cloud & Containers" },
-  { key: "cloudflare", label: "Cloudflare", category: "Cloud & Containers" },
-  { key: "docker", label: "Docker", category: "Cloud & Containers" },
-  { key: "kubernetes", label: "Kubernetes", category: "Cloud & Containers" },
-  { key: "helm", label: "Helm", category: "Cloud & Containers" },
-  { key: "swarm", label: "Docker Swarm", category: "Cloud & Containers" },
+  // Backend
+  { key: "fastapi", label: "Python (FastAPI)", category: "Backend" },
+  { key: "typescript", label: "TypeScript", category: "Backend" },
+  { key: "nodejs", label: "Node.js", category: "Backend" },
+  { key: "restapi", label: "REST APIs", category: "Backend" },
+  { key: "websockets", label: "WebSockets", category: "Backend" },
+  { key: "microservices", label: "Microservices", category: "Backend" },
 
-  // IaC & CI/CD
-  { key: "terraform", label: "Terraform", category: "IaC & CI/CD" },
-  { key: "githubactions", label: "GitHub Actions", category: "IaC & CI/CD" },
-  { key: "cicd", label: "CI/CD Pipelines", category: "IaC & CI/CD" },
-  { key: "automation", label: "Infra Automation", category: "IaC & CI/CD" },
+  // AI & LLM
+  { key: "rag", label: "RAG Pipelines", category: "AI & LLM" },
+  { key: "agenticai", label: "Agentic AI", category: "AI & LLM" },
+  { key: "multiagent", label: "Multi-Agent Systems", category: "AI & LLM" },
+  { key: "llmorchestration", label: "LLM Orchestration", category: "AI & LLM" },
+  { key: "mcp", label: "MCP (Model Context Protocol)", category: "AI & LLM" },
+  { key: "langchain", label: "LangChain", category: "AI & LLM" },
+  { key: "models", label: "OpenAI / Claude / Gemini", category: "AI & LLM" },
 
-  // Observability & Security
-  { key: "prometheus", label: "Prometheus", category: "Observability & Security" },
-  { key: "grafana", label: "Grafana", category: "Observability & Security" },
-  { key: "alertmanager", label: "Alertmanager", category: "Observability & Security" },
-  { key: "cloudwatch", label: "CloudWatch", category: "Observability & Security" },
-  { key: "traefik", label: "Traefik", category: "Observability & Security" },
-  { key: "tls", label: "TLS/SSL Termination", category: "Observability & Security" },
-  { key: "wireguard", label: "WireGuard VPN", category: "Observability & Security" },
-  { key: "secrets", label: "Secrets Management", category: "Observability & Security" },
+  // Databases
+  { key: "postgres", label: "PostgreSQL", category: "Databases" },
+  { key: "redis", label: "Redis", category: "Databases" },
+  { key: "mongodb", label: "MongoDB", category: "Databases" },
+  { key: "vectorsearch", label: "Vector Search", category: "Databases" },
+  { key: "pgvector", label: "pgvector", category: "Databases" },
 
-  // Scripting & Data
-  { key: "python", label: "Python", category: "Scripting & Data" },
-  { key: "bash", label: "Bash Scripting", category: "Scripting & Data" },
-  { key: "linux", label: "Linux Systems", category: "Scripting & Data" },
-  { key: "postgres", label: "PostgreSQL", category: "Scripting & Data" },
-  { key: "redis", label: "Redis", category: "Scripting & Data" },
-  { key: "git", label: "Git / GitHub", category: "Scripting & Data" }
+  // Cloud & DevOps
+  { key: "aws", label: "AWS", category: "Cloud & DevOps" },
+  { key: "azure", label: "Azure", category: "Cloud & DevOps" },
+  { key: "docker", label: "Docker", category: "Cloud & DevOps" },
+  { key: "kubernetes", label: "Kubernetes", category: "Cloud & DevOps" },
+  { key: "cicd", label: "CI/CD Pipelines", category: "Cloud & DevOps" },
+  { key: "prometheus", label: "Prometheus", category: "Cloud & DevOps" },
+  { key: "grafana", label: "Grafana", category: "Cloud & DevOps" },
+
+  // Frontend
+  { key: "react", label: "React", category: "Frontend" },
+  { key: "nextjs", label: "Next.js", category: "Frontend" }
 ];
 
 export const experience: ExperienceEntry[] = [
   {
     company: "PrettiFlow",
-    role: "Founding Engineer – DevOps & Infrastructure",
+    role: "Founding Engineer",
     timeframe: "January 2026 – Present",
     logo: "/pretti.png",
-    tech: ["AWS", "Azure", "Cloudflare", "Docker", "GitHub Actions", "Python", "Bash"],
+    tech: ["Python", "FastAPI", "TypeScript", "Next.js", "Redis", "WebSockets", "Docker", "AWS"],
     bullets: [
-      "Owned the end-to-end DevOps lifecycle as sole infrastructure owner, architecting and managing multi-cloud infrastructure across AWS, Azure, and Cloudflare.",
-      "Built and maintained CI/CD pipelines end to end: containerized services with Docker and automated deployments using GitHub Actions.",
-      "Engineered pre-warmed, isolated cloud sandboxes for code execution, cutting infrastructure cold-start latency from ~3s to ~100ms (97% improvement).",
-      "Redesigned edge routing and ingress configuration to remove a redundant API gateway, eliminating hundreds of dollars a month in idle infrastructure cost.",
-      "Maintained 99.9% uptime across core infrastructure through proactive monitoring, alerting, and incident response."
+      "Scaled an AI app-generation platform to 4,000+ beta users and 500+ daily active users by owning end-to-end full-stack development, from prompt intake to live deployment.",
+      "Cut full-stack build time from 15 minutes to 8 minutes by architecting the AI application generation pipeline and deployment orchestration end-to-end.",
+      "Reduced sandboxed AI code execution cold-start latency from ~3s to ~100ms by building a pre-warming strategy, streaming results to the frontend via Redis Pub/Sub and WebSockets.",
+      "Hardened the platform's core execution layer against unsafe agent behavior by shipping input/output sanitization, action-level blocking, and loop detection from day one."
     ]
   },
   {
     company: "OmniqAI",
-    role: "DevOps Engineer",
-    timeframe: "August 2024 – December 2025",
+    role: "Software Engineer",
+    timeframe: "August 2022 – December 2025",
     logo: "/Omniqai.png",
-    tech: ["AWS", "EKS", "Terraform", "Helm", "Docker Swarm", "Prometheus", "Grafana", "Traefik", "WireGuard"],
+    tech: ["Python", "FastAPI", "Next.js", "PostgreSQL", "pgvector", "LangChain", "MCP", "Redis", "WebSockets", "Docker", "Kubernetes", "AWS", "Razorpay"],
     bullets: [
-      "Led an on-prem → AWS migration using Terraform and Amazon EKS, enabling zero-downtime deployments and fully automated CI/CD pipelines.",
-      "Performed end-to-end Kubernetes operations: Helm chart deployments, readiness/liveness probe configuration, and resolving ImagePullBackOff and pod scheduling issues.",
-      "Built observability stacks with Prometheus, Grafana, and Alertmanager across Docker Swarm and edge nodes, reducing incident detection time by 50%.",
-      "Hardened CI/CD and ingress: stabilized TLS termination with Traefik, managed cluster secrets, and strengthened deployment security posture.",
-      "Deployed WireGuard for secure remote connectivity and used Elasticflow (NetFlow) and Suricata (IDS/IPS) for network traffic analysis and threat detection."
-    ]
-  },
-  {
-    company: "MountPoint Technologies Pvt. Ltd.",
-    role: "DevOps Engineer",
-    timeframe: "July 2022 – July 2024",
-    tech: ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux Servers", "Monitoring", "Logging"],
-    bullets: [
-      "Managed and deployed applications across AWS cloud infrastructure.",
-      "Containerized applications using Docker and managed production deployments.",
-      "Worked with Kubernetes for application deployment, scaling, and service management.",
-      "Built and maintained CI/CD pipelines for automated build, test, and deployment workflows.",
-      "Managed cloud infrastructure, environments, configuration, and deployment processes.",
-      "Worked with Linux servers, troubleshooting application and infrastructure issues.",
-      "Implemented monitoring and logging to track application and infrastructure health."
+      "Powered automated multi-step reporting workflows for an AI workflow platform by designing the 0→1 backend architecture, including scalable Python/FastAPI services, PostgreSQL schemas, and REST APIs on top of LangChain-based RAG pipelines and vector databases.",
+      "Delivered an AI-powered collaborative documentation platform (Confluence-style) by building a Python/FastAPI backend with RAG, pgvector, semantic search, document sharing, and agent-friendly indexing.",
+      "Expanded platform capability for secure AI-agent/internal-tool interaction by building and integrating internal Model Context Protocol (MCP) servers on FastAPI.",
+      "Cut perceived API response time by 30% by redesigning LLM job handling with Redis queues and FastAPI WebSocket status updates.",
+      "Delivered real-time workflow visibility by building the Next.js frontend with WebSocket-based status updates and analytics dashboards, tightly integrated with the FastAPI backend's job state.",
+      "Reduced hot-path query latency by 40% and eliminated connection exhaustion under peak load by resolving production DB bottlenecks with PgBouncer pooling and PostgreSQL partial indexes.",
+      "Enabled secure, reliable payments by integrating the Razorpay payment gateway with webhook signature verification and idempotent transaction processing.",
+      "Achieved zero-downtime deployments by contributing to the on-prem → AWS migration using Docker and Kubernetes/EKS."
     ]
   }
 ];
 
 export const projects: Project[] = [
   {
-    title: "AWS-EKS-GitOps",
-    subtitle: "Cloud Native EKS Landing Zone & GitOps Pipeline",
+    title: "OctaClaw",
+    subtitle: "Multi-Agent Orchestration Platform",
     bullets: [
-      "Designed and provisioned a production-ready Amazon EKS landing zone using Terraform with secure VPC peering, public/private subnets, and IAM Roles for Service Accounts (IRSA).",
-      "Established automatic cert provisioning and TLS termination using Traefik and Cert-Manager, ensuring secure external endpoints.",
-      "Built multi-environment GitOps CD pipelines via GitHub Actions and Helm, supporting rollback mechanics and lint checks.",
-      "Secured cluster networking with WireGuard VPN for private API access and automated secret injection from AWS Secrets Manager."
+      "Enabled parallel execution of complex goals by designing a full-stack multi-agent system that breaks goals into a dependency graph and runs subtasks across specialist agents for research, code generation, review, and testing.",
+      "Extended agent capability to external systems by building tool integrations for filesystem, HTTP, email, databases, and Jira.",
+      "Implemented local-first semantic and episodic memory with vector search and automated reflexion to improve execution reliability over time.",
+      "Engineered durable checkpointing to allow long-running DAG tasks to resume cleanly after interruptions."
     ],
     tech: [
-      "AWS",
-      "EKS",
-      "Terraform",
-      "Helm",
-      "Traefik",
-      "GitHub Actions",
-      "WireGuard"
+      "Node.js",
+      "TypeScript",
+      "Multi-Agent Systems",
+      "LLM Orchestration",
+      "Vector Search",
+      "Tool Integrations"
     ],
     links: [
       { label: "View repo", href: "https://github.com/Sohail-9" }
     ]
   },
   {
-    title: "Cluster-Observability",
-    subtitle: "Production Observability & Auto-Healing Cluster",
+    title: "TraceFox AI",
+    subtitle: "AI-Powered Code Review & Test Platform",
     bullets: [
-      "Built cluster-wide Prometheus, Grafana, and Alertmanager metrics-monitoring stacks across Amazon EKS, Docker Swarm, and edge nodes.",
-      "Decreased incident response times and mean time to detect (MTTD) by 50% through refined Alertmanager routing and PagerDuty integrations.",
-      "Engineered automated self-healing scripts reacting to Prometheus node/pod alerts to resolve scheduling issues and ImagePullBackOff errors.",
-      "Configured Horizontal Pod Autoscalers (HPA) and cluster-autoscaler rules to handle production traffic bursts smoothly."
+      "Designed end-to-end automated PR analysis and test generation with FastAPI microservices, LLM orchestration, structured event buses, and drift/compliance detection.",
+      "Engineered API gateway and dynamic service registry with retries, circuit breakers, and async task state management.",
+      "Built real-time Next.js analytics dashboard streaming live review data, test artifacts, and root-cause analysis (RCA) correlation via WebSockets.",
+      "Deployed multi-cloud infrastructure with Docker and Terraform for secure token/session isolation and end-to-end tracing."
     ],
     tech: [
-      "Kubernetes",
-      "Prometheus",
-      "Grafana",
-      "Alertmanager",
-      "Docker Swarm",
-      "Bash Scripting"
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "Redis",
+      "PostgreSQL",
+      "Docker",
+      "LLMs",
+      "Terraform"
     ],
     links: [
-      { label: "View repo", href: "https://github.com/Sohail-9" }
+      { label: "View repo", href: links.tracefoxRepo }
     ]
   }
 ];

@@ -2,104 +2,134 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { skills } from "@/lib/content";
+import { skills, SkillCategory } from "@/lib/content";
 import { Section } from "./section";
 import { FaAws, FaMicrosoft } from "react-icons/fa";
 import {
-  SiDocker,
-  SiGit,
-  SiGithubactions,
-  SiGrafana,
-  SiKubernetes,
-  SiLinux,
-  SiNginx,
+  SiFastapi,
+  SiTypescript,
+  SiNodedotjs,
   SiPostgresql,
-  SiPrometheus,
-  SiPython,
   SiRedis,
-  SiTerraform,
-  SiCloudflare,
-  SiHelm,
-  SiTraefikproxy,
-  SiWireguard,
+  SiMongodb,
+  SiDocker,
+  SiKubernetes,
+  SiPrometheus,
+  SiGrafana,
+  SiReact,
+  SiNextdotjs,
+  SiOpenai,
+  SiAnthropic,
+  SiLangchain,
+  SiGithubactions,
 } from "react-icons/si";
 import {
   LuWorkflow,
-  LuSettings,
-  LuBell,
-  LuEye,
-  LuLock,
-  LuTerminal,
-  LuShieldCheck,
+  LuBrain,
+  LuBot,
+  LuLayers,
   LuNetwork,
+  LuZap,
+  LuDatabase,
+  LuSearch,
   LuServer,
+  LuBoxes,
+  LuSparkles,
+  LuTerminal,
 } from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {
-  aws: FaAws,
-  azure: FaMicrosoft,
-  cloudflare: SiCloudflare,
-  docker: SiDocker,
-  kubernetes: SiKubernetes,
-  helm: SiHelm,
-  swarm: SiDocker, // Reuse Docker icon for swarm
-  terraform: SiTerraform,
-  githubactions: SiGithubactions,
-  cicd: LuWorkflow,
-  automation: LuSettings,
-  prometheus: SiPrometheus,
-  grafana: SiGrafana,
-  alertmanager: LuBell,
-  cloudwatch: LuEye,
-  traefik: SiTraefikproxy,
-  tls: LuShieldCheck,
-  wireguard: SiWireguard,
-  secrets: LuLock,
-  python: SiPython,
-  bash: LuTerminal,
-  linux: SiLinux,
+  // Backend
+  fastapi: SiFastapi,
+  typescript: SiTypescript,
+  nodejs: SiNodedotjs,
+  restapi: LuNetwork,
+  websockets: LuZap,
+  microservices: LuBoxes,
+
+  // AI & LLM
+  rag: LuBrain,
+  agenticai: LuBot,
+  multiagent: LuWorkflow,
+  llmorchestration: LuLayers,
+  mcp: LuTerminal,
+  langchain: SiLangchain,
+  models: SiOpenai,
+
+  // Databases
   postgres: SiPostgresql,
   redis: SiRedis,
-  git: SiGit,
+  mongodb: SiMongodb,
+  vectorsearch: LuSearch,
+  pgvector: LuDatabase,
+
+  // Cloud & DevOps
+  aws: FaAws,
+  azure: FaMicrosoft,
+  docker: SiDocker,
+  kubernetes: SiKubernetes,
+  cicd: SiGithubactions,
+  prometheus: SiPrometheus,
+  grafana: SiGrafana,
+
+  // Frontend
+  react: SiReact,
+  nextjs: SiNextdotjs,
 };
 
-const categoryConfig = {
-  "Cloud & Containers": {
+const categoryConfig: Record<
+  SkillCategory,
+  {
+    iconColor: string;
+    border: string;
+    glow: string;
+    accent: string;
+    dot: string;
+  }
+> = {
+  Backend: {
     iconColor: "text-sky-400",
     border: "border-sky-500/10 hover:border-sky-400/40",
     glow: "rgba(56,189,248,0.22)",
     accent: "#38bdf8",
     dot: "bg-sky-400",
   },
-  "IaC & CI/CD": {
+  "AI & LLM": {
+    iconColor: "text-violet-400",
+    border: "border-violet-500/10 hover:border-violet-400/40",
+    glow: "rgba(139,92,246,0.22)",
+    accent: "#a78bfa",
+    dot: "bg-violet-400",
+  },
+  Databases: {
     iconColor: "text-emerald-400",
     border: "border-emerald-500/10 hover:border-emerald-400/40",
     glow: "rgba(52,211,153,0.22)",
     accent: "#34d399",
     dot: "bg-emerald-400",
   },
-  "Observability & Security": {
+  "Cloud & DevOps": {
     iconColor: "text-amber-400",
     border: "border-amber-500/10 hover:border-amber-400/40",
     glow: "rgba(251,191,36,0.22)",
     accent: "#fbbf24",
     dot: "bg-amber-400",
   },
-  "Scripting & Data": {
-    iconColor: "text-violet-400",
-    border: "border-violet-500/10 hover:border-violet-400/40",
-    glow: "rgba(139,92,246,0.22)",
-    accent: "#818cf8",
-    dot: "bg-violet-400",
+  Frontend: {
+    iconColor: "text-pink-400",
+    border: "border-pink-500/10 hover:border-pink-400/40",
+    glow: "rgba(244,114,182,0.22)",
+    accent: "#f472b6",
+    dot: "bg-pink-400",
   },
-} as const;
+};
 
-type Category = keyof typeof categoryConfig;
-const categories: Category[] = [
-  "Cloud & Containers",
-  "IaC & CI/CD",
-  "Observability & Security",
-  "Scripting & Data",
+const categories: SkillCategory[] = [
+  "Backend",
+  "AI & LLM",
+  "Databases",
+  "Cloud & DevOps",
+  "Frontend",
 ];
 
 export function Skills() {
@@ -132,7 +162,7 @@ export function Skills() {
             </div>
 
             {/* Skill tiles — Glass-neomorphism style */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3.5 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4">
               {items.map((skill, i) => {
                 const Icon = iconMap[skill.key] ?? LuServer;
                 return (
@@ -142,13 +172,13 @@ export function Skills() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.03, duration: 0.4 }}
-                    whileHover={{ 
-                      y: -4, 
+                    whileHover={{
+                      y: -4,
                       scale: 1.02,
-                      transition: { duration: 0.15 } 
+                      transition: { duration: 0.15 }
                     }}
                     className={`group flex flex-col items-center gap-3 rounded-2xl border ${config.border} p-5 sm:p-5.5 backdrop-blur-md transition-all duration-200 cursor-default`}
-                    style={{ 
+                    style={{
                       background: "rgba(9, 13, 26, 0.35)",
                       boxShadow: `
                         4px 4px 12px rgba(0, 0, 0, 0.45), 
@@ -158,7 +188,7 @@ export function Skills() {
                     }}
                   >
                     {/* Hover glow effect via inline style dynamic change */}
-                    <div 
+                    <div
                       className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                       style={{
                         boxShadow: `0 0 20px ${config.glow}, inset 0 0 8px ${config.glow}`
