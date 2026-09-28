@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiHome } from "react-icons/fi";
 import { LuUser, LuCode, LuBriefcase, LuFolder, LuMail } from "react-icons/lu";
+import { links } from "@/lib/links";
 
 const navLinks = [
   { title: "Home",       icon: FiHome,      href: "#" },
@@ -11,13 +12,11 @@ const navLinks = [
   { title: "Skills",     icon: LuCode,      href: "#skills" },
   { title: "Experience", icon: LuBriefcase, href: "#experience" },
   { title: "Projects",   icon: LuFolder,    href: "#projects" },
-  { title: "Contact",    icon: LuMail,      href: "mailto:s.suhail9849@gmail.com" },
+  { title: "Contact",    icon: LuMail,      href: `mailto:${links.email}` },
 ];
 
 export function FloatingNav() {
   return (
-    /* Outer div handles fixed centering — kept separate from the animated element
-       so Framer Motion's transform doesn't override translate-x-1/2 */
     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100]">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
