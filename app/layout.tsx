@@ -13,13 +13,13 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohailshaik.me"),
-  title: "Sohail Shaik | Backend & AI Software Engineer",
+  title: "Sohail Shaik | Full-Stack AI Engineer",
   description:
-    "Backend Engineer with 4+ years of experience building and scaling production backend systems, Python/FastAPI services, LLM orchestration, RAG pipelines, and multi-agent platforms.",
+    "Full-stack AI engineer with 3+ years building production systems. Specializing in React / Next.js, Node.js, Python, PostgreSQL, LLM orchestration, and RAG pipelines.",
   openGraph: {
-    title: "Sohail Shaik | Backend & AI Software Engineer",
+    title: "Sohail Shaik | Full-Stack AI Engineer",
     description:
-      "Founding & Backend Engineer specializing in Python/FastAPI, multi-agent AI architectures, RAG pipelines, pgvector, and distributed cloud systems.",
+      "Full-stack AI engineer with 3+ years building production systems. Specializing in React / Next.js, Node.js, Python, PostgreSQL, LLM orchestration, and RAG pipelines.",
     type: "website",
     images: [
       {
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sohail Shaik | Backend & AI Software Engineer",
+    title: "Sohail Shaik | Full-Stack AI Engineer",
     description:
-      "Building high-performance Python/FastAPI services, multi-agent orchestration platforms, and AI application generation infrastructure.",
+      "Full-stack AI engineer building AI platforms from scratch, LLM orchestration, RAG pipelines, sandboxed execution, and production distributed systems.",
     images: ["/sohail.jpeg"],
   },
   icons: {
@@ -51,7 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn("dark", geist.variable)}>
-      <body className="bg-slate-950 text-slate-100 antialiased font-sans">
+      <body className="bg-slate-950 text-slate-100 antialiased font-sans selection:bg-sky-500/30 selection:text-sky-200">
         <ScrollProgress />
         <SpotlightCursor />
         <FloatingNav />
