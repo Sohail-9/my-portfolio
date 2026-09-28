@@ -4,9 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { skills, SkillCategory } from "@/lib/content";
 import { Section } from "./section";
-import { FaAws, FaMicrosoft } from "react-icons/fa";
+import { FaAws } from "react-icons/fa";
 import {
-  SiFastapi,
+  SiPython,
   SiTypescript,
   SiNodedotjs,
   SiPostgresql,
@@ -14,67 +14,58 @@ import {
   SiMongodb,
   SiDocker,
   SiKubernetes,
-  SiPrometheus,
-  SiGrafana,
   SiReact,
   SiNextdotjs,
   SiOpenai,
   SiAnthropic,
-  SiLangchain,
+  SiGooglegemini,
   SiGithubactions,
 } from "react-icons/si";
 import {
   LuWorkflow,
   LuBrain,
-  LuBot,
   LuLayers,
   LuNetwork,
   LuZap,
   LuDatabase,
-  LuSearch,
   LuServer,
   LuBoxes,
-  LuSparkles,
   LuTerminal,
 } from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {
+  // AI / LLM
+  rag: LuBrain,
+  multiagent: LuWorkflow,
+  llmorchestration: LuLayers,
+  mcp: LuTerminal,
+  openai: SiOpenai,
+  anthropic: SiAnthropic,
+  gemini: SiGooglegemini,
+
   // Backend
-  fastapi: SiFastapi,
   typescript: SiTypescript,
   nodejs: SiNodedotjs,
+  python: SiPython,
   restapi: LuNetwork,
   websockets: LuZap,
   microservices: LuBoxes,
 
-  // AI & LLM
-  rag: LuBrain,
-  agenticai: LuBot,
-  multiagent: LuWorkflow,
-  llmorchestration: LuLayers,
-  mcp: LuTerminal,
-  langchain: SiLangchain,
-  models: SiOpenai,
+  // Frontend
+  react: SiReact,
+  nextjs: SiNextdotjs,
+
+  // Cloud / DevOps
+  aws: FaAws,
+  docker: SiDocker,
+  kubernetes: SiKubernetes,
+  cicd: SiGithubactions,
 
   // Databases
   postgres: SiPostgresql,
   redis: SiRedis,
   mongodb: SiMongodb,
-  vectorsearch: LuSearch,
   pgvector: LuDatabase,
-
-  // Cloud & DevOps
-  aws: FaAws,
-  azure: FaMicrosoft,
-  docker: SiDocker,
-  kubernetes: SiKubernetes,
-  cicd: SiGithubactions,
-  prometheus: SiPrometheus,
-  grafana: SiGrafana,
-
-  // Frontend
-  react: SiReact,
-  nextjs: SiNextdotjs,
 };
 
 const categoryConfig: Record<
@@ -87,33 +78,19 @@ const categoryConfig: Record<
     dot: string;
   }
 > = {
-  Backend: {
-    iconColor: "text-sky-400",
-    border: "border-sky-500/10 hover:border-sky-400/40",
-    glow: "rgba(56,189,248,0.22)",
-    accent: "#38bdf8",
-    dot: "bg-sky-400",
-  },
-  "AI & LLM": {
+  "AI / LLM": {
     iconColor: "text-violet-400",
     border: "border-violet-500/10 hover:border-violet-400/40",
     glow: "rgba(139,92,246,0.22)",
     accent: "#a78bfa",
     dot: "bg-violet-400",
   },
-  Databases: {
-    iconColor: "text-emerald-400",
-    border: "border-emerald-500/10 hover:border-emerald-400/40",
-    glow: "rgba(52,211,153,0.22)",
-    accent: "#34d399",
-    dot: "bg-emerald-400",
-  },
-  "Cloud & DevOps": {
-    iconColor: "text-amber-400",
-    border: "border-amber-500/10 hover:border-amber-400/40",
-    glow: "rgba(251,191,36,0.22)",
-    accent: "#fbbf24",
-    dot: "bg-amber-400",
+  Backend: {
+    iconColor: "text-sky-400",
+    border: "border-sky-500/10 hover:border-sky-400/40",
+    glow: "rgba(56,189,248,0.22)",
+    accent: "#38bdf8",
+    dot: "bg-sky-400",
   },
   Frontend: {
     iconColor: "text-pink-400",
@@ -122,14 +99,28 @@ const categoryConfig: Record<
     accent: "#f472b6",
     dot: "bg-pink-400",
   },
+  "Cloud / DevOps": {
+    iconColor: "text-amber-400",
+    border: "border-amber-500/10 hover:border-amber-400/40",
+    glow: "rgba(251,191,36,0.22)",
+    accent: "#fbbf24",
+    dot: "bg-amber-400",
+  },
+  Databases: {
+    iconColor: "text-emerald-400",
+    border: "border-emerald-500/10 hover:border-emerald-400/40",
+    glow: "rgba(52,211,153,0.22)",
+    accent: "#34d399",
+    dot: "bg-emerald-400",
+  },
 };
 
 const categories: SkillCategory[] = [
+  "AI / LLM",
   "Backend",
-  "AI & LLM",
-  "Databases",
-  "Cloud & DevOps",
   "Frontend",
+  "Cloud / DevOps",
+  "Databases",
 ];
 
 export function Skills() {
@@ -161,10 +152,11 @@ export function Skills() {
               />
             </div>
 
-            {/* Skill tiles — Glass-neomorphism style */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4">
+            {/* Skill tiles */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3.5 sm:gap-4">
               {items.map((skill, i) => {
                 const Icon = iconMap[skill.key] ?? LuServer;
+
                 return (
                   <motion.div
                     key={skill.key}
@@ -177,7 +169,7 @@ export function Skills() {
                       scale: 1.02,
                       transition: { duration: 0.15 }
                     }}
-                    className={`group flex flex-col items-center gap-3 rounded-2xl border ${config.border} p-5 sm:p-5.5 backdrop-blur-md transition-all duration-200 cursor-default`}
+                    className={`group flex flex-col items-center gap-3 rounded-2xl border ${config.border} p-5 backdrop-blur-md transition-all duration-200 cursor-default relative overflow-hidden`}
                     style={{
                       background: "rgba(9, 13, 26, 0.35)",
                       boxShadow: `
@@ -187,14 +179,6 @@ export function Skills() {
                       `
                     }}
                   >
-                    {/* Hover glow effect via inline style dynamic change */}
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                      style={{
-                        boxShadow: `0 0 20px ${config.glow}, inset 0 0 8px ${config.glow}`
-                      }}
-                    />
-
                     <span
                       className={`text-2xl sm:text-3xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110 relative z-10`}
                     >

@@ -7,33 +7,28 @@ import { experience } from "@/lib/content";
 import { Section } from "./section";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import { Badge } from "@/components/ui/badge";
+import { LuMapPin } from "react-icons/lu";
 
 const entryColors = [
-  {
-    gradient: "from-violet-500 via-purple-500 to-indigo-600",
-    glow: "rgba(139,92,246,0.22)",
-    border: "border-violet-500/20",
-    bulletBg: "bg-violet-400",
-  },
-  {
-    gradient: "from-emerald-500 via-teal-500 to-cyan-600",
-    glow: "rgba(52,211,153,0.22)",
-    border: "border-emerald-500/20",
-    bulletBg: "bg-emerald-400",
-  },
   {
     gradient: "from-sky-500 via-blue-500 to-indigo-600",
     glow: "rgba(56,189,248,0.22)",
     border: "border-sky-500/20",
     bulletBg: "bg-sky-400",
   },
+  {
+    gradient: "from-violet-500 via-purple-500 to-indigo-600",
+    glow: "rgba(139,92,246,0.22)",
+    border: "border-violet-500/20",
+    bulletBg: "bg-violet-400",
+  },
 ];
 
 export function Experience() {
   return (
-    <Section id="experience" title="Experience" className="py-24">
+    <Section id="experience" title="Work Experience" className="py-24">
       <TracingBeam className="mt-10">
-        <div className="max-w-2xl mx-auto space-y-8">
+        <div className="max-w-3xl mx-auto space-y-10">
           {experience.map((entry, index) => {
             const colors = entryColors[index % entryColors.length];
             return (
@@ -44,12 +39,23 @@ export function Experience() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
-                {/* Timeframe pill */}
-                <div
-                  className="inline-flex items-center rounded-full border border-white/8 px-4 py-1 text-xs font-medium text-slate-400 mb-4 backdrop-blur-sm"
-                  style={{ background: "rgba(255,255,255,0.03)" }}
-                >
-                  {entry.timeframe}
+                {/* Timeframe & Location pill */}
+                <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                  <div
+                    className="inline-flex items-center rounded-full border border-white/8 px-4 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm"
+                    style={{ background: "rgba(255,255,255,0.03)" }}
+                  >
+                    {entry.timeframe}
+                  </div>
+                  {entry.location && (
+                    <div
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/8 px-3.5 py-1 text-xs text-slate-400 backdrop-blur-sm"
+                      style={{ background: "rgba(255,255,255,0.02)" }}
+                    >
+                      <LuMapPin className="text-xs text-sky-400" />
+                      <span>{entry.location}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Card */}
@@ -65,15 +71,7 @@ export function Experience() {
                   {/* Gradient top bar */}
                   <div className={`h-[3px] w-full bg-gradient-to-r ${colors.gradient}`} />
 
-                  {/* Hover ambient glow */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(ellipse at 50% -10%, ${colors.glow}, transparent 60%)`,
-                    }}
-                  />
-
-                  <div className="relative z-10 p-6 sm:p-7">
+                  <div className="relative z-10 p-6 sm:p-8">
                     {/* Company header */}
                     <div className="flex items-center gap-4 mb-5">
                       {entry.logo && (
@@ -94,26 +92,26 @@ export function Experience() {
                         </div>
                       )}
                       <div>
-                        <h3 className="text-xl font-bold text-white">{entry.company}</h3>
-                        <p className="text-sm text-slate-400 font-medium">{entry.role}</p>
+                        <h3 className="text-2xl font-bold text-white">{entry.company}</h3>
+                        <p className="text-sm text-sky-400 font-semibold">{entry.role}</p>
                       </div>
                     </div>
 
                     {/* Bullets */}
-                    <ul className="space-y-2.5 text-sm text-slate-300 mb-5">
+                    <ul className="space-y-3 text-sm text-slate-300 mb-6">
                       {entry.bullets.map((bullet, i) => (
                         <li key={i} className="flex gap-3 items-start">
                           <span
                             className={`mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${colors.bulletBg}`}
                           />
-                          <span className="leading-relaxed text-slate-300">{bullet}</span>
+                          <span className="leading-relaxed text-slate-300 font-light">{bullet}</span>
                         </li>
                       ))}
                     </ul>
 
                     {/* Tech pills */}
                     {entry.tech && (
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
                         {entry.tech.map((t) => (
                           <Badge
                             key={t}

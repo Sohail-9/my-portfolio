@@ -9,10 +9,10 @@ export function Projects() {
   return (
     <Section
       id="projects"
-      title="Projects"
-      intro="Traceable systems and AI platforms in production."
+      title="Technical Projects"
+      intro="Autonomous multi-agent orchestration and external tool integrations."
     >
-      <div className="grid gap-6 md:grid-cols-2 mt-8">
+      <div className={`grid gap-6 mt-8 ${projects.length === 1 ? 'max-w-3xl mx-auto' : 'md:grid-cols-2'}`}>
         {projects.map((project, i) => (
           <ProjectCard key={project.title} project={project} index={i} />
         ))}
