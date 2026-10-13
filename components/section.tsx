@@ -24,7 +24,7 @@ export function Section({
   return (
     <motion.section
       id={id}
-      className={`relative py-10 sm:py-16 ${className ?? ""}`.trim()}
+      className={`relative scroll-mt-24 py-10 sm:py-16 ${className ?? ""}`.trim()}
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
