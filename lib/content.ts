@@ -10,7 +10,7 @@ export type ExperienceEntry = {
   tech?: string[];
 };
 
-export type SkillCategory = "AI / LLM" | "Backend" | "Frontend" | "Cloud / DevOps" | "Databases";
+export type SkillCategory = "Data Engineering" | "AI & LLM" | "Databases" | "Cloud & Infrastructure";
 
 export type Skill = {
   key: string;
@@ -26,6 +26,7 @@ export type ProjectLink = {
 export type Project = {
   title: string;
   subtitle: string;
+  pipelineFlow?: string[];
   bullets: string[];
   tech: string[];
   links: ProjectLink[];
@@ -34,114 +35,153 @@ export type Project = {
 
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
-  role: "Full-Stack AI Engineer",
-  subtitle: "Full-stack AI engineer with 3+ years building production systems. Specializing in React / Next.js, Node.js, Python, PostgreSQL, LLM orchestration, and RAG pipelines."
+  role: "Data & AI Engineer",
+  subtitle: "I design high-throughput data pipelines and dimensional warehouses that don't fall over at 3 AM. Deep SQL, idempotent Airflow DAGs, Apache Spark, strict SCD Type 2 modeling, and low-latency pgvector RAG systems."
 };
 
 export const about = {
   heading: "About Me",
   specializations: [
     {
-      title: "AI & Agentic Systems",
-      description: "Multi-agent orchestration, LangChain RAG pipelines, pgvector semantic search, and internal MCP servers."
+      title: "Deterministic Pipelines & Distributed ETL",
+      description: "Pipelines must be idempotent by default. If a DAG fails halfway through 50M records, rerunning it should never create duplicates or orphan staging tables. I orchestrate with Airflow, process with Spark/Databricks, and build self-healing backfills with stored watermarks."
     },
     {
-      title: "Full-Stack Platforms",
-      description: "Production 0→1 web applications with React, Next.js, Python, and Node.js microservices streaming live state via WebSockets."
+      title: "Dimensional Warehousing & Deep SQL",
+      description: "Postgres and Oracle tuning at the execution plan level. I design Star Schemas where fact tables record granular transactional truth and dimensions track history via SCD Type 1/2. No leaky abstractions: PgBouncer pooling, composite partial indexing, and sub-10ms analytic queries."
     },
     {
-      title: "Scale & Infrastructure",
-      description: "Pre-warmed sandboxed execution environments (<100ms), PgBouncer connection pooling, and AWS EKS zero-downtime deployments."
+      title: "Governed RAG & Agent Systems",
+      description: "RAG is only as good as the underlying data layer. I bridge dimensional data stores to LLMs using pgvector semantic search and Model Context Protocol (MCP) servers with strict read-only execution guardrails—so agents query verified numbers, not hallucinations."
     }
   ]
 };
 
 export const skills: Skill[] = [
-  // AI / LLM
-  { key: "rag", label: "RAG", category: "AI / LLM" },
-  { key: "multiagent", label: "Multi-Agent Systems", category: "AI / LLM" },
-  { key: "llmorchestration", label: "LLM Orchestration", category: "AI / LLM" },
-  { key: "mcp", label: "MCP", category: "AI / LLM" },
-  { key: "openai", label: "OpenAI", category: "AI / LLM" },
-  { key: "anthropic", label: "Anthropic", category: "AI / LLM" },
-  { key: "gemini", label: "Gemini", category: "AI / LLM" },
+  // Data Engineering
+  { key: "sql", label: "SQL & PL/SQL", category: "Data Engineering" },
+  { key: "informatica", label: "Informatica IICS/IDMC", category: "Data Engineering" },
+  { key: "airflow", label: "Apache Airflow", category: "Data Engineering" },
+  { key: "spark", label: "Apache Spark", category: "Data Engineering" },
+  { key: "databricks", label: "Databricks", category: "Data Engineering" },
+  { key: "starschema", label: "Star Schema Modeling", category: "Data Engineering" },
+  { key: "scd2", label: "SCD Type 1/2", category: "Data Engineering" },
+  { key: "etl", label: "Incremental ETL / ELT", category: "Data Engineering" },
 
-  // Backend
-  { key: "typescript", label: "TypeScript", category: "Backend" },
-  { key: "nodejs", label: "Node.js", category: "Backend" },
-  { key: "python", label: "Python", category: "Backend" },
-  { key: "restapi", label: "REST APIs", category: "Backend" },
-  { key: "websockets", label: "WebSockets", category: "Backend" },
-  { key: "microservices", label: "Microservices", category: "Backend" },
-
-  // Frontend
-  { key: "react", label: "React", category: "Frontend" },
-  { key: "nextjs", label: "Next.js", category: "Frontend" },
-
-  // Cloud / DevOps
-  { key: "aws", label: "AWS", category: "Cloud / DevOps" },
-  { key: "docker", label: "Docker", category: "Cloud / DevOps" },
-  { key: "kubernetes", label: "Kubernetes", category: "Cloud / DevOps" },
-  { key: "cicd", label: "CI/CD", category: "Cloud / DevOps" },
+  // AI & LLM
+  { key: "rag", label: "RAG Pipelines", category: "AI & LLM" },
+  { key: "llmorchestration", label: "LLM Orchestration", category: "AI & LLM" },
+  { key: "pgvector", label: "pgvector", category: "AI & LLM" },
+  { key: "mcp", label: "Model Context Protocol (MCP)", category: "AI & LLM" },
+  { key: "langchain", label: "LangChain", category: "AI & LLM" },
+  { key: "models", label: "OpenAI / Anthropic", category: "AI & LLM" },
 
   // Databases
+  { key: "oracle", label: "Oracle Database", category: "Databases" },
   { key: "postgres", label: "PostgreSQL", category: "Databases" },
+  { key: "pgbouncer", label: "PgBouncer", category: "Databases" },
   { key: "redis", label: "Redis", category: "Databases" },
   { key: "mongodb", label: "MongoDB", category: "Databases" },
-  { key: "pgvector", label: "pgvector", category: "Databases" }
+
+  // Cloud & Infrastructure
+  { key: "python", label: "Python", category: "Cloud & Infrastructure" },
+  { key: "docker", label: "Docker", category: "Cloud & Infrastructure" },
+  { key: "kubernetes", label: "Kubernetes / EKS", category: "Cloud & Infrastructure" },
+  { key: "aws", label: "AWS", category: "Cloud & Infrastructure" },
+  { key: "cicd", label: "CI/CD Pipelines", category: "Cloud & Infrastructure" },
+  { key: "restapi", label: "REST APIs & WebSockets", category: "Cloud & Infrastructure" }
 ];
 
 export const experience: ExperienceEntry[] = [
   {
     company: "PrettiFlow",
-    role: "Founding Engineer",
+    role: "Founding Data Engineer",
     timeframe: "Jan 2026 – Present",
     location: "Remote — San Francisco, USA",
     logo: "/pretti.png",
-    tech: ["React", "Next.js", "Node.js", "Python", "Redis", "WebSockets", "Docker", "AWS", "CLI"],
+    tech: ["Python", "Airflow", "PostgreSQL", "Redis", "Docker", "AWS", "WebSockets", "CLI"],
     bullets: [
-      "Built a full-stack AI platform that turns natural-language prompts into deployed applications, scaling to 4,000+ beta users and 500+ daily active users.",
-      "Cut full-stack build time from 15 minutes to 8 minutes by redesigning the pipeline from prompt intake, code generation, provisioning, to live deployment.",
-      "Reduced cold-start latency from ~3 seconds to ~100ms by building a pre-warmed sandboxed code execution environment, streaming results to frontend using Redis Pub/Sub and WebSockets.",
-      "Built a cross-platform CLI covering infrastructure provisioning, deployment automation, and AI-assisted development workflows.",
-      "Added safety guardrails directly into the execution layer: input/output sanitization, action-level blocking, and loop detection."
+      "Engineered the distributed execution pipeline converting natural-language requirements into containerized running services, scaling from zero to 4,000+ beta users and 500+ DAU.",
+      "Cut end-to-end pipeline build latency from 15m to 8m (46% improvement) by profiling task bottlenecks, parallelizing topological dependency graphs, and aggressively caching intermediate layers.",
+      "Reduced container cold-start latency from ~3s to ~100ms by architecting pre-warmed pool orchestration and low-latency Redis Pub/Sub event streaming.",
+      "Automated developer infrastructure provisioning workflows and designed a cross-platform CLI for rapid local-to-cloud environment replication.",
+      "Implemented execution-layer data governance and safety guardrails: AST-level query sanitization, action-level blocking, and infinite loop traps to prevent runaway compute."
     ]
   },
   {
     company: "OmniqAI",
-    role: "Software Engineer",
+    role: "Data Engineer – ETL & Data Warehousing",
     timeframe: "Jan 2023 – Dec 2025",
     location: "Bengaluru, India",
     logo: "/Omniqai.png",
-    tech: ["React", "Next.js", "Node.js", "Python", "PostgreSQL", "pgvector", "LangChain", "MCP", "Redis", "WebSockets", "Docker", "Kubernetes", "AWS", "Razorpay"],
+    tech: ["Informatica IICS/IDMC", "SQL & PL/SQL", "Oracle", "PostgreSQL", "pgvector", "LangChain", "MCP", "Redis", "Docker", "AWS"],
     bullets: [
-      "Designed backend from the ground up for an AI workflow platform, building services, PostgreSQL schemas, and REST APIs powering automated multi-step reporting using LangChain-based RAG pipelines.",
-      "Built the Next.js frontend and implemented real-time workflow status using WebSockets, directly tied to backend job state.",
-      "Built a Confluence-style collaborative documentation platform using RAG, pgvector semantic search, and document sharing.",
-      "Built internal MCP servers allowing AI agents to securely call internal tools.",
-      "Reduced perceived API response time by 30% by moving LLM job handling to Redis queues and WebSocket-based status updates.",
-      "Reduced hot-path query latency by 40% and eliminated connection exhaustion under peak load using PgBouncer pooling and PostgreSQL partial indexes.",
-      "Integrated Razorpay with signature-verified webhooks and idempotent transaction processing.",
-      "Helped migrate infrastructure from on-prem to AWS using Docker and Kubernetes / EKS, enabling zero-downtime deployments."
+      "Built and maintained mission-critical Informatica IICS/IDMC mappings and taskflows integrating high-volume transactional streams into enterprise dimensional warehouses.",
+      "Authored complex Oracle PL/SQL stored procedures and source-to-target mappings, managing multi-tier staging, fact, and dimension loads with strict SCD Type 1 & 2 history preservation.",
+      "Engineered automated SQL reconciliation suites comparing source-vs-target row counts, check sums, and unmatched settlement anomalies—eliminating 95% of downstream reporting discrepancies.",
+      "Tuned bottleneck queries across multi-million row tables: eliminated sequential table scans via targeted partial indexing and connection pool starvation using PgBouncer, cutting hot-path latency by 40%.",
+      "Engineered enterprise RAG pipelines over dimensional PostgreSQL schemas, utilizing LangChain and custom prompt-grounding workflows for automated analytical reporting.",
+      "Architected internal Model Context Protocol (MCP) server endpoints allowing autonomous LLMs to safely query operational schemas with parameterized validation."
     ]
   }
 ];
 
 export const projects: Project[] = [
   {
-    title: "OctaClaw",
-    subtitle: "Multi-Agent Orchestration Platform",
+    title: "Banking Transaction Pipeline & Financial RAG",
+    subtitle: "High-Throughput Financial Ingestion, SCD Type 2 Star Schema & Grounded RAG",
+    pipelineFlow: [
+      "Raw Transactions",
+      "Spark Deduplication",
+      "Airflow Batch DAG",
+      "PostgreSQL Star Schema (SCD 2)",
+      "pgvector RAG Layer"
+    ],
     bullets: [
-      "Built a multi-agent system that splits complex goals into a dependency graph and runs subtasks in parallel across specialist agents for research, code generation, review, and testing.",
-      "Built tool integrations for filesystem, HTTP, email, databases, and Jira, allowing agents to act directly on external systems."
+      "Ingested simulated high-concurrency payment feeds and clearinghouse settlement files into isolated staging schemas with schema-on-read validation.",
+      "Enforced deterministic incremental processing via stored watermark tracking and atomic database upserts, guaranteeing crash recovery with zero duplicate insertions.",
+      "Architected a dimensional Star Schema in PostgreSQL with fact_transactions and dim_accounts / dim_merchants, implementing SCD Type 2 history tracking (valid_from, valid_to, is_current) for complete regulatory auditability.",
+      "Built automated SQL reconciliation gates that assert record count parity and financial volume balance between source and warehouse, automatically quarantining mismatched records for investigation.",
+      "Orchestrated self-healing Airflow DAGs with configurable task retry policies, automated backfilling, and failure alert webhooks.",
+      "Mounted a conversational RAG analytics layer over the warehouse using pgvector, enabling natural-language querying of spend anomalies and historical trends with deterministic SQL verification."
     ],
     tech: [
-      "Node.js",
+      "SQL & PL/SQL",
+      "Apache Airflow",
+      "Apache Spark",
+      "PostgreSQL",
+      "Star Schema",
+      "SCD Type 1/2",
+      "Python",
+      "pgvector",
+      "LangChain",
+      "Docker"
+    ],
+    links: [
+      { label: "View GitHub", href: "https://github.com/Sohail-9" }
+    ]
+  },
+  {
+    title: "OctaClaw — Multi-Agent Task Orchestration Engine",
+    subtitle: "Autonomous Goal Decomposition & Fault-Tolerant DAG Execution",
+    pipelineFlow: [
+      "Goal Decomposition",
+      "Topological DAG Graph",
+      "Parallel Agent Workers",
+      "MCP Tool Execution"
+    ],
+    bullets: [
+      "Architected a distributed multi-agent engine that decomposes complex engineering goals into topological dependency graphs (DAGs) and executes subtasks in parallel across specialized agents.",
+      "Implemented transactional state persistence and checkpointing in PostgreSQL, allowing long-running execution graphs to survive process crashes and safely resume from the last known state.",
+      "Engineered sandboxed Model Context Protocol (MCP) integrations for filesystem, HTTP, email, relational databases, and Jira with action-level authorization and dry-run validation."
+    ],
+    tech: [
+      "Python",
       "TypeScript",
       "Multi-Agent Systems",
-      "LLM Orchestration",
-      "MCP",
-      "Tool Integrations"
+      "DAG Orchestration",
+      "PostgreSQL",
+      "MCP Tooling"
     ],
     links: [
       { label: "View GitHub", href: "https://github.com/Sohail-9" }
