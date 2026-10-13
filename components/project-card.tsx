@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { LuArrowUpRight, LuWorkflow, LuBrain } from "react-icons/lu";
 import type { Project } from "@/lib/content";
@@ -105,6 +106,27 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-sky-400 mb-1 block">{project.title}</span>
           <h3 className="text-xl font-bold text-white leading-snug">{project.subtitle}</h3>
         </div>
+
+        {/* Architecture Pipeline Flow */}
+        {project.pipelineFlow && project.pipelineFlow.length > 0 && (
+          <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-2">
+              Architecture Pipeline Flow
+            </span>
+            <div className="flex flex-wrap items-center gap-1.5">
+              {project.pipelineFlow.map((step, idx) => (
+                <React.Fragment key={step}>
+                  <span className="inline-flex items-center rounded-lg bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 text-[11px] font-mono font-medium text-sky-300">
+                    {step}
+                  </span>
+                  {idx < (project.pipelineFlow?.length ?? 0) - 1 && (
+                    <span className="text-slate-500 text-xs px-0.5">→</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Bullets */}
         <ul className="space-y-3 flex-1">
