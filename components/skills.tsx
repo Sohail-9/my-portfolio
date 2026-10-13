@@ -5,67 +5,68 @@ import { motion } from "framer-motion";
 import { skills, SkillCategory } from "@/lib/content";
 import { Section } from "./section";
 import { FaAws } from "react-icons/fa";
+import { TbSql } from "react-icons/tb";
+import { GrOracle } from "react-icons/gr";
 import {
   SiPython,
-  SiTypescript,
-  SiNodedotjs,
   SiPostgresql,
   SiRedis,
   SiMongodb,
   SiDocker,
   SiKubernetes,
-  SiReact,
-  SiNextdotjs,
   SiOpenai,
-  SiAnthropic,
-  SiGooglegemini,
+  SiLangchain,
   SiGithubactions,
+  SiApacheairflow,
+  SiApachespark,
+  SiDatabricks,
+  SiInformatica,
 } from "react-icons/si";
 import {
   LuWorkflow,
   LuBrain,
   LuLayers,
   LuNetwork,
-  LuZap,
   LuDatabase,
   LuServer,
   LuBoxes,
   LuTerminal,
+  LuHistory,
 } from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {
-  // AI / LLM
+  // Data Engineering
+  sql: TbSql,
+  informatica: SiInformatica,
+  airflow: SiApacheairflow,
+  spark: SiApachespark,
+  databricks: SiDatabricks,
+  etl: LuWorkflow,
+  starschema: LuLayers,
+  scd2: LuHistory,
+
+  // AI & LLM
   rag: LuBrain,
-  multiagent: LuWorkflow,
   llmorchestration: LuLayers,
+  pgvector: LuDatabase,
   mcp: LuTerminal,
-  openai: SiOpenai,
-  anthropic: SiAnthropic,
-  gemini: SiGooglegemini,
-
-  // Backend
-  typescript: SiTypescript,
-  nodejs: SiNodedotjs,
-  python: SiPython,
-  restapi: LuNetwork,
-  websockets: LuZap,
-  microservices: LuBoxes,
-
-  // Frontend
-  react: SiReact,
-  nextjs: SiNextdotjs,
-
-  // Cloud / DevOps
-  aws: FaAws,
-  docker: SiDocker,
-  kubernetes: SiKubernetes,
-  cicd: SiGithubactions,
+  langchain: SiLangchain,
+  models: SiOpenai,
 
   // Databases
+  oracle: GrOracle,
   postgres: SiPostgresql,
+  pgbouncer: LuBoxes,
   redis: SiRedis,
   mongodb: SiMongodb,
-  pgvector: LuDatabase,
+
+  // Cloud & Infrastructure
+  python: SiPython,
+  docker: SiDocker,
+  kubernetes: SiKubernetes,
+  aws: FaAws,
+  cicd: SiGithubactions,
+  restapi: LuNetwork,
 };
 
 const categoryConfig: Record<
@@ -78,33 +79,19 @@ const categoryConfig: Record<
     dot: string;
   }
 > = {
-  "AI / LLM": {
-    iconColor: "text-violet-400",
-    border: "border-violet-500/10 hover:border-violet-400/40",
-    glow: "rgba(139,92,246,0.22)",
-    accent: "#a78bfa",
-    dot: "bg-violet-400",
-  },
-  Backend: {
+  "Data Engineering": {
     iconColor: "text-sky-400",
     border: "border-sky-500/10 hover:border-sky-400/40",
     glow: "rgba(56,189,248,0.22)",
     accent: "#38bdf8",
     dot: "bg-sky-400",
   },
-  Frontend: {
-    iconColor: "text-pink-400",
-    border: "border-pink-500/10 hover:border-pink-400/40",
-    glow: "rgba(244,114,182,0.22)",
-    accent: "#f472b6",
-    dot: "bg-pink-400",
-  },
-  "Cloud / DevOps": {
-    iconColor: "text-amber-400",
-    border: "border-amber-500/10 hover:border-amber-400/40",
-    glow: "rgba(251,191,36,0.22)",
-    accent: "#fbbf24",
-    dot: "bg-amber-400",
+  "AI & LLM": {
+    iconColor: "text-violet-400",
+    border: "border-violet-500/10 hover:border-violet-400/40",
+    glow: "rgba(139,92,246,0.22)",
+    accent: "#a78bfa",
+    dot: "bg-violet-400",
   },
   Databases: {
     iconColor: "text-emerald-400",
@@ -113,14 +100,20 @@ const categoryConfig: Record<
     accent: "#34d399",
     dot: "bg-emerald-400",
   },
+  "Cloud & Infrastructure": {
+    iconColor: "text-amber-400",
+    border: "border-amber-500/10 hover:border-amber-400/40",
+    glow: "rgba(251,191,36,0.22)",
+    accent: "#fbbf24",
+    dot: "bg-amber-400",
+  },
 };
 
 const categories: SkillCategory[] = [
-  "AI / LLM",
-  "Backend",
-  "Frontend",
-  "Cloud / DevOps",
+  "Data Engineering",
+  "AI & LLM",
   "Databases",
+  "Cloud & Infrastructure",
 ];
 
 export function Skills() {
@@ -132,66 +125,73 @@ export function Skills() {
 
   return (
     <Section id="skills" title="Technical Skills" className="py-24">
-      <div className="mt-10 space-y-10">
-        {grouped.map(({ category, config, items }) => (
-          <div key={category}>
+      <div className="mt-10 grid gap-6 sm:grid-cols-2">
+        {grouped.map(({ category, config, items }, catIdx) => (
+          <motion.div
+            key={category}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: catIdx * 0.1, duration: 0.5 }}
+            className={`rounded-3xl border ${config.border} p-6 sm:p-7 relative overflow-hidden backdrop-blur-xl transition-all duration-300`}
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+              boxShadow: `0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)`,
+            }}
+          >
+            {/* Ambient corner glow */}
+            <div
+              className="absolute -top-12 -right-12 h-32 w-32 rounded-full opacity-20 pointer-events-none blur-2xl"
+              style={{ background: config.accent }}
+            />
+
             {/* Category header */}
-            <div className="flex items-center gap-3 mb-5">
-              <span className={`h-2 w-2 rounded-full flex-shrink-0 ${config.dot}`} />
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+              <div className="flex items-center gap-3">
+                <span className={`h-2.5 w-2.5 rounded-full flex-shrink-0 ${config.dot}`} />
+                <h3 className="text-base font-bold text-white tracking-wide">
+                  {category}
+                </h3>
+              </div>
               <span
-                className="text-xs font-bold uppercase tracking-[0.3em]"
-                style={{ color: config.accent }}
+                className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-white/5"
+                style={{ color: config.accent, background: `${config.accent}12` }}
               >
-                {category}
+                {items.length} competencies
               </span>
-              <div
-                className="flex-1 h-px"
-                style={{
-                  background: `linear-gradient(90deg, ${config.accent}40, transparent)`,
-                }}
-              />
             </div>
 
-            {/* Skill tiles */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3.5 sm:gap-4">
+            {/* Skill tiles inside category */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {items.map((skill, i) => {
                 const Icon = iconMap[skill.key] ?? LuServer;
 
                 return (
                   <motion.div
                     key={skill.key}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.03, duration: 0.4 }}
                     whileHover={{
-                      y: -4,
+                      y: -3,
                       scale: 1.02,
-                      transition: { duration: 0.15 }
+                      transition: { duration: 0.15 },
                     }}
-                    className={`group flex flex-col items-center gap-3 rounded-2xl border ${config.border} p-5 backdrop-blur-md transition-all duration-200 cursor-default relative overflow-hidden`}
+                    className={`group flex items-center gap-3 rounded-xl border border-white/5 bg-slate-950/40 p-3 backdrop-blur-sm transition-all duration-200 cursor-default hover:border-white/20`}
                     style={{
-                      background: "rgba(9, 13, 26, 0.35)",
-                      boxShadow: `
-                        4px 4px 12px rgba(0, 0, 0, 0.45), 
-                        -3px -3px 10px rgba(255, 255, 255, 0.01), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.06)
-                      `
+                      boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.04)",
                     }}
                   >
                     <span
-                      className={`text-2xl sm:text-3xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110 relative z-10`}
+                      className={`text-xl ${config.iconColor} transition-transform duration-200 group-hover:scale-110 flex-shrink-0`}
                     >
                       <Icon />
                     </span>
-                    <span className="text-xs font-semibold text-slate-400 group-hover:text-slate-200 transition-colors text-center leading-tight relative z-10">
+                    <span className="text-xs font-medium text-slate-300 group-hover:text-white transition-colors leading-tight">
                       {skill.label}
                     </span>
                   </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Section>
