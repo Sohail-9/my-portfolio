@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-5xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Copyright */}
         <p className="text-xs text-slate-500 font-mono">
-          © {new Date().getFullYear()} Sohail Shaik • Full-Stack AI Engineer
+          © {new Date().getFullYear()} Sohail Shaik • Data & AI Engineer
         </p>
 
         {/* Social / Contact icons */}
