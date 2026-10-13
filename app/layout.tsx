@@ -13,17 +13,17 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohailshaik.me"),
-  title: "Sohail Shaik | Full-Stack AI Engineer",
+  title: "Sohail Shaik | Data & AI Engineer",
   description:
-    "Full-stack AI engineer with 3+ years building production systems. Specializing in React / Next.js, Node.js, Python, PostgreSQL, LLM orchestration, and RAG pipelines.",
+    "Data & AI Engineer with 3+ years building production data pipelines, dimensional warehouses (Star Schema / SCD Type 2), Apache Airflow, Spark, and enterprise RAG systems.",
   openGraph: {
-    title: "Sohail Shaik | Full-Stack AI Engineer",
+    title: "Sohail Shaik | Data & AI Engineer",
     description:
-      "Full-stack AI engineer with 3+ years building production systems. Specializing in React / Next.js, Node.js, Python, PostgreSQL, LLM orchestration, and RAG pipelines.",
+      "Data & AI Engineer specializing in SQL, Apache Airflow, Spark, dimensional warehouse modeling (Star Schema / SCD Type 2), and enterprise RAG & LLM pipelines.",
     type: "website",
     images: [
       {
-        url: "/sohail.jpeg",
+        url: "/profile.png",
         width: 1200,
         height: 627,
         alt: "Portrait of Sohail Shaik",
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sohail Shaik | Full-Stack AI Engineer",
+    title: "Sohail Shaik | Data & AI Engineer",
     description:
-      "Full-stack AI engineer building AI platforms from scratch, LLM orchestration, RAG pipelines, sandboxed execution, and production distributed systems.",
-    images: ["/sohail.jpeg"],
+      "Data & AI Engineer building production ETL pipelines, Spark, Airflow, star schema warehouses, and enterprise RAG architectures.",
+    images: ["/profile.png"],
   },
   icons: {
     icon: "/sk-logo.svg",

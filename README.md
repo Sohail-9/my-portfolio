@@ -1,6 +1,6 @@
-# Sohail Shaik – Full-Stack AI Engineer Portfolio
+# Sohail Shaik – Data & AI Engineer Portfolio
 
-Personal portfolio built with Next.js (App Router), Tailwind CSS, TypeScript, and Framer Motion. Features a single-page flow (Hero → About → Skills → Experience → Projects → Footer) with glassmorphism, glowing micro-animations, and structured data in `lib/content.ts`.
+Personal portfolio built with Next.js (App Router), Tailwind CSS, TypeScript, and Framer Motion. Features a single-page flow (Hero → About → Skills → Experience → Projects → Footer) highlighting Data & AI engineering (Airflow, Spark, Star Schema / SCD Type 2, deep SQL, and RAG architectures).
 
 ## Quick Start
 
