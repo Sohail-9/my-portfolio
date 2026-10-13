@@ -10,6 +10,7 @@ import {
   LuFileText 
 } from "react-icons/lu";
 import { links } from "@/lib/links";
+import { hero } from "@/lib/content";
 
 const socials = [
   { label: "Email",       href: `mailto:${links.email}`,     icon: LuMail },
@@ -19,15 +20,15 @@ const socials = [
 ];
 
 const highlights = [
-  { value: "4,000+", label: "Beta Users" },
-  { value: "500+",   label: "Daily Active Users" },
-  { value: "~100ms", label: "Sandbox Cold-Start" },
-  { value: "3+ Yrs", label: "Production Experience" },
+  { value: "Zero-Loss",   label: "Idempotent ETL" },
+  { value: "SCD Type 1/2", label: "Immutable Audit History" },
+  { value: "p99 < 100ms", label: "Real-time Telemetry" },
+  { value: "3+ Yrs",      label: "Production Systems" },
 ];
 
 export function Hero() {
   return (
-    <section className="relative min-h-[80vh] w-full overflow-hidden bg-slate-950 py-20 sm:py-28 flex items-center justify-center">
+    <section className="relative min-h-[80vh] w-full overflow-hidden bg-slate-950 pt-28 pb-20 sm:pt-36 sm:pb-28 flex items-center justify-center">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="aurora-blob aurora-1 opacity-25" />
@@ -42,11 +43,11 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mx-auto mb-6 relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[2px] bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500"
+          className="mx-auto mb-6 relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[2.5px] bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500 shadow-[0_0_35px_rgba(56,189,248,0.25)]"
         >
           <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 relative">
             <Image
-              src="/sohail.jpeg"
+              src="/profile.png"
               alt="Sohail Shaik"
               fill
               priority
@@ -67,7 +68,7 @@ export function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
           </span>
           <span className="text-xs font-semibold text-sky-300 tracking-wide">
-            Founding Engineer @ PrettiFlow
+            Founding Data & AI Engineer
           </span>
         </motion.div>
 
@@ -82,7 +83,7 @@ export function Hero() {
             Sohail Shaik
           </h1>
           <p className="text-base sm:text-lg uppercase tracking-[0.25em] text-sky-400 font-bold">
-            Full-Stack AI Engineer
+            {hero.role}
           </p>
         </motion.div>
 
@@ -93,7 +94,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-light"
         >
-          Full-stack AI engineer with <span className="text-white font-medium">3+ years</span> building production systems. Specializing in React / Next.js, Node.js, Python, PostgreSQL, <span className="text-sky-300 font-medium">LLM orchestration</span>, and RAG pipelines.
+          I design <span className="text-white font-medium">high-throughput data pipelines</span> and dimensional warehouses that don&apos;t fall over at 3 AM. Specializing in <span className="text-sky-300 font-medium">deep SQL, idempotent Airflow DAGs, Spark</span>, Star Schema (SCD Type 1/2), and <span className="text-violet-300 font-medium">low-latency pgvector RAG systems</span>.
         </motion.p>
 
         {/* Social / Contact Icons */}
@@ -117,7 +118,7 @@ export function Hero() {
           ))}
         </motion.div>
 
-        {/* Clean Highlights Strip */}
+        {/* Highlights Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
