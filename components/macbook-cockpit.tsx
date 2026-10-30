@@ -47,11 +47,19 @@ import { links } from "@/lib/links";
 
 type AppMode = "experience" | "projects" | "skills" | "terminal" | "tinyfish" | "about";
 
+const appTabs = [
+  { id: "projects", label: "AI Projects", icon: LuFolderGit2 },
+  { id: "experience", label: "Experience", icon: LuBriefcase },
+  { id: "skills", label: "Tech Stack", icon: LuLayers },
+  { id: "terminal", label: "Live Terminal", icon: LuTerminal },
+  { id: "tinyfish", label: "Web Agent", icon: LuSparkles },
+  { id: "about", label: "Architecture", icon: LuShieldCheck },
+];
+
 export function MacbookCockpit() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1.0);
   const [activeApp, setActiveApp] = useState<AppMode>("projects");
-  const [deviceMode, setDeviceMode] = useState<"macbook" | "studio">("macbook");
   const [urlInput, setUrlInput] = useState("https://www.prettiflow.com/");
   const [agentRunning, setAgentRunning] = useState(false);
   const [agentResult, setAgentResult] = useState<any>(null);
@@ -74,12 +82,13 @@ export function MacbookCockpit() {
       if (typeof window === "undefined") return;
       const vw = window.innerWidth;
 
-      if (vw < 640) {
-        setScale(Math.min((vw - 24) / 800, 0.45));
-      } else if (vw < 880) {
-        setScale(Math.min((vw - 36) / 800, 0.78));
+      if (vw < 768) {
+        // Mobile uses native fluid responsive layout (100% scale, zero downscaling blur!)
+        setScale(1.0);
+      } else if (vw < 860) {
+        setScale(Math.min((vw - 32) / 800, 1.0));
       } else {
-        // 880px and wider: Perfect 1.0 native pixel scale (Zero subpixel blur!)
+        // 860px and wider: Perfect 1.0 native pixel scale (Zero subpixel blur!)
         setScale(1.0);
       }
     }
@@ -191,33 +200,11 @@ export function MacbookCockpit() {
         
         {/* ── Section Header ── */}
         <div className="mb-6 sm:mb-8 flex flex-col items-center text-center max-w-2xl px-4 z-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#e6e6e9] bg-[#f3f3f5] p-1 text-xs font-semibold text-[#0b0b0c] shadow-sm mb-3">
-            <span className="flex items-center gap-1.5 px-3 py-1 font-mono text-[11px] text-[#0b0b0c]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#e6e6e9] bg-[#f3f3f5] px-4 py-1.5 text-xs font-semibold text-[#0b0b0c] shadow-sm mb-3">
+            <span className="flex items-center gap-2 font-mono text-[11px] text-[#0b0b0c]">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              Fullstack AI Workstation
+              MacBook Pro · Production AI Workstation
             </span>
-            <div className="flex items-center rounded-full bg-white p-0.5 border border-[#e6e6e9] shadow-inner text-[11px] font-mono">
-              <button
-                onClick={() => setDeviceMode("macbook")}
-                className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
-                  deviceMode === "macbook"
-                    ? "bg-[#0b0b0c] text-white shadow-sm font-semibold"
-                    : "text-[#6e6e73] hover:text-[#0b0b0c]"
-                }`}
-              >
-                💻 MacBook Pro
-              </button>
-              <button
-                onClick={() => setDeviceMode("studio")}
-                className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
-                  deviceMode === "studio"
-                    ? "bg-[#0b0b0c] text-white shadow-sm font-semibold"
-                    : "text-[#6e6e73] hover:text-[#0b0b0c]"
-                }`}
-              >
-                🖥️ Studio Display
-              </button>
-            </div>
           </div>
 
           <h2 className="text-2xl sm:text-4xl font-medium tracking-[-0.04em] text-[#0b0b0c]">
@@ -240,22 +227,22 @@ export function MacbookCockpit() {
             THE CRISP RETINA WORKSTATION (ELIMINATING TEXT BLUR VIA NATIVE RENDER)
            ────────────────────────────────────────────────────────── */}
         <div
-          className="relative flex flex-col items-center justify-center transition-all duration-300"
+          className="relative flex flex-col items-center justify-center transition-all duration-300 w-full"
           style={{
-            width: 800 * scale,
+            maxWidth: 800 * scale,
             transformOrigin: "top center",
           }}
         >
           <div
-            className="flex flex-col items-center origin-top"
+            className="flex flex-col items-center origin-top w-full"
             style={{
-              width: 800,
+              maxWidth: 800,
               transform: scale === 1.0 ? "none" : `scale(${scale})`,
             }}
           >
             {/* ── PART 1: RETINA SCREEN LID ── */}
             <div
-              className="relative w-[800px] h-[480px] rounded-[24px] p-2 bg-[#09090b] shadow-[0_25px_60px_rgba(0,0,0,0.35)] border border-white/15 z-20"
+              className="relative w-full max-w-[800px] h-[540px] sm:h-[480px] rounded-[20px] sm:rounded-[24px] p-1.5 sm:p-2 bg-[#09090b] shadow-[0_25px_60px_rgba(0,0,0,0.35)] border border-white/15 z-20"
               style={{
                 WebkitFontSmoothing: "antialiased",
                 MozOsxFontSmoothing: "grayscale",
@@ -284,7 +271,7 @@ export function MacbookCockpit() {
                     </div>
 
                     {/* ── Camera Notch ── */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 z-40 h-5 w-28 bg-black rounded-b-xl border-x border-b border-white/20 px-3 flex items-center justify-center gap-2 shadow-md">
+                    <div className="hidden sm:flex absolute top-0 left-1/2 -translate-x-1/2 z-40 h-5 w-28 bg-black rounded-b-xl border-x border-b border-white/20 px-3 items-center justify-center gap-2 shadow-md">
                       <span className="h-2 w-2 rounded-full bg-slate-900 border border-white/30 flex items-center justify-center">
                         <span className="h-1 w-1 rounded-full bg-sky-500" />
                       </span>
@@ -328,14 +315,7 @@ export function MacbookCockpit() {
 
                         {/* Direct App Switcher Tab Bar */}
                         <div className="px-3.5 py-1.5 border-b border-[#f0f0f3] bg-white flex items-center gap-1.5 overflow-x-auto mac-scrollbar">
-                          {[
-                            { id: "projects", label: "AI Projects", icon: LuFolderGit2 },
-                            { id: "experience", label: "Experience", icon: LuBriefcase },
-                            { id: "skills", label: "Tech Stack", icon: LuLayers },
-                            { id: "terminal", label: "Live Terminal", icon: LuTerminal },
-                            { id: "tinyfish", label: "Web Agent", icon: LuSparkles },
-                            { id: "about", label: "Architecture", icon: LuShieldCheck },
-                          ].map((t) => {
+                          {appTabs.map((t) => {
                             const Icon = t.icon;
                             const isActive = activeApp === t.id;
                             return (
@@ -721,14 +701,7 @@ export function MacbookCockpit() {
                       {/* ── macOS Floating Dock ── */}
                       <div className="h-11 flex items-center justify-center">
                         <div className="flex items-center gap-1.5 rounded-2xl border border-black/10 bg-white/95 px-3 py-1 shadow-md">
-                          {[
-                            { id: "projects", label: "AI Projects", icon: LuFolderGit2 },
-                            { id: "experience", label: "Experience", icon: LuBriefcase },
-                            { id: "skills", label: "Skills", icon: LuLayers },
-                            { id: "terminal", label: "Live Terminal", icon: LuTerminal },
-                            { id: "tinyfish", label: "Web Agent", icon: LuSparkles },
-                            { id: "about", label: "Architecture", icon: LuShieldCheck },
-                          ].map((item) => {
+                          {appTabs.map((item) => {
                             const Icon = item.icon;
                             const isActive = activeApp === item.id;
                             return (
@@ -777,141 +750,36 @@ export function MacbookCockpit() {
                 </div>
 
               {/* ──────────────────────────────────────────────────────────
-                  PART 2: HARDWARE CHASSIS
+                  PART 2: AUTHENTIC MACBOOK PRO UNIBODY BASE
                  ────────────────────────────────────────────────────────── */}
-              {deviceMode === "macbook" ? (
-                <div className="flex flex-col items-center z-10 w-full animate-fadeIn">
-                  {/* Precision Hinge Bar */}
-                  <div className="w-[600px] h-[8px] bg-[#141416] rounded-full border-t border-white/10 z-10 -my-[2px]" />
+              <div className="hidden sm:flex flex-col items-center z-10 w-full">
+                {/* Precision Anodized Hinge Seam */}
+                <div className="w-[90%] max-w-[640px] h-[6px] bg-[#101012] rounded-full border-t border-white/10 z-10 -my-[1px]" />
 
-                  {/* MacBook Pro Unibody Base Chassis */}
-                  <div
-                    className="relative w-[800px] h-[175px] rounded-b-[24px] z-0 overflow-hidden"
-                    style={{
-                      background: "linear-gradient(180deg, #28282b 0%, #1c1c1f 50%, #141416 100%)",
-                      boxShadow: "0 25px 50px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.8)",
-                      border: "1px solid rgba(255, 255, 255, 0.08)",
-                    }}
-                  >
-                    {/* Keyboard & Speaker Deck */}
-                    <div className="pt-2 px-6 flex items-start justify-between">
-                      <div className="w-[34px] h-[106px] rounded-md overflow-hidden opacity-80 mt-0.5">
-                        <SpeakerGrille />
-                      </div>
-
-                      <div className="flex-1 mx-3 p-1.5 rounded-lg bg-[#0a0a0c] border border-white/5 shadow-[inset_0_2px_5px_rgba(0,0,0,0.85)]">
-                        <MacKeypad />
-                      </div>
-
-                      <div className="w-[34px] h-[106px] rounded-md overflow-hidden opacity-80 mt-0.5">
-                        <SpeakerGrille />
-                      </div>
-                    </div>
-
-                    {/* Force Touch Trackpad */}
-                    <div className="mt-1 flex justify-center">
-                      <div className="w-[210px] h-[50px] rounded-lg bg-gradient-to-b from-[#242427] to-[#1c1c1f] border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_2px_4px_rgba(0,0,0,0.3)]" />
-                    </div>
-
-                    {/* Front Display Thumb Notch */}
-                    <div className="w-14 h-[3px] rounded-b-md bg-[#101012] border-t border-white/10 mx-auto mt-0.5" />
-                  </div>
+                {/* MacBook Pro Unibody Front-View Aluminum Lip */}
+                <div
+                  className="relative w-full max-w-[820px] h-[15px] rounded-b-[10px] z-0 flex items-start justify-center overflow-hidden"
+                  style={{
+                    background: "linear-gradient(180deg, #2e2e32 0%, #202024 55%, #141417 100%)",
+                    boxShadow: "0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 4px 12px rgba(0, 0, 0, 0.35)",
+                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    borderTop: "none",
+                  }}
+                >
+                  {/* Centered CNC Thumb Opening Scoop */}
+                  <div className="w-20 h-[4px] rounded-b-[4px] bg-[#0c0c0e] border-t border-white/20 shadow-inner" />
                 </div>
-              ) : (
-                <div className="flex flex-col items-center z-10 animate-fadeIn -mt-1">
-                  {/* Studio Display Aluminum Stand Column */}
-                  <div className="w-[130px] h-[50px] bg-gradient-to-b from-[#2c2c30] to-[#1e1e22] border-x border-white/10 shadow-lg" />
-                  {/* Studio Display Aluminum Foot */}
-                  <div className="w-[220px] h-[8px] rounded-full bg-gradient-to-r from-[#202023] via-[#323238] to-[#202023] border border-white/15 shadow-xl" />
+
+                {/* Dual Desk Ambient Contact Shadow */}
+                <div className="relative -mt-1 w-full max-w-[800px] h-[16px] pointer-events-none flex justify-center">
+                  <div className="w-[92%] max-w-[760px] h-[6px] bg-black/40 blur-[4px] rounded-full" />
+                  <div className="absolute top-1 w-[80%] max-w-[620px] h-[12px] bg-black/20 blur-[10px] rounded-full" />
                 </div>
-              )}
+              </div>
 
             </div>
           </div>
         </div>
       </div>
-  );
-}
-
-// ── MAC KEYPAD WITH ACCURATE 14-COL GRID ──
-function MacKeypad() {
-  const row1 = ["esc", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "⏻"];
-  const row2 = ["~", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "⌫"];
-  const row3 = ["tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"];
-  const row4 = ["caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "return"];
-  const row5 = ["shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "shift"];
-
-  return (
-    <div className="w-full space-y-[2px] select-none text-[7px] font-mono text-slate-300">
-      {/* Function Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(14, minmax(0, 1fr))", gap: "2px" }}>
-        {row1.map((k) => (
-          <div key={k} className="h-3 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px] text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            {k}
-          </div>
-        ))}
-      </div>
-
-      {/* Number Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(14, minmax(0, 1fr))", gap: "2px" }}>
-        {row2.map((k) => (
-          <div key={k} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            {k}
-          </div>
-        ))}
-      </div>
-
-      {/* QWERTY Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "1.4fr repeat(12, minmax(0, 1fr)) 1.4fr", gap: "2px" }}>
-        {row3.map((k, i) => (
-          <div key={i} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            {k}
-          </div>
-        ))}
-      </div>
-
-      {/* ASDF Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "1.7fr repeat(11, minmax(0, 1fr)) 1.9fr", gap: "2px" }}>
-        {row4.map((k, i) => (
-          <div key={i} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            {k}
-          </div>
-        ))}
-      </div>
-
-      {/* ZXCV Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "2.2fr repeat(10, minmax(0, 1fr)) 2.4fr", gap: "2px" }}>
-        {row5.map((k, i) => (
-          <div key={i} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            {k}
-          </div>
-        ))}
-      </div>
-
-      {/* Spacebar Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1.1fr 1.3fr 5fr 1.3fr 1.1fr 1.5fr", gap: "2px" }}>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">fn</div>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌃</div>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌥</div>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌘</div>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10" />
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌘</div>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌥</div>
-        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[5px]">◀▲▼▶</div>
-      </div>
-    </div>
-  );
-}
-
-// ── MACHINED SPEAKER GRILLE ──
-function SpeakerGrille() {
-  return (
-    <div
-      className="w-full h-full"
-      style={{
-        backgroundImage: "radial-gradient(#111 20%, transparent 20%)",
-        backgroundSize: "3px 3px",
-      }}
-    />
   );
 }

@@ -5,6 +5,7 @@ import { DataRefineryScene } from "@/components/data-refinery/data-refinery-scen
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { MacbookCockpit } from "@/components/macbook-cockpit";
+import { Footer } from "@/components/footer";
 import { LuCompass } from "react-icons/lu";
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
           <Navbar />
           <Hero />
           <MacbookCockpit />
+          <Footer />
         </div>
       )}
     </main>

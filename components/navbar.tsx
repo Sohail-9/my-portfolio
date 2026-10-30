@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { LuFileText, LuMail, LuMenu, LuX } from "react-icons/lu";
+import { LuFileText, LuMenu, LuX } from "react-icons/lu";
 import { links } from "@/lib/links";
 
 const navLinks = [
@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -58,14 +58,6 @@ export function Navbar() {
           >
             <LuFileText className="text-xs text-sky-400" />
             <span>Resume</span>
-          </a>
-
-          <a
-            href={`mailto:${links.email}`}
-            title="Send Email"
-            className="press flex h-8 w-8 items-center justify-center rounded-full border border-[#e6e6e9] bg-[#f3f3f5] text-[#0b0b0c] transition-all hover:bg-[#0b0b0c] hover:text-white"
-          >
-            <LuMail className="text-xs" />
           </a>
 
           {/* Mobile menu trigger */}
