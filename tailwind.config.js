@@ -41,7 +41,12 @@ module.exports = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))"
-        }
+        },
+        ink: "#0b0b0c",
+        paper: "#ffffff",
+        mute: "#8a8a93",
+        soft: "#141418",
+        line: "#26262b"
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -49,8 +54,10 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)"
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "Inter", "system-ui", "sans-serif"]
+        sans: ["var(--font-geist)", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-geist)", "Space Grotesk", "sans-serif"],
+        serif: ["var(--font-serif)", "Instrument Serif", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "Geist Mono", "monospace"]
       },
       boxShadow: {
         card: "0 30px 60px -35px rgba(15, 23, 42, 0.8)",

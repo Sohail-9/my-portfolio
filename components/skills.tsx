@@ -21,6 +21,11 @@ import {
   SiApachespark,
   SiDatabricks,
   SiInformatica,
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
 } from "react-icons/si";
 import {
   LuWorkflow,
@@ -35,38 +40,36 @@ import {
 } from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {
-  // Data Engineering
-  sql: TbSql,
-  informatica: SiInformatica,
-  airflow: SiApacheairflow,
-  spark: SiApachespark,
-  databricks: SiDatabricks,
-  etl: LuWorkflow,
-  starschema: LuLayers,
-  scd2: LuHistory,
-
   // AI & LLM
   rag: LuBrain,
+  agents: LuBrain,
   llmorchestration: LuLayers,
-  pgvector: LuDatabase,
   mcp: LuTerminal,
-  langchain: SiLangchain,
   models: SiOpenai,
 
-  // Databases
-  oracle: GrOracle,
-  postgres: SiPostgresql,
-  pgbouncer: LuBoxes,
-  redis: SiRedis,
-  mongodb: SiMongodb,
-
-  // Cloud & Infrastructure
+  // Backend
+  typescript: SiTypescript,
+  nodejs: SiNodedotjs,
   python: SiPython,
+  restapi: LuNetwork,
+  websockets: LuNetwork,
+
+  // Frontend
+  react: SiReact,
+  nextjs: SiNextdotjs,
+  tailwind: SiTailwindcss,
+
+  // Cloud & DevOps
+  aws: FaAws,
   docker: SiDocker,
   kubernetes: SiKubernetes,
-  aws: FaAws,
   cicd: SiGithubactions,
-  restapi: LuNetwork,
+
+  // Databases
+  postgres: SiPostgresql,
+  redis: SiRedis,
+  mongodb: SiMongodb,
+  pgvector: LuDatabase,
 };
 
 const categoryConfig: Record<
@@ -79,19 +82,33 @@ const categoryConfig: Record<
     dot: string;
   }
 > = {
-  "Data Engineering": {
-    iconColor: "text-sky-400",
-    border: "border-sky-500/10 hover:border-sky-400/40",
-    glow: "rgba(56,189,248,0.22)",
-    accent: "#38bdf8",
-    dot: "bg-sky-400",
-  },
   "AI & LLM": {
     iconColor: "text-violet-400",
     border: "border-violet-500/10 hover:border-violet-400/40",
     glow: "rgba(139,92,246,0.22)",
     accent: "#a78bfa",
     dot: "bg-violet-400",
+  },
+  Backend: {
+    iconColor: "text-sky-400",
+    border: "border-sky-500/10 hover:border-sky-400/40",
+    glow: "rgba(56,189,248,0.22)",
+    accent: "#38bdf8",
+    dot: "bg-sky-400",
+  },
+  Frontend: {
+    iconColor: "text-cyan-400",
+    border: "border-cyan-500/10 hover:border-cyan-400/40",
+    glow: "rgba(6,182,212,0.22)",
+    accent: "#06b6d4",
+    dot: "bg-cyan-400",
+  },
+  "Cloud & DevOps": {
+    iconColor: "text-amber-400",
+    border: "border-amber-500/10 hover:border-amber-400/40",
+    glow: "rgba(251,191,36,0.22)",
+    accent: "#fbbf24",
+    dot: "bg-amber-400",
   },
   Databases: {
     iconColor: "text-emerald-400",
@@ -100,20 +117,14 @@ const categoryConfig: Record<
     accent: "#34d399",
     dot: "bg-emerald-400",
   },
-  "Cloud & Infrastructure": {
-    iconColor: "text-amber-400",
-    border: "border-amber-500/10 hover:border-amber-400/40",
-    glow: "rgba(251,191,36,0.22)",
-    accent: "#fbbf24",
-    dot: "bg-amber-400",
-  },
 };
 
 const categories: SkillCategory[] = [
-  "Data Engineering",
   "AI & LLM",
+  "Backend",
+  "Frontend",
+  "Cloud & DevOps",
   "Databases",
-  "Cloud & Infrastructure",
 ];
 
 export function Skills() {

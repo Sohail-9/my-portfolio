@@ -3,7 +3,6 @@ import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { SpotlightCursor } from "@/components/spotlight-cursor";
-import { FloatingNav } from "@/components/floating-nav";
 import { ScrollProgress } from "@/components/scroll-progress";
 
 const geist = Geist({
@@ -54,7 +53,6 @@ export default function RootLayout({
       <body className="bg-slate-950 text-slate-100 antialiased font-sans selection:bg-sky-500/30 selection:text-sky-200">
         <ScrollProgress />
         <SpotlightCursor />
-        <FloatingNav />
         {children}
       </body>
     </html>

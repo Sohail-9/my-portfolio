@@ -7,33 +7,38 @@ import {
   LuGithub, 
   LuLinkedin, 
   LuMail, 
-  LuFileText 
+  LuFileText,
+  LuPhone
 } from "react-icons/lu";
 import { links } from "@/lib/links";
 import { hero } from "@/lib/content";
 
 const socials = [
   { label: "Email",       href: `mailto:${links.email}`,     icon: LuMail },
+  { label: "Phone",       href: `tel:${links.phone}`,        icon: LuPhone },
   { label: "GitHub",      href: links.github,                icon: LuGithub },
   { label: "LinkedIn",    href: links.linkedin,              icon: LuLinkedin },
   { label: "CV / Resume", href: links.cvUrl,                 icon: LuFileText },
 ];
 
 const highlights = [
-  { value: "Zero-Loss",   label: "Idempotent ETL" },
-  { value: "SCD Type 1/2", label: "Immutable Audit History" },
-  { value: "p99 < 100ms", label: "Real-time Telemetry" },
-  { value: "3+ Yrs",      label: "Production Systems" },
+  { value: "4,000+ Beta",     label: "PrettiFlow Platform" },
+  { value: "15m → 8m",        label: "Build Optimization" },
+  { value: "~100ms Cold Start", label: "Pre-warmed Sandbox" },
+  { value: "MCP & Multi-Agent", label: "OctaClaw Engine" },
 ];
 
 export function Hero() {
   return (
-    <section className="relative min-h-[80vh] w-full overflow-hidden bg-slate-950 pt-28 pb-20 sm:pt-36 sm:pb-28 flex items-center justify-center">
-      {/* Subtle background gradient */}
+    <section className="relative min-h-[82vh] w-full overflow-hidden bg-white pt-28 pb-20 sm:pt-36 sm:pb-28 flex items-center justify-center">
+      {/* Subtle studio gradient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="aurora-blob aurora-1 opacity-25" />
-        <div className="aurora-blob aurora-2 opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950" />
+        <div 
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px]"
+          style={{
+            background: "radial-gradient(circle at 50% 0%, rgba(243, 243, 245, 0.9) 0%, rgba(255, 255, 255, 0) 70%)"
+          }}
+        />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-4 sm:px-6 text-center">
@@ -43,9 +48,9 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mx-auto mb-6 relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[2.5px] bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500 shadow-[0_0_35px_rgba(56,189,248,0.25)]"
+          className="mx-auto mb-6 relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[2px] bg-gradient-to-tr from-slate-200 via-slate-300 to-slate-400 shadow-md shadow-slate-200"
         >
-          <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 relative">
+          <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
             <Image
               src="/profile.png"
               alt="Sohail Shaik"
@@ -56,19 +61,19 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Live Status Pill */}
+        {/* Refined Live Status Pill */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-1.5 backdrop-blur-md mb-6"
+          className="press inline-flex items-center gap-2.5 rounded-full border border-[#e6e6e9] bg-[#f3f3f5] px-4 py-1.5 backdrop-blur-md mb-6"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-xs font-semibold text-sky-300 tracking-wide">
-            Founding Data & AI Engineer
+          <span className="text-xs font-mono font-medium text-[#0b0b0c] tracking-tight flex items-center gap-1.5">
+            Founding Engineer at PrettiFlow · 4,000+ Beta Users
           </span>
         </motion.div>
 
@@ -79,11 +84,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="space-y-3"
         >
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.055em] text-[#0b0b0c]">
             Sohail Shaik
           </h1>
-          <p className="text-base sm:text-lg uppercase tracking-[0.25em] text-sky-400 font-bold">
-            {hero.role}
+          <p className="text-base sm:text-xl text-[#6e6e73] font-light">
+            Full-Stack AI Engineer <span className="text-[#e6e6e9] font-normal">·</span> <span className="font-serif italic text-[#0b0b0c]">React/Next.js, Node.js, Python &amp; LLM Orchestration</span>
           </p>
         </motion.div>
 
@@ -92,9 +97,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-light"
+          className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-[#6e6e73] leading-relaxed font-light text-pretty"
         >
-          I design <span className="text-white font-medium">high-throughput data pipelines</span> and dimensional warehouses that don&apos;t fall over at 3 AM. Specializing in <span className="text-sky-300 font-medium">deep SQL, idempotent Airflow DAGs, Spark</span>, Star Schema (SCD Type 1/2), and <span className="text-violet-300 font-medium">low-latency pgvector RAG systems</span>.
+          Full-stack AI engineer with <span className="text-[#0b0b0c] font-medium">3+ years</span> building production systems across <span className="text-[#0b0b0c] font-medium">React/Next.js, Node.js, Python, and PostgreSQL</span>, with a focus on <span className="text-[#0b0b0c] font-medium">LLM orchestration and RAG pipelines</span>. As a founding engineer, built an AI platform from scratch (sandboxed code execution &amp; deployment infrastructure) that scaled to 4,000+ beta users and 500+ daily active users.
         </motion.p>
 
         {/* Social / Contact Icons */}
@@ -111,7 +116,7 @@ export function Hero() {
               title={s.label}
               target={s.href.startsWith("mailto:") ? undefined : "_blank"}
               rel={s.href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
-              className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 text-xl transition-all hover:text-sky-400 hover:border-sky-500/40 hover:bg-sky-500/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:scale-105"
+              className="press flex h-11 w-11 items-center justify-center rounded-2xl border border-[#e6e6e9] bg-[#f8f8fa] text-[#0b0b0c] text-lg transition-all hover:bg-[#0b0b0c] hover:text-white hover:border-[#0b0b0c] shadow-sm"
             >
               <s.icon />
             </a>
@@ -123,14 +128,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-14 pt-8 border-t border-white/5 grid grid-cols-2 sm:grid-cols-4 gap-4"
+          className="mt-14 pt-8 border-t border-[#e6e6e9] grid grid-cols-2 sm:grid-cols-4 gap-4"
         >
           {highlights.map((h) => (
             <div key={h.label} className="text-center">
-              <p className="text-xl sm:text-2xl font-black font-mono text-white">
+              <p className="text-xl sm:text-2xl font-bold font-mono text-[#0b0b0c]">
                 {h.value}
               </p>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-[#6e6e73] mt-0.5">
                 {h.label}
               </p>
             </div>

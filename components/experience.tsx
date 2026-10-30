@@ -7,30 +7,39 @@ import { experience } from "@/lib/content";
 import { Section } from "./section";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import { Badge } from "@/components/ui/badge";
-import { LuMapPin } from "react-icons/lu";
+import { LuMapPin, LuCalendar } from "react-icons/lu";
 
 const entryColors = [
   {
     gradient: "from-sky-500 via-blue-500 to-indigo-600",
     glow: "rgba(56,189,248,0.22)",
-    border: "border-sky-500/20",
+    border: "border-sky-500/25",
     bulletBg: "bg-sky-400",
+    titleColor: "text-sky-300",
   },
   {
     gradient: "from-violet-500 via-purple-500 to-indigo-600",
     glow: "rgba(139,92,246,0.22)",
-    border: "border-violet-500/20",
+    border: "border-violet-500/25",
     bulletBg: "bg-violet-400",
+    titleColor: "text-violet-300",
   },
 ];
 
 export function Experience() {
   return (
-    <Section id="experience" title="Work Experience" className="py-24">
+    <Section
+      id="experience"
+      title="Engineering Experience"
+      eyebrow="Track Record"
+      intro="Production impact across high-throughput distributed pipelines, enterprise financial data warehousing, and governed AI infrastructure."
+      className="py-24"
+    >
       <TracingBeam className="mt-10">
-        <div className="max-w-3xl mx-auto space-y-10">
+        <div className="max-w-3xl mx-auto space-y-12">
           {experience.map((entry, index) => {
             const colors = entryColors[index % entryColors.length];
+
             return (
               <motion.div
                 key={`${entry.company}-${entry.role}`}
@@ -42,17 +51,18 @@ export function Experience() {
                 {/* Timeframe & Location pill */}
                 <div className="flex flex-wrap items-center gap-2.5 mb-4">
                   <div
-                    className="inline-flex items-center rounded-full border border-white/8 px-4 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm"
-                    style={{ background: "rgba(255,255,255,0.03)" }}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3.5 py-1 text-xs font-semibold text-slate-200 backdrop-blur-sm"
+                    style={{ background: "rgba(255,255,255,0.04)" }}
                   >
-                    {entry.timeframe}
+                    <LuCalendar className="text-xs text-sky-400" />
+                    <span>{entry.timeframe}</span>
                   </div>
                   {entry.location && (
                     <div
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/8 px-3.5 py-1 text-xs text-slate-400 backdrop-blur-sm"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3.5 py-1 text-xs text-slate-400 backdrop-blur-sm"
                       style={{ background: "rgba(255,255,255,0.02)" }}
                     >
-                      <LuMapPin className="text-xs text-sky-400" />
+                      <LuMapPin className="text-xs text-emerald-400" />
                       <span>{entry.location}</span>
                     </div>
                   )}
@@ -60,12 +70,12 @@ export function Experience() {
 
                 {/* Card */}
                 <div
-                  className={`relative overflow-hidden rounded-3xl border ${colors.border} group transition-all duration-300 hover:border-opacity-40`}
+                  className={`relative overflow-hidden rounded-3xl border ${colors.border} group transition-all duration-300 hover:border-opacity-60`}
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
                     backdropFilter: "blur(20px)",
-                    boxShadow: `0 12px 60px rgba(0,0,0,0.42), 0 0 40px ${colors.glow}22, inset 0 1px 0 rgba(255,255,255,0.08)`,
+                    boxShadow: `0 12px 60px rgba(0,0,0,0.42), 0 0 40px ${colors.glow}18, inset 0 1px 0 rgba(255,255,255,0.08)`,
                   }}
                 >
                   {/* Gradient top bar */}
@@ -73,50 +83,63 @@ export function Experience() {
 
                   <div className="relative z-10 p-6 sm:p-8">
                     {/* Company header */}
-                    <div className="flex items-center gap-4 mb-5">
+                    <div className="flex items-center gap-4 mb-6">
                       {entry.logo && (
                         <div
-                          className="h-12 w-12 flex-shrink-0 rounded-2xl p-1.5 border border-white/10"
+                          className="h-12 w-12 flex-shrink-0 rounded-2xl p-1.5 border border-white/10 flex items-center justify-center bg-slate-900/80 shadow-md"
                           style={{
-                            background: "rgba(255,255,255,0.06)",
                             backdropFilter: "blur(10px)",
                           }}
                         >
                           <Image
                             src={entry.logo}
                             alt={entry.company}
-                            width={44}
-                            height={44}
+                            width={42}
+                            height={42}
                             className="h-full w-full object-contain"
                           />
                         </div>
                       )}
                       <div>
-                        <h3 className="text-2xl font-bold text-white">{entry.company}</h3>
-                        <p className="text-sm text-sky-400 font-semibold">{entry.role}</p>
+                        <h3 className="text-2xl font-bold text-white tracking-tight">{entry.company}</h3>
+                        <p className={`text-sm font-semibold ${colors.titleColor}`}>{entry.role}</p>
                       </div>
                     </div>
 
-                    {/* Bullets */}
-                    <ul className="space-y-3 text-sm text-slate-300 mb-6">
-                      {entry.bullets.map((bullet, i) => (
-                        <li key={i} className="flex gap-3 items-start">
-                          <span
-                            className={`mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${colors.bulletBg}`}
-                          />
-                          <span className="leading-relaxed text-slate-300 font-light">{bullet}</span>
-                        </li>
-                      ))}
+                    {/* Structured bullets with distinct engineering domain headings */}
+                    <ul className="space-y-3.5 text-sm text-slate-300 mb-6">
+                      {entry.bullets.map((bullet, i) => {
+                        const colonIdx = bullet.indexOf(":");
+                        const hasCategory = colonIdx !== -1 && colonIdx < 35;
+                        const label = hasCategory ? bullet.slice(0, colonIdx) : null;
+                        const content = hasCategory ? bullet.slice(colonIdx + 1).trim() : bullet;
+
+                        return (
+                          <li key={i} className="flex gap-3 items-start">
+                            <span
+                              className={`mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${colors.bulletBg}`}
+                            />
+                            <div className="leading-relaxed text-slate-300 font-light">
+                              {label && (
+                                <span className="font-semibold text-white mr-1.5">
+                                  {label}:
+                                </span>
+                              )}
+                              <span>{content}</span>
+                            </div>
+                          </li>
+                        );
+                      })}
                     </ul>
 
-                    {/* Tech pills */}
+                    {/* Tech stack pills */}
                     {entry.tech && (
-                      <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
                         {entry.tech.map((t) => (
                           <Badge
                             key={t}
                             variant="secondary"
-                            className="rounded-full border border-white/8 bg-white/5 text-slate-400 text-[10px] uppercase tracking-wider hover:border-white/15 hover:text-slate-200 transition-colors"
+                            className="rounded-lg border border-white/10 bg-slate-900/60 text-slate-300 text-[11px] font-mono hover:border-sky-500/30 hover:text-white transition-colors"
                           >
                             {t}
                           </Badge>

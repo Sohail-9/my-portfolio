@@ -1,19 +1,86 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  background-color: #020617;
+  color-scheme: light;
+  background-color: #ffffff;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "Geist Mono", monospace;
+  --font-geist: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  --spring: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #020617;
-  color: #e2e8f0;
+  font-family: var(--font-geist), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #ffffff;
+  color: #0b0b0c;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Prettiflow tactile button physics ── */
+.press {
+  transition: transform 0.16s var(--spring), opacity 0.16s ease;
+}
+.press:hover {
+  transform: scale(1.02);
+}
+.press:active {
+  transition-duration: 80ms;
+  transform: scale(0.965);
+}
+
+/* ── Prettiflow Specular Glass Surfaces ── */
+.xp-glass-dark {
+  background: linear-gradient(135deg, rgba(26, 26, 32, 0.8) 0%, rgba(12, 12, 16, 0.9) 100%);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+.xp-glass-pink {
+  background: linear-gradient(135deg, rgba(255, 92, 176, 0.82), rgba(224, 51, 140, 0.78));
+  backdrop-filter: blur(22px) saturate(1.5);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 8px 24px rgba(224, 51, 140, 0.25);
+}
+
+/* ── 3D MacBook Pro Elements (Prettiflow 3D Engine) ── */
+.xp-stage {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.xp-laptop {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.xp-base-3d {
+  transform-style: preserve-3d;
+}
+
+.xp-lid-3d {
+  transform-style: preserve-3d;
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+.mac-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.mac-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mac-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: 9999px;
+}
+.mac-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
 }
 
 /* ── Aurora animated blobs ── */
@@ -83,17 +150,20 @@ body {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #38bdf8, #818cf8);
-  border-radius: 4px;
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
 }
 
 /* Focus ring */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #38bdf8;
+  outline: 2px solid #0b0b0c;
   outline-offset: 3px;
   border-radius: 999px;
 }
