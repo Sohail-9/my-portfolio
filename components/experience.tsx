@@ -32,7 +32,7 @@ export function Experience() {
       id="experience"
       title="Engineering Experience"
       eyebrow="Track Record"
-      intro="Production impact across high-throughput distributed pipelines, enterprise financial data warehousing, and governed AI infrastructure."
+      intro="Production impact across full-stack AI platforms, sandboxed execution environments, multi-agent systems, and enterprise RAG pipelines."
       className="py-24"
     >
       <TracingBeam className="mt-10">

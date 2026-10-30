@@ -12,13 +12,13 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohailshaik.me"),
-  title: "Sohail Shaik | Data & AI Engineer",
+  title: "Sohail Shaik | Full-Stack AI Engineer",
   description:
-    "Data & AI Engineer with 3+ years building production data pipelines, dimensional warehouses (Star Schema / SCD Type 2), Apache Airflow, Spark, and enterprise RAG systems.",
+    "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. Founding engineer at PrettiFlow (4,000+ beta users).",
   openGraph: {
-    title: "Sohail Shaik | Data & AI Engineer",
+    title: "Sohail Shaik | Full-Stack AI Engineer",
     description:
-      "Data & AI Engineer specializing in SQL, Apache Airflow, Spark, dimensional warehouse modeling (Star Schema / SCD Type 2), and enterprise RAG & LLM pipelines.",
+      "Full-stack AI engineer building production systems across React/Next.js, Node.js, Python, and PostgreSQL, focusing on LLM orchestration, Multi-Agent DAGs, and RAG pipelines.",
     type: "website",
     images: [
       {
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sohail Shaik | Data & AI Engineer",
+    title: "Sohail Shaik | Full-Stack AI Engineer",
     description:
-      "Data & AI Engineer building production ETL pipelines, Spark, Airflow, star schema warehouses, and enterprise RAG architectures.",
+      "Full-stack AI engineer building production AI applications, multi-agent systems, Next.js 15, and pgvector RAG pipelines.",
     images: ["/profile.png"],
   },
   icons: {

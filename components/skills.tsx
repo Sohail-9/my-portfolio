@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 import { skills, SkillCategory } from "@/lib/content";
 import { Section } from "./section";
 import { FaAws } from "react-icons/fa";
-import { TbSql } from "react-icons/tb";
-import { GrOracle } from "react-icons/gr";
 import {
   SiPython,
   SiPostgresql,
@@ -15,12 +13,7 @@ import {
   SiDocker,
   SiKubernetes,
   SiOpenai,
-  SiLangchain,
   SiGithubactions,
-  SiApacheairflow,
-  SiApachespark,
-  SiDatabricks,
-  SiInformatica,
   SiNextdotjs,
   SiReact,
   SiTypescript,
@@ -28,15 +21,12 @@ import {
   SiNodedotjs,
 } from "react-icons/si";
 import {
-  LuWorkflow,
   LuBrain,
   LuLayers,
   LuNetwork,
   LuDatabase,
-  LuServer,
-  LuBoxes,
   LuTerminal,
-  LuHistory,
+  LuServer,
 } from "react-icons/lu";
 
 const iconMap: Record<string, React.ElementType> = {

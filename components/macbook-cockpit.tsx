@@ -51,7 +51,7 @@ export function MacbookCockpit() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1.0);
   const [activeApp, setActiveApp] = useState<AppMode>("projects");
-  const [manualOpen, setManualOpen] = useState(true);
+  const [deviceMode, setDeviceMode] = useState<"macbook" | "studio">("macbook");
   const [urlInput, setUrlInput] = useState("https://www.prettiflow.com/");
   const [agentRunning, setAgentRunning] = useState(false);
   const [agentResult, setAgentResult] = useState<any>(null);
@@ -75,9 +75,9 @@ export function MacbookCockpit() {
       const vw = window.innerWidth;
 
       if (vw < 640) {
-        setScale(Math.min((vw - 24) / 780, 0.45));
+        setScale(Math.min((vw - 24) / 800, 0.45));
       } else if (vw < 880) {
-        setScale(Math.min((vw - 36) / 780, 0.78));
+        setScale(Math.min((vw - 36) / 800, 0.78));
       } else {
         // 880px and wider: Perfect 1.0 native pixel scale (Zero subpixel blur!)
         setScale(1.0);
@@ -91,7 +91,6 @@ export function MacbookCockpit() {
       const hash = window.location.hash.replace("#", "").toLowerCase();
       if (["experience", "projects", "skills", "terminal", "tinyfish", "about"].includes(hash)) {
         setActiveApp(hash as AppMode);
-        setManualOpen(true);
       }
     }
     if (window.location.hash) handleHashChange();
@@ -102,29 +101,6 @@ export function MacbookCockpit() {
       window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
-
-  // Pinned scroll section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
-  const headingY = useTransform(scrollYProgress, [0, 0.12], [0, -35]);
-
-  // Lid angle calculation
-  const rawLid = useTransform(scrollYProgress, [0.06, 0.32], [-75, 0]);
-  const smoothLid = useSpring(rawLid, { stiffness: 90, damping: 20 });
-
-  const [scrollLidAngle, setScrollLidAngle] = useState(0);
-  useEffect(() => {
-    const unsub = smoothLid.on("change", (v) => setScrollLidAngle(v));
-    return () => unsub();
-  }, [smoothLid]);
-
-  const lidAngle = manualOpen ? 0 : scrollLidAngle;
-  // Screen is considered open when angle is near 0 or manualOpen is true
-  const isOpen = manualOpen || lidAngle > -4;
 
   // Web Agent live scan
   const runTinyFishScan = async () => {
@@ -205,120 +181,88 @@ export function MacbookCockpit() {
     setTerminalInput("");
   };
 
-  const skillCategories = ["All", "Fullstack & Frontend", "AI & Agents", "Data Engineering", "Databases & Cloud"];
+  const skillCategories = ["All", "AI & LLM", "Backend", "Frontend", "Cloud & DevOps", "Databases"];
   const filteredSkills =
     activeSkillCategory === "All" ? skills : skills.filter((s) => s.category === activeSkillCategory);
 
   return (
-    <div id="workspace" className="relative w-full bg-white text-[#0b0b0c]">
-      {/* ── STICKY MACBOOK STAGE ── */}
-      <div ref={containerRef} className="relative w-full h-[220vh]">
-        <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-white px-4">
-          
-          {/* ── Section Intro: Fades on scroll so it never touches the laptop ── */}
-          <motion.div
-            style={{
-              opacity: manualOpen ? 1 : headingOpacity,
-              y: manualOpen ? 0 : headingY,
-              pointerEvents: "auto",
-            }}
-            className="mb-3 sm:mb-5 flex flex-col items-center text-center max-w-2xl px-4 transition-opacity duration-200 z-10"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#e6e6e9] bg-[#f3f3f5] px-4 py-1 text-xs font-semibold text-[#0b0b0c] shadow-sm mb-2">
+    <div id="workspace" className="relative w-full bg-white text-[#0b0b0c] py-14 sm:py-20">
+      <div className="relative mx-auto w-full max-w-5xl px-4 flex flex-col items-center justify-center">
+        
+        {/* ── Section Header ── */}
+        <div className="mb-6 sm:mb-8 flex flex-col items-center text-center max-w-2xl px-4 z-10">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#e6e6e9] bg-[#f3f3f5] p-1 text-xs font-semibold text-[#0b0b0c] shadow-sm mb-3">
+            <span className="flex items-center gap-1.5 px-3 py-1 font-mono text-[11px] text-[#0b0b0c]">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-mono text-[11px] text-[#0b0b0c]">Fullstack AI Workstation</span>
-              <span className="text-[#6e6e73]">·</span>
+              Fullstack AI Workstation
+            </span>
+            <div className="flex items-center rounded-full bg-white p-0.5 border border-[#e6e6e9] shadow-inner text-[11px] font-mono">
               <button
-                onClick={() => setManualOpen(!manualOpen)}
-                className="text-sky-600 hover:text-sky-700 underline underline-offset-2 transition-colors cursor-pointer font-medium"
+                onClick={() => setDeviceMode("macbook")}
+                className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
+                  deviceMode === "macbook"
+                    ? "bg-[#0b0b0c] text-white shadow-sm font-semibold"
+                    : "text-[#6e6e73] hover:text-[#0b0b0c]"
+                }`}
               >
-                {manualOpen ? "Test 3D Fold Angle" : "Snap Display Upright"}
+                💻 MacBook Pro
+              </button>
+              <button
+                onClick={() => setDeviceMode("studio")}
+                className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
+                  deviceMode === "studio"
+                    ? "bg-[#0b0b0c] text-white shadow-sm font-semibold"
+                    : "text-[#6e6e73] hover:text-[#0b0b0c]"
+                }`}
+              >
+                🖥️ Studio Display
               </button>
             </div>
+          </div>
 
-            <h2 className="text-2xl sm:text-4xl font-medium tracking-[-0.04em] text-[#0b0b0c]">
-              Interactive Fullstack <span className="font-serif italic font-normal text-[#0b0b0c]">Workstation</span>
-            </h2>
-            <p className="mt-0.5 text-xs text-[#6e6e73]">
-              Experience, production projects, live terminal, and AI agent scanner inside the native Retina display.
-            </p>
-          </motion.div>
+          <h2 className="text-2xl sm:text-4xl font-medium tracking-[-0.04em] text-[#0b0b0c]">
+            Interactive Fullstack <span className="font-serif italic font-normal text-[#0b0b0c]">Workstation</span>
+          </h2>
+          <p className="mt-1 text-xs sm:text-sm text-[#6e6e73]">
+            Experience, production projects, live terminal, and AI agent scanner inside the native Retina display.
+          </p>
+        </div>
 
-          {/* Studio floor ambient glow */}
+        {/* Studio floor ambient glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse 75% 65% at 50% 50%, rgba(243, 243, 246, 0.85) 0%, rgba(255, 255, 255, 0) 80%)",
+          }}
+        />
+
+        {/* ──────────────────────────────────────────────────────────
+            THE CRISP RETINA WORKSTATION (ELIMINATING TEXT BLUR VIA NATIVE RENDER)
+           ────────────────────────────────────────────────────────── */}
+        <div
+          className="relative flex flex-col items-center justify-center transition-all duration-300"
+          style={{
+            width: 800 * scale,
+            transformOrigin: "top center",
+          }}
+        >
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="flex flex-col items-center origin-top"
             style={{
-              background: "radial-gradient(ellipse 75% 65% at 50% 50%, rgba(243, 243, 246, 0.85) 0%, rgba(255, 255, 255, 0) 80%)",
-            }}
-          />
-
-          {/* ──────────────────────────────────────────────────────────
-              THE CRISP MACBOOK PRO (ELIMINATING TEXT BLUR VIA NATIVE RENDER)
-             ────────────────────────────────────────────────────────── */}
-          <div
-            className="relative flex flex-col items-center justify-center"
-            style={{
-              width: 780 * scale,
-              height: 700 * scale,
-              perspective: isOpen ? "none" : 1200,
+              width: 800,
+              transform: scale === 1.0 ? "none" : `scale(${scale})`,
             }}
           >
+            {/* ── PART 1: RETINA SCREEN LID ── */}
             <div
-              className="flex flex-col items-center origin-center"
+              className="relative w-[800px] h-[480px] rounded-[24px] p-2 bg-[#09090b] shadow-[0_25px_60px_rgba(0,0,0,0.35)] border border-white/15 z-20"
               style={{
-                width: 780,
-                transform: scale === 1.0 ? "none" : `scale(${scale})`,
-                transformStyle: isOpen ? "flat" : "preserve-3d",
+                WebkitFontSmoothing: "antialiased",
+                MozOsxFontSmoothing: "grayscale",
+                textRendering: "optimizeLegibility",
               }}
             >
-              
-              {/* ──────────────────────────────────────────────────────────
-                  PART 1: RETINA SCREEN LID
-                  When open, transform is "none" so browser renders
-                  100% razor-sharp native vector text without 3D blur!
-                 ────────────────────────────────────────────────────────── */}
-              <div
-                className="relative w-[780px] h-[460px] transition-transform duration-100 ease-out z-20"
-                style={{
-                  transformOrigin: "bottom center",
-                  transform: isOpen ? "none" : `rotateX(${lidAngle}deg)`,
-                  transformStyle: isOpen ? "flat" : "preserve-3d",
-                }}
-              >
-                {/* ── BACK OF LID (Only visible when partially closed) ── */}
-                {!isOpen && (
-                  <div
-                    className="absolute inset-0 rounded-[24px] p-2 flex items-center justify-center [backface-visibility:hidden]"
-                    style={{
-                      transform: "rotateY(180deg)",
-                      background: "radial-gradient(130% 95% at 50% 0, #3a3a3e 0%, #262629 50%, #171719 100%)",
-                      boxShadow: "inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.5)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                    }}
-                  >
-                    <svg
-                      className="w-20 h-20 text-slate-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] opacity-95"
-                      viewBox="0 0 170 170"
-                      fill="currentColor"
-                      aria-label="Apple logo"
-                    >
-                      <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.94-12.04-14.58-6.19-9.5-11.08-20.08-14.67-31.75-3.59-11.67-5.39-22.9-5.39-33.7 0-14.07 3.55-25.75 10.65-35.03 7.1-9.28 16.27-13.98 27.52-14.09 5.23 0 10.86 1.34 16.89 4.02 6.03 2.68 10.02 4.07 11.96 4.19 1.74-.12 5.92-1.61 12.54-4.47 6.62-2.86 12.55-4.16 17.79-3.9 13.06.74 23.36 5.56 30.9 14.47-11.39 6.89-16.96 16.38-16.71 28.47.25 9.4 3.84 17.29 10.77 23.67 6.93 6.38 15.17 10.01 24.72 10.89-2.28 7.02-5.14 14.15-8.57 21.39M119.22 31.85c0-7.39 2.64-14.28 7.92-20.67 5.28-6.39 11.87-10.42 19.77-12.09.73 2.58 1.1 5.09 1.1 7.53 0 7.27-2.73 14.25-8.19 20.94-5.46 6.69-12.07 10.74-19.82 12.16-.24-2.58-.78-5.2-1.62-7.87z" />
-                    </svg>
-                  </div>
-                )}
-
-                {/* ── FRONT OF LID (Retina Display Frame) ── */}
-                <div
-                  className={`absolute inset-0 rounded-[24px] p-2 bg-[#09090b] shadow-[0_20px_50px_rgba(0,0,0,0.35)] border border-white/15 ${
-                    isOpen ? "" : "[backface-visibility:hidden]"
-                  }`}
-                  style={{
-                    WebkitFontSmoothing: "antialiased",
-                    MozOsxFontSmoothing: "grayscale",
-                    textRendering: "optimizeLegibility",
-                  }}
-                >
-                  <div className="relative w-full h-full rounded-[16px] bg-[#f8f8fb] overflow-hidden flex flex-col shadow-inner select-text">
+              <div className="relative w-full h-full rounded-[16px] bg-[#f8f8fb] overflow-hidden flex flex-col shadow-inner select-text">
                     
                     {/* ── macOS Top Menu Bar ── */}
                     <div className="h-7 w-full bg-[#f0f0f3] border-b border-black/10 px-4 flex items-center justify-between text-[11px] text-[#0b0b0c] z-30">
@@ -748,11 +692,26 @@ export function MacbookCockpit() {
                               <div className="p-3 rounded-xl border border-[#e6e6e9] bg-[#fbfbfe]">
                                 <h4 className="text-xs font-bold text-[#0b0b0c] flex items-center gap-1.5 mb-0.5">
                                   <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
-                                  3. pgvector Cosine Search &amp; SCD 2 Dimensional Integrity
+                                  3. High-Performance RAG, pgvector &amp; PgBouncer Optimization
                                 </h4>
                                 <p className="text-[11px] text-[#333336] leading-relaxed">
-                                  Grounded RAG retrieval layers over verified Star Schemas, preventing hallucinations through automated SQL watermark parity gates.
+                                  Cut hot-path query latency by 40% and eliminated connection exhaustion under peak load using PgBouncer pooling, PostgreSQL partial indexes, and low-latency pgvector semantic search.
                                 </p>
+                              </div>
+
+                              <div className="p-3 rounded-xl border border-[#e6e6e9] bg-[#fbfbfe] flex items-center justify-between">
+                                <div>
+                                  <h4 className="text-xs font-bold text-[#0b0b0c] flex items-center gap-1.5 mb-0.5">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                                    Education
+                                  </h4>
+                                  <p className="text-[11px] text-[#333336]">
+                                    Brindavan Institute of Technology and Science · Bachelor’s Degree
+                                  </p>
+                                </div>
+                                <span className="text-[10px] font-mono text-[#6e6e73] px-2 py-0.5 rounded-md bg-[#f0f0f3]">
+                                  2019 – 2022
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -816,115 +775,129 @@ export function MacbookCockpit() {
                     </div>
                   </div>
                 </div>
-              </div>
 
               {/* ──────────────────────────────────────────────────────────
-                  PART 2: HINGE BAR
+                  PART 2: HARDWARE CHASSIS
                  ────────────────────────────────────────────────────────── */}
-              <div className="relative w-[620px] h-[10px] bg-[#0c0c0e] rounded-full border-t border-white/10 z-10 -my-[2px]" />
+              {deviceMode === "macbook" ? (
+                <div className="flex flex-col items-center z-10 w-full animate-fadeIn">
+                  {/* Precision Hinge Bar */}
+                  <div className="w-[600px] h-[8px] bg-[#141416] rounded-full border-t border-white/10 z-10 -my-[2px]" />
 
-              {/* ──────────────────────────────────────────────────────────
-                  PART 3: KEYBOARD BASE
-                 ────────────────────────────────────────────────────────── */}
-              <div
-                className="relative w-[780px] h-[260px] rounded-b-[24px] z-0"
-                style={{
-                  transformOrigin: "top center",
-                  transform: "rotateX(24deg)",
-                  transformStyle: "preserve-3d",
-                  background: "linear-gradient(180deg, #2b2b2e 0%, #1c1c1f 50%, #121214 100%)",
-                  boxShadow: "0 30px 60px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.25), inset 0 -2px 4px rgba(0, 0, 0, 0.8)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
-                }}
-              >
-                {/* Keyboard & Speaker Deck */}
-                <div className="pt-3 px-6 flex items-start justify-between">
-                  <div className="w-[38px] h-[125px] rounded-lg overflow-hidden opacity-80 mt-1">
-                    <SpeakerGrille />
-                  </div>
+                  {/* MacBook Pro Unibody Base Chassis */}
+                  <div
+                    className="relative w-[800px] h-[175px] rounded-b-[24px] z-0 overflow-hidden"
+                    style={{
+                      background: "linear-gradient(180deg, #28282b 0%, #1c1c1f 50%, #141416 100%)",
+                      boxShadow: "0 25px 50px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.8)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                    }}
+                  >
+                    {/* Keyboard & Speaker Deck */}
+                    <div className="pt-2 px-6 flex items-start justify-between">
+                      <div className="w-[34px] h-[106px] rounded-md overflow-hidden opacity-80 mt-0.5">
+                        <SpeakerGrille />
+                      </div>
 
-                  <div className="flex-1 mx-3 p-2 rounded-xl bg-[#09090b] border border-white/5 shadow-[inset_0_2px_6px_rgba(0,0,0,0.85)]">
-                    <MacKeypad />
-                  </div>
+                      <div className="flex-1 mx-3 p-1.5 rounded-lg bg-[#0a0a0c] border border-white/5 shadow-[inset_0_2px_5px_rgba(0,0,0,0.85)]">
+                        <MacKeypad />
+                      </div>
 
-                  <div className="w-[38px] h-[125px] rounded-lg overflow-hidden opacity-80 mt-1">
-                    <SpeakerGrille />
+                      <div className="w-[34px] h-[106px] rounded-md overflow-hidden opacity-80 mt-0.5">
+                        <SpeakerGrille />
+                      </div>
+                    </div>
+
+                    {/* Force Touch Trackpad */}
+                    <div className="mt-1 flex justify-center">
+                      <div className="w-[210px] h-[50px] rounded-lg bg-gradient-to-b from-[#242427] to-[#1c1c1f] border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_2px_4px_rgba(0,0,0,0.3)]" />
+                    </div>
+
+                    {/* Front Display Thumb Notch */}
+                    <div className="w-14 h-[3px] rounded-b-md bg-[#101012] border-t border-white/10 mx-auto mt-0.5" />
                   </div>
                 </div>
-
-                {/* Force Touch Trackpad */}
-                <div className="mt-2 flex justify-center">
-                  <div className="w-[240px] h-[95px] rounded-xl bg-gradient-to-b from-[#242427] to-[#1c1c1f] border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_2px_5px_rgba(0,0,0,0.4)]" />
+              ) : (
+                <div className="flex flex-col items-center z-10 animate-fadeIn -mt-1">
+                  {/* Studio Display Aluminum Stand Column */}
+                  <div className="w-[130px] h-[50px] bg-gradient-to-b from-[#2c2c30] to-[#1e1e22] border-x border-white/10 shadow-lg" />
+                  {/* Studio Display Aluminum Foot */}
+                  <div className="w-[220px] h-[8px] rounded-full bg-gradient-to-r from-[#202023] via-[#323238] to-[#202023] border border-white/15 shadow-xl" />
                 </div>
-              </div>
+              )}
 
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
-// ── MAC KEYPAD WITH RECESSED BACKLIT KEYS ──
+// ── MAC KEYPAD WITH ACCURATE 14-COL GRID ──
 function MacKeypad() {
+  const row1 = ["esc", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "⏻"];
+  const row2 = ["~", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "⌫"];
+  const row3 = ["tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"];
+  const row4 = ["caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "return"];
+  const row5 = ["shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "shift"];
+
   return (
-    <div className="w-full space-y-[3px] select-none text-[8px] font-mono text-slate-300">
+    <div className="w-full space-y-[2px] select-none text-[7px] font-mono text-slate-300">
       {/* Function Row */}
-      <div className="grid grid-cols-14 gap-[3px]">
-        {["esc", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "⏻"].map((k) => (
-          <div key={k} className="h-4 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-400">
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(14, minmax(0, 1fr))", gap: "2px" }}>
+        {row1.map((k) => (
+          <div key={k} className="h-3 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px] text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
             {k}
           </div>
         ))}
       </div>
 
       {/* Number Row */}
-      <div className="grid grid-cols-14 gap-[3px]">
-        {["~", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "delete"].map((k) => (
-          <div key={k} className="h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[8px] text-slate-300">
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(14, minmax(0, 1fr))", gap: "2px" }}>
+        {row2.map((k) => (
+          <div key={k} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
             {k}
           </div>
         ))}
       </div>
 
       {/* QWERTY Row */}
-      <div className="grid grid-cols-14 gap-[3px]">
-        {["tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"].map((k) => (
-          <div key={k} className="h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[8px] text-slate-300">
+      <div style={{ display: "grid", gridTemplateColumns: "1.4fr repeat(12, minmax(0, 1fr)) 1.4fr", gap: "2px" }}>
+        {row3.map((k, i) => (
+          <div key={i} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
             {k}
           </div>
         ))}
       </div>
 
       {/* ASDF Row */}
-      <div className="grid grid-cols-13 gap-[3px]">
-        {["caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "return"].map((k) => (
-          <div key={k} className="h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[8px] text-slate-300">
+      <div style={{ display: "grid", gridTemplateColumns: "1.7fr repeat(11, minmax(0, 1fr)) 1.9fr", gap: "2px" }}>
+        {row4.map((k, i) => (
+          <div key={i} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
             {k}
           </div>
         ))}
       </div>
 
       {/* ZXCV Row */}
-      <div className="grid grid-cols-12 gap-[3px]">
-        {["shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "shift"].map((k, i) => (
-          <div key={i} className="h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[8px] text-slate-300">
+      <div style={{ display: "grid", gridTemplateColumns: "2.2fr repeat(10, minmax(0, 1fr)) 2.4fr", gap: "2px" }}>
+        {row5.map((k, i) => (
+          <div key={i} className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px] text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
             {k}
           </div>
         ))}
       </div>
 
       {/* Spacebar Row */}
-      <div className="flex gap-[3px]">
-        <div className="w-10 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">fn</div>
-        <div className="w-10 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">control</div>
-        <div className="w-10 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">option</div>
-        <div className="w-12 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">⌘ command</div>
-        <div className="flex-1 h-5 rounded bg-[#18181b] border border-white/10" />
-        <div className="w-12 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">⌘ command</div>
-        <div className="w-10 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">option</div>
-        <div className="w-14 h-5 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[7px]">◀ ▲ ▼ ▶</div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1.1fr 1.3fr 5fr 1.3fr 1.1fr 1.5fr", gap: "2px" }}>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">fn</div>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌃</div>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌥</div>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌘</div>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10" />
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌘</div>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[6px]">⌥</div>
+        <div className="h-4 rounded-[2px] bg-[#18181b] border border-white/10 flex items-center justify-center text-[5px]">◀▲▼▶</div>
       </div>
     </div>
   );

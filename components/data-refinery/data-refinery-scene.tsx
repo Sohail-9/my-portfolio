@@ -30,6 +30,7 @@ import {
   LuLaptop,
   LuFlame,
   LuGauge,
+  LuCpu,
 } from "react-icons/lu";
 import { experience, projects, skills } from "@/lib/content";
 import { links } from "@/lib/links";
@@ -74,8 +75,8 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
     screenY: number;
   } | null>(null);
 
-  // SCD Type 2 Simulator state
-  const [scdYear, setScdYear] = useState<2023 | 2025 | 2026>(2026);
+  // OmniqAI Interactive feature toggle state
+  const [workflowFeature, setWorkflowFeature] = useState<"RAG Docs" | "MCP Servers" | "PostgreSQL">("RAG Docs");
 
   // Live telemetry ticker metrics
   const [telemetryRate, setTelemetryRate] = useState(14240);
@@ -98,10 +99,11 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
   // Terminal state
   const [terminalInput, setTerminalInput] = useState("");
   const [terminalHistory, setTerminalHistory] = useState<Array<{ text: string; type: "cmd" | "out" }>>([
-    { text: "sohail@refinery-core:~$ ./status.sh", type: "cmd" },
-    { text: "[OK] 3D Data Refinery operational · Studio Lighting at 60 FPS", type: "out" },
-    { text: "[OK] Pipeline flow valve calibrated · Click valve to toggle turbo", type: "out" },
-    { text: "[OK] Camera director active · Click any station for macro zoom", type: "out" },
+    { text: "sohail@ai-workstation:~$ ./system_status.sh", type: "cmd" },
+    { text: "[OK] 3D Full-Stack AI Platform operational · 60 FPS Studio Lighting", type: "out" },
+    { text: "[OK] PrettiFlow Sandboxed Execution: ~100ms cold start | 4,000+ beta users", type: "out" },
+    { text: "[OK] OmniqAI Platform: pgvector semantic search & internal MCP active", type: "out" },
+    { text: "[OK] OctaClaw Multi-Agent DAG Orchestration online", type: "out" },
     { text: "Drive rover: WASD/Arrows · Shift: Nitro · H: Honk · Space: Brake", type: "out" },
   ]);
 
@@ -179,30 +181,30 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
     if (!cmd) return;
     playSynthBeep(520, "sine", 0.08);
 
-    const newHistory = [...terminalHistory, { text: `sohail@refinery:~$ ${terminalInput}`, type: "cmd" as const }];
+    const newHistory = [...terminalHistory, { text: `sohail@ai-workstation:~$ ${terminalInput}`, type: "cmd" as const }];
 
     if (cmd === "help") {
       newHistory.push({
-        text: "Commands: telemetry, warehouse, pipeline, vector, agent, turbo, clear, whoami",
+        text: "Commands: prettiflow, omniqai, octaclaw, agent, telemetry, turbo, clear, whoami",
         type: "out",
       });
     } else if (cmd === "turbo") {
       toggleValveRef.current?.();
-      newHistory.push({ text: `Pipeline throughput set to ${!turboStream ? "OVERDRIVE (48.5k msg/s)" : "STANDARD (14.2k msg/s)"}`, type: "out" });
-    } else if (cmd === "warehouse") {
+      newHistory.push({ text: `Execution pipeline throughput set to ${!turboStream ? "OVERDRIVE (48.5k msg/s)" : "STANDARD (14.2k msg/s)"}`, type: "out" });
+    } else if (cmd === "omniqai" || cmd === "warehouse") {
       setActiveStation("warehouse");
-      newHistory.push({ text: "Camera zooming to Dimensional Warehouse...", type: "out" });
-    } else if (cmd === "pipeline") {
+      newHistory.push({ text: "Camera zooming to OmniqAI AI Workflow & Docs Platform...", type: "out" });
+    } else if (cmd === "prettiflow" || cmd === "pipeline") {
       setActiveStation("pipeline");
-      newHistory.push({ text: "Camera zooming to PrettiFlow Execution Engine...", type: "out" });
-    } else if (cmd === "vector") {
+      newHistory.push({ text: "Camera zooming to PrettiFlow Full-Stack Platform...", type: "out" });
+    } else if (cmd === "octaclaw" || cmd === "vector") {
       setActiveStation("vector");
-      newHistory.push({ text: "Camera zooming to Neural Vector Core...", type: "out" });
+      newHistory.push({ text: "Camera zooming to OctaClaw Multi-Agent Orchestration & Vector Core...", type: "out" });
     } else if (cmd === "agent" || cmd === "tinyfish") {
       setActiveStation("tinyfish");
       newHistory.push({ text: "Camera zooming to Autonomous Web Agent...", type: "out" });
     } else if (cmd === "whoami") {
-      newHistory.push({ text: "Sohail Shaik · Founding Data & AI Engineer", type: "out" });
+      newHistory.push({ text: "Sohail Shaik · Full-Stack AI Engineer", type: "out" });
     } else if (cmd === "clear") {
       setTerminalHistory([]);
       setTerminalInput("");
@@ -668,9 +670,9 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
 
     // ── 8. IN-WORLD 3D SPATIAL MARKERS ──
     const stations = [
-      { id: "warehouse" as const, pos: new THREE.Vector3(2.0, 0.05, 7.2), color: "#38bdf8", label: "Warehouse" },
-      { id: "pipeline" as const, pos: new THREE.Vector3(-6.5, 0.05, 4.0), color: "#f59e0b", label: "Pipelines" },
-      { id: "vector" as const, pos: new THREE.Vector3(6.5, 0.05, -2.5), color: "#a855f7", label: "Vector RAG" },
+      { id: "warehouse" as const, pos: new THREE.Vector3(2.0, 0.05, 7.2), color: "#38bdf8", label: "OmniqAI Hub" },
+      { id: "pipeline" as const, pos: new THREE.Vector3(-6.5, 0.05, 4.0), color: "#f59e0b", label: "PrettiFlow" },
+      { id: "vector" as const, pos: new THREE.Vector3(6.5, 0.05, -2.5), color: "#a855f7", label: "OctaClaw" },
       { id: "tinyfish" as const, pos: new THREE.Vector3(-2.5, 0.05, -7.5), color: "#ec4899", label: "Web Agent" },
     ];
 
@@ -784,27 +786,27 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
         id: "coldstart",
         label: "COLD START",
         metric: "3.2s LATENCY",
-        fixedMetric: "-96% Latency (~100ms)",
+        fixedMetric: "~100ms (Pre-warmed Sandbox)",
         title: "Cold-Start Bottleneck Shattered!",
         color: "#f97316",
         pos: new THREE.Vector3(-4.5, 0.6, 5.8),
       },
       {
         id: "tablescan",
-        label: "TABLE SCAN",
-        metric: "SEQ LOCK 18M ROWS",
-        fixedMetric: "+40% Speed (Target Index)",
-        title: "Table Scan Bottleneck Shattered!",
+        label: "HOT-PATH LOCK",
+        metric: "SEQ SCAN & CONNS",
+        fixedMetric: "+40% Speed (PgBouncer & Indexes)",
+        title: "Database Query Bottleneck Shattered!",
         color: "#8b5cf6",
         pos: new THREE.Vector3(5.2, 0.6, -4.2),
       },
       {
-        id: "techdebt",
-        label: "LEGACY ETL",
-        metric: "MANUAL RECON FAIL",
-        fixedMetric: "100.00% Parity Gate",
-        title: "Legacy ETL Bottleneck Shattered!",
-        color: "#ef4444",
+        id: "buildlatency",
+        label: "15M BUILD",
+        metric: "15 MIN BUILD TIME",
+        fixedMetric: "8 Min (-46% Pipeline Redesign)",
+        title: "Build Pipeline Latency Shattered!",
+        color: "#f59e0b",
         pos: new THREE.Vector3(-6.2, 0.6, -2.5),
       },
     ];
@@ -1029,13 +1031,13 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
         curr = curr.parent;
       }
       if (curr === bunkerGroup) {
-        return { id: "warehouse" as StationKey, title: "Dimensional Warehouse & SCD 2", sub: "OmniQAI · 100% Parity Gate" };
+        return { id: "warehouse" as StationKey, title: "OmniqAI · AI Workflow & Docs Platform", sub: "Software Engineer · RAG & Internal MCP" };
       }
       if (curr === midGroup) {
-        return { id: "pipeline" as StationKey, title: "PrettiFlow Distributed Pipelines", sub: "Founding Engineer · 46% Latency Reduction" };
+        return { id: "pipeline" as StationKey, title: "PrettiFlow · Full-Stack AI Platform", sub: "Founding Engineer · 4,000+ Beta Users" };
       }
       if (curr === topGroup) {
-        return { id: "vector" as StationKey, title: "Neural Vector Core & MCP Silo", sub: "IVFFlat Cosine Similarity & Guardrails" };
+        return { id: "vector" as StationKey, title: "OctaClaw · Multi-Agent Orchestration", sub: "Autonomous Goal Decomposition · Specialist Agents & MCP" };
       }
       if (curr === poleGroup || curr === cablesGroup) {
         return { id: "tinyfish" as StationKey, title: "Autonomous Web Agent Drone", sub: "Live Sub-200ms Headless Extraction Engine" };
@@ -1338,7 +1340,7 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
               <span>Sohail Shaik</span>
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
             </h1>
-            <p className="text-[10px] font-mono text-slate-400">Data &amp; AI Engineer</p>
+            <p className="text-[10px] font-mono text-slate-400">Full-Stack AI Engineer</p>
           </div>
         </div>
 
@@ -1350,9 +1352,9 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
           </span>
           <div className="flex items-center gap-1.5">
             {[
-              { id: "coldstart", label: "Cold Start", fix: "100ms" },
-              { id: "tablescan", label: "Table Scan", fix: "+40%" },
-              { id: "techdebt", label: "Legacy ETL", fix: "100% Parity" },
+              { id: "coldstart", label: "Cold Start", fix: "~100ms" },
+              { id: "tablescan", label: "Hot Path", fix: "+40%" },
+              { id: "buildlatency", label: "15m Build", fix: "8m (-46%)" },
             ].map((item) => {
               const isSmashed = smashedCrates.includes(item.id);
               return (
@@ -1546,11 +1548,11 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
 
           <div className="space-y-1">
             {[
-              { id: "warehouse" as const, title: "Dimensional Warehouse", sub: "OmniQAI · 100% Parity Gate" },
-              { id: "pipeline" as const, title: "Execution Pipeline", sub: "PrettiFlow · 46% Latency Cut" },
-              { id: "vector" as const, title: "Neural Vector Core", sub: "pgvector IVFFlat Cosine" },
+              { id: "warehouse" as const, title: "OmniqAI AI Platform", sub: "Software Engineer · RAG & MCP" },
+              { id: "pipeline" as const, title: "PrettiFlow Platform", sub: "Founding Engineer · 4k Beta Users" },
+              { id: "vector" as const, title: "OctaClaw Multi-Agent", sub: "Autonomous DAG & MCP Tooling" },
               { id: "tinyfish" as const, title: "Web Agent Drone", sub: "Sub-200ms Headless Engine" },
-              { id: "terminal" as const, title: "Refinery Shell", sub: "Interactive CLI" },
+              { id: "terminal" as const, title: "Workstation Shell", sub: "Interactive CLI" },
             ].map((item) => (
               <button
                 key={item.id}
@@ -1606,11 +1608,11 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
         <span className="text-slate-400 text-[11px]">{turboStream ? "TURBO STREAM:" : "STREAMING:"}</span>
         <span className={`font-bold ${turboStream ? "text-amber-300" : "text-white"}`}>{telemetryRate.toLocaleString()} msg/s</span>
         <span className="text-slate-600">|</span>
-        <span className="text-slate-400 text-[11px]">P99:</span>
-        <span className="text-emerald-400 font-bold">{telemetryP99}ms</span>
+        <span className="text-slate-400 text-[11px]">COLD START:</span>
+        <span className="text-emerald-400 font-bold">~100ms</span>
         <span className="text-slate-600">|</span>
-        <span className="text-slate-400 text-[11px]">PARITY:</span>
-        <span className="text-sky-400 font-bold">100.00%</span>
+        <span className="text-slate-400 text-[11px]">BETA USERS:</span>
+        <span className="text-sky-400 font-bold">4,000+</span>
       </div>
 
       {/* ── INTERACTIVE PROXIMITY ACTION PROMPT ── */}
@@ -1651,84 +1653,115 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
             </button>
           </div>
 
-          {/* ── HUD CONTENT 1: WAREHOUSE ── */}
+          {/* ── HUD CONTENT 1: OMNIQAI AI WORKFLOW & DOCS ── */}
           {activeStation === "warehouse" && (
             <div className="pt-4 space-y-4">
               <div>
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <LuShieldCheck className="text-sky-400" /> OmniQAI · Data Warehouse
+                  <LuShieldCheck className="text-sky-400" /> OmniqAI · AI Workflow &amp; Docs Platform
                 </h3>
                 <p className="text-xs text-slate-300 mt-0.5">
-                  High-throughput financial ETL &amp; dimensional modeling.
+                  Software Engineer (Jan 2023 – Dec 2025) · Bengaluru, India
                 </p>
               </div>
 
               {/* 2 Big Bold Metrics */}
               <div className="grid grid-cols-2 gap-2 font-mono">
                 <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10">
-                  <p className="text-[10px] text-slate-400">RECON PARITY</p>
-                  <p className="text-lg font-bold text-emerald-400 mt-0.5">100.0%</p>
-                  <p className="text-[9px] text-slate-400">Zero data loss</p>
+                  <p className="text-[10px] text-slate-400">QUERY LATENCY</p>
+                  <p className="text-lg font-bold text-emerald-400 mt-0.5">-40% Latency</p>
+                  <p className="text-[9px] text-slate-400">PgBouncer &amp; Partial Indexes</p>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10">
-                  <p className="text-[10px] text-slate-400">INGESTION</p>
-                  <p className="text-lg font-bold text-sky-400 mt-0.5">{turboStream ? "48.5k/s" : "14.2k/s"}</p>
-                  <p className="text-[9px] text-slate-400">Stream verified</p>
+                  <p className="text-[10px] text-slate-400">API RESPONSE</p>
+                  <p className="text-lg font-bold text-sky-400 mt-0.5">-30% Perceived</p>
+                  <p className="text-[9px] text-slate-400">Redis Queues + WebSockets</p>
                 </div>
               </div>
 
               {/* 1-Line Impact */}
               <p className="text-xs text-slate-300 leading-relaxed bg-white/[0.02] p-3 rounded-xl border border-white/5">
-                Authored automated SQL reconciliation gates asserting source-vs-target row counts, eliminating 95% of downstream financial settlement anomalies.
+                Designed backend from ground up for AI workflow platform (PostgreSQL schemas, REST APIs, LangChain RAG). Built Confluence-style collaborative docs with pgvector semantic search and internal MCP servers for secure tool calling.
               </p>
 
-              {/* Interactive SCD 2 Snapshot Switcher */}
+              {/* Interactive Architecture Feature Switcher */}
               <div className="p-3 rounded-xl bg-black/60 border border-white/10 space-y-2">
                 <div className="flex items-center justify-between text-[11px] font-mono">
                   <span className="text-slate-400 flex items-center gap-1">
-                    <LuClock className="text-sky-400" /> SCD 2 Audit Time-Travel
+                    <LuCpu className="text-sky-400" /> Platform Architecture
                   </span>
                   <div className="flex gap-1">
-                    {[2023, 2025, 2026].map((yr) => (
+                    {(["RAG Docs", "MCP Servers", "PostgreSQL"] as const).map((tab) => (
                       <button
-                        key={yr}
+                        key={tab}
                         onClick={() => {
-                          playSynthBeep(yr * 0.4, "sine", 0.08);
-                          setScdYear(yr as any);
+                          playSynthBeep(520, "sine", 0.08);
+                          setWorkflowFeature(tab);
                         }}
                         className={`px-2 py-0.5 rounded text-[10px] font-mono transition-all ${
-                          scdYear === yr
+                          workflowFeature === tab
                             ? "bg-sky-500 text-slate-950 font-bold shadow-md shadow-sky-500/30"
                             : "bg-white/10 text-slate-300 hover:text-white"
                         }`}
                       >
-                        {yr}
+                        {tab}
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div className="text-[11px] font-mono space-y-1">
-                  <div className="flex justify-between text-slate-300">
-                    <span>Surrogate Key:</span>
-                    <span className="text-white font-bold">{scdYear === 2023 ? "10482" : scdYear === 2025 ? "10483" : "10484"}</span>
-                  </div>
-                  <div className="flex justify-between text-slate-300">
-                    <span>Account Tier:</span>
-                    <span className="text-emerald-300 font-bold">
-                      {scdYear === 2023 ? "Standard Tier" : scdYear === 2025 ? "Enterprise Gold" : "Mission-Critical Platinum"}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-slate-400 text-[10px]">
-                    <span>Valid Range:</span>
-                    <span>{scdYear === 2023 ? "2023 → 2025" : scdYear === 2025 ? "2025 → 2026" : "2026 → Current"}</span>
-                  </div>
+                  {workflowFeature === "RAG Docs" && (
+                    <>
+                      <div className="flex justify-between text-slate-300">
+                        <span>Search Model:</span>
+                        <span className="text-emerald-300 font-bold">pgvector (HNSW / Cosine)</span>
+                      </div>
+                      <div className="flex justify-between text-slate-300">
+                        <span>UI Frontend:</span>
+                        <span className="text-white font-bold">Next.js + Real-Time WebSockets</span>
+                      </div>
+                      <div className="text-[10px] text-slate-400">
+                        Confluence-style collaborative docs with semantic retrieval and document sharing.
+                      </div>
+                    </>
+                  )}
+                  {workflowFeature === "MCP Servers" && (
+                    <>
+                      <div className="flex justify-between text-slate-300">
+                        <span>Protocol:</span>
+                        <span className="text-purple-300 font-bold">Model Context Protocol (MCP)</span>
+                      </div>
+                      <div className="flex justify-between text-slate-300">
+                        <span>Tool Invocation:</span>
+                        <span className="text-white font-bold">Secure Sandboxed Schema Calling</span>
+                      </div>
+                      <div className="text-[10px] text-slate-400">
+                        Allowed AI agents to securely call internal tools and expand autonomous capabilities.
+                      </div>
+                    </>
+                  )}
+                  {workflowFeature === "PostgreSQL" && (
+                    <>
+                      <div className="flex justify-between text-slate-300">
+                        <span>Hot-Path Tuning:</span>
+                        <span className="text-emerald-300 font-bold">PgBouncer Pooling + Partial Indexes</span>
+                      </div>
+                      <div className="flex justify-between text-slate-300">
+                        <span>Payments &amp; Cloud:</span>
+                        <span className="text-white font-bold">Razorpay Webhooks · AWS EKS</span>
+                      </div>
+                      <div className="text-[10px] text-slate-400">
+                        Zero connection exhaustion under peak load; zero-downtime EKS deployments.
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
               {/* Tech Stack Chips */}
               <div className="flex flex-wrap gap-1.5 pt-1">
-                {["Informatica IICS", "Oracle PL/SQL", "PostgreSQL", "SCD Type 2", "AWS"].map((t) => (
+                {["Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", "pgvector", "LangChain", "Model Context Protocol", "Redis", "Docker", "Kubernetes", "AWS"].map((t) => (
                   <span key={t} className="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300">
                     {t}
                   </span>
@@ -1737,40 +1770,40 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
             </div>
           )}
 
-          {/* ── HUD CONTENT 2: PIPELINES ── */}
+          {/* ── HUD CONTENT 2: PRETTIFLOW ── */}
           {activeStation === "pipeline" && (
             <div className="pt-4 space-y-4">
               <div>
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <LuFolderGit2 className="text-amber-400" /> PrettiFlow · Execution Pipelines
+                  <LuFolderGit2 className="text-amber-400" /> PrettiFlow · Full-Stack AI Platform
                 </h3>
                 <p className="text-xs text-slate-300 mt-0.5">
-                  Founding Data &amp; AI Engineer · Scaled engine to 4,000+ users.
+                  Founding Engineer (Jan 2026 – Present) · San Francisco, USA (Remote)
                 </p>
               </div>
 
               {/* 2 Big Bold Metrics */}
               <div className="grid grid-cols-2 gap-2 font-mono">
                 <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10">
-                  <p className="text-[10px] text-slate-400">LATENCY CUT</p>
-                  <p className="text-lg font-bold text-amber-400 mt-0.5">-46%</p>
-                  <p className="text-[9px] text-slate-400">15m → 8m build</p>
+                  <p className="text-[10px] text-slate-400">BUILD TIME</p>
+                  <p className="text-lg font-bold text-amber-400 mt-0.5">15m → 8m (-46%)</p>
+                  <p className="text-[9px] text-slate-400">Prompt intake to live app</p>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10">
                   <p className="text-[10px] text-slate-400">COLD START</p>
-                  <p className="text-lg font-bold text-emerald-400 mt-0.5">~100ms</p>
-                  <p className="text-[9px] text-slate-400">Pre-warmed pools</p>
+                  <p className="text-lg font-bold text-emerald-400 mt-0.5">~100ms (-96%)</p>
+                  <p className="text-[9px] text-slate-400">Pre-warmed sandboxed pool</p>
                 </div>
               </div>
 
               {/* 1-Line Impact */}
               <p className="text-xs text-slate-300 leading-relaxed bg-white/[0.02] p-3 rounded-xl border border-white/5">
-                Parallelized topological dependency graphs, built AST query guardrails, and orchestrated Redis Pub/Sub event streams for instant container dispatch.
+                Built full-stack AI platform turning natural-language prompts into deployed applications (4,000+ beta users, 500+ DAU). Pre-warmed sandboxed execution streaming results over Redis Pub/Sub &amp; WebSockets, plus cross-platform CLI and execution guardrails.
               </p>
 
               {/* Tech Stack Chips */}
               <div className="flex flex-wrap gap-1.5 pt-1">
-                {["Airflow", "Docker", "Redis", "Python", "WebSockets", "CLI"].map((t) => (
+                {["Next.js", "React", "Node.js", "Python", "Redis Pub/Sub", "WebSockets", "Docker", "AWS", "CLI"].map((t) => (
                   <span key={t} className="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300">
                     {t}
                   </span>
@@ -1779,40 +1812,40 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
             </div>
           )}
 
-          {/* ── HUD CONTENT 3: VECTOR CORE & MCP ── */}
+          {/* ── HUD CONTENT 3: OCTACLAW MULTI-AGENT & VECTOR CORE ── */}
           {activeStation === "vector" && (
             <div className="pt-4 space-y-4">
               <div>
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <LuLayers className="text-purple-400" /> Neural Vector Core &amp; MCP
+                  <LuLayers className="text-purple-400" /> OctaClaw · Multi-Agent Orchestration
                 </h3>
                 <p className="text-xs text-slate-300 mt-0.5">
-                  Grounded semantic retrieval across multi-tenant schemas.
+                  Autonomous Goal Decomposition &amp; Specialist Agents with MCP
                 </p>
               </div>
 
               {/* 2 Big Bold Metrics */}
               <div className="grid grid-cols-2 gap-2 font-mono">
                 <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10">
-                  <p className="text-[10px] text-slate-400">SEARCH P99</p>
-                  <p className="text-lg font-bold text-purple-400 mt-0.5">&lt; 20ms</p>
-                  <p className="text-[9px] text-slate-400">IVFFlat Cosine</p>
+                  <p className="text-[10px] text-slate-400">MULTI-AGENT DAG</p>
+                  <p className="text-lg font-bold text-purple-400 mt-0.5">Parallel Graph</p>
+                  <p className="text-[9px] text-slate-400">Research · Code · Review · Test</p>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10">
-                  <p className="text-[10px] text-slate-400">GUARDRAILS</p>
-                  <p className="text-lg font-bold text-emerald-400 mt-0.5">Zero Halluc</p>
-                  <p className="text-[9px] text-slate-400">MCP Structured</p>
+                  <p className="text-[10px] text-slate-400">TOOL SUITE</p>
+                  <p className="text-lg font-bold text-emerald-400 mt-0.5">Direct MCP</p>
+                  <p className="text-[9px] text-slate-400">FS, HTTP, DB, Jira</p>
                 </div>
               </div>
 
               {/* 1-Line Impact */}
               <p className="text-xs text-slate-300 leading-relaxed bg-white/[0.02] p-3 rounded-xl border border-white/5">
-                Architected high-throughput semantic retrieval layer with pgvector embeddings, AST query sanitization, and automated execution guardrails.
+                Splits complex engineering goals into topological dependency graphs and executes subtasks in parallel across specialized agents. Features direct tool integrations for filesystem, HTTP, email, databases, and Jira.
               </p>
 
               {/* Tech Stack Chips */}
               <div className="flex flex-wrap gap-1.5 pt-1">
-                {["pgvector", "Model Context Protocol", "LangChain", "OpenAI", "Next.js"].map((t) => (
+                {["Node.js", "TypeScript", "Multi-Agent DAGs", "MCP Tooling", "PostgreSQL", "REST APIs"].map((t) => (
                   <span key={t} className="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300">
                     {t}
                   </span>
@@ -1875,13 +1908,13 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
             </div>
           )}
 
-          {/* ── HUD CONTENT 5: REFINERY SHELL ── */}
+          {/* ── HUD CONTENT 5: WORKSTATION SHELL ── */}
           {activeStation === "terminal" && (
             <div className="pt-4 space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
                 <span className="text-emerald-400 font-bold flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  SHELL v2.4 (x86_64)
+                  FULL-STACK AI SHELL v3.0
                 </span>
                 <span className="text-slate-400 text-[10px]">100% OK</span>
               </div>
@@ -1899,7 +1932,7 @@ export function DataRefineryScene({ onSwitchToMac }: DataRefinerySceneProps = {}
                   type="text"
                   value={terminalInput}
                   onChange={(e) => setTerminalInput(e.target.value)}
-                  placeholder="type 'telemetry', 'warehouse'..."
+                  placeholder="type 'prettiflow', 'omniqai', 'octaclaw'..."
                   className="flex-1 bg-black/50 border border-white/10 px-3 py-1.5 rounded-lg text-white focus:outline-none placeholder-slate-600 font-mono text-[11px]"
                   autoFocus
                 />

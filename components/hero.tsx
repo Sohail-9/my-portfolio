@@ -3,23 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { 
-  LuGithub, 
-  LuLinkedin, 
-  LuMail, 
-  LuFileText,
-  LuPhone
-} from "react-icons/lu";
 import { links } from "@/lib/links";
 import { hero } from "@/lib/content";
-
-const socials = [
-  { label: "Email",       href: `mailto:${links.email}`,     icon: LuMail },
-  { label: "Phone",       href: `tel:${links.phone}`,        icon: LuPhone },
-  { label: "GitHub",      href: links.github,                icon: LuGithub },
-  { label: "LinkedIn",    href: links.linkedin,              icon: LuLinkedin },
-  { label: "CV / Resume", href: links.cvUrl,                 icon: LuFileText },
-];
 
 const highlights = [
   { value: "4,000+ Beta",     label: "PrettiFlow Platform" },
@@ -102,33 +87,12 @@ export function Hero() {
           Full-stack AI engineer with <span className="text-[#0b0b0c] font-medium">3+ years</span> building production systems across <span className="text-[#0b0b0c] font-medium">React/Next.js, Node.js, Python, and PostgreSQL</span>, with a focus on <span className="text-[#0b0b0c] font-medium">LLM orchestration and RAG pipelines</span>. As a founding engineer, built an AI platform from scratch (sandboxed code execution &amp; deployment infrastructure) that scaled to 4,000+ beta users and 500+ daily active users.
         </motion.p>
 
-        {/* Social / Contact Icons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
-        >
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              title={s.label}
-              target={s.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={s.href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
-              className="press flex h-11 w-11 items-center justify-center rounded-2xl border border-[#e6e6e9] bg-[#f8f8fa] text-[#0b0b0c] text-lg transition-all hover:bg-[#0b0b0c] hover:text-white hover:border-[#0b0b0c] shadow-sm"
-            >
-              <s.icon />
-            </a>
-          ))}
-        </motion.div>
-
         {/* Highlights Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-14 pt-8 border-t border-[#e6e6e9] grid grid-cols-2 sm:grid-cols-4 gap-4"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 pt-8 border-t border-[#e6e6e9] grid grid-cols-2 sm:grid-cols-4 gap-4"
         >
           {highlights.map((h) => (
             <div key={h.label} className="text-center">
