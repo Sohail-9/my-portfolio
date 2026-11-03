@@ -3,13 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { LuFileText, LuMenu, LuX } from "react-icons/lu";
+import { LuFileText, LuMenu, LuX, LuSearch } from "react-icons/lu";
 import { links } from "@/lib/links";
 
 const navLinks = [
-  { label: "About", href: "#about", id: "about" },
+  { label: "Systems", href: "#projects", id: "projects" },
   { label: "Experience", href: "#experience", id: "experience" },
-  { label: "Projects", href: "#projects", id: "projects" },
   { label: "Skills", href: "#skills", id: "skills" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
@@ -40,9 +39,15 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const openCommandMenu = () => {
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "k", metaKey: true })
+    );
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 sm:p-6 pointer-events-none">
-      <div className="pointer-events-auto flex items-center justify-between gap-4 sm:gap-6 rounded-full glass-pill px-5 py-2.5 w-full max-w-3xl transition-all duration-300">
+      <div className="pointer-events-auto flex items-center justify-between gap-3 sm:gap-6 rounded-full glass-pill px-4 sm:px-5 py-2.5 w-full max-w-3xl transition-all duration-300 shadow-lg">
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5 group">
           <div className="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-sm">
@@ -76,14 +81,25 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Action Button: Dark Tactile Clay Pill with target filename */}
+        {/* Actions: Command Menu Trigger + Tactile Clay Resume Pill */}
         <div className="flex items-center gap-2">
+          {/* ⌘K Trigger Button */}
+          <button
+            onClick={openCommandMenu}
+            type="button"
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-mono text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer border border-slate-200/80"
+            title="Open Command Palette (⌘K)"
+          >
+            <LuSearch className="text-xs text-sky-600" />
+            <kbd className="text-[10px] font-bold text-slate-500">⌘K</kbd>
+          </button>
+
           <a
             href={links.cvUrl}
             download={links.cvDownloadName}
             target="_blank"
             rel="noreferrer noopener"
-            className="clay-btn inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition-all"
+            className="clay-btn inline-flex items-center gap-1.5 rounded-full px-3.5 sm:px-4 py-1.5 text-xs font-bold transition-all"
           >
             <LuFileText className="text-xs text-sky-400" />
             <span>Resume</span>
@@ -120,6 +136,16 @@ export function Navbar() {
                   {item.label}
                 </a>
               ))}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openCommandMenu();
+                }}
+                className="mt-2 text-left rounded-xl px-4 py-2.5 text-sm font-semibold text-sky-600 bg-sky-50 flex items-center justify-between"
+              >
+                <span>Command Palette</span>
+                <kbd className="text-xs font-mono font-bold">⌘K</kbd>
+              </button>
             </div>
           </motion.div>
         )}

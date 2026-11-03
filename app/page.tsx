@@ -3,15 +3,19 @@
 import React from "react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { About } from "@/components/about";
-import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
+import { Experience } from "@/components/experience";
 import { Skills } from "@/components/skills";
 import { Footer } from "@/components/footer";
+import { CommandMenu } from "@/components/command-menu";
+import { SpotlightCursor } from "@/components/spotlight-cursor";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-white text-slate-900 overflow-x-hidden selection:bg-sky-500/20 selection:text-sky-900">
+      {/* ── Ambient Spotlight Cursor Follower ── */}
+      <SpotlightCursor />
+
       {/* ── Ambient Pastel Aurora Background on Pure White ── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Top-Center Aurora (Hero) */}
@@ -23,7 +27,7 @@ export default function Home() {
           }}
         />
 
-        {/* Right Mid Aurora (Experience & About) */}
+        {/* Right Mid Aurora (Systems) */}
         <div
           className="absolute top-[35%] -right-32 w-[700px] h-[700px] rounded-full blur-[150px] opacity-20 animate-aurora-reverse"
           style={{
@@ -32,7 +36,7 @@ export default function Home() {
           }}
         />
 
-        {/* Left Mid Aurora (Projects) */}
+        {/* Left Mid Aurora (Experience) */}
         <div
           className="absolute top-[60%] -left-32 w-[750px] h-[750px] rounded-full blur-[150px] opacity-20 animate-aurora-slow"
           style={{
@@ -54,16 +58,18 @@ export default function Home() {
         <div className="absolute inset-0 cyber-grid opacity-75" />
       </div>
 
-      {/* ── Page Content ── */}
+      {/* ── Page Content (Zero Duplication Flow) ── */}
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <About />
-        <Experience />
         <Projects />
+        <Experience />
         <Skills />
         <Footer />
       </div>
+
+      {/* ── Command Palette (⌘K) ── */}
+      <CommandMenu />
     </main>
   );
 }
