@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -16,237 +16,204 @@
 body {
   font-family: var(--font-geist), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #ffffff;
-  color: #0b0b0c;
+  color: #0f172a;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* ── Prettiflow tactile button physics ── */
+/* ── Tactile button physics ── */
 .press {
-  transition: transform 0.16s var(--spring), opacity 0.16s ease;
+  transition: transform 0.16s var(--spring), opacity 0.16s ease, box-shadow 0.16s ease;
 }
 .press:hover {
-  transform: scale(1.02);
+  transform: translateY(-2px) scale(1.015);
 }
 .press:active {
-  transition-duration: 80ms;
-  transform: scale(0.965);
+  transition-duration: 70ms;
+  transform: translateY(1px) scale(0.975);
 }
 
-/* ── Prettiflow Specular Glass Surfaces ── */
-.xp-glass-dark {
-  background: linear-gradient(135deg, rgba(26, 26, 32, 0.8) 0%, rgba(12, 12, 16, 0.9) 100%);
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 12px 40px rgba(0, 0, 0, 0.55);
-}
-
-.xp-glass-pink {
-  background: linear-gradient(135deg, rgba(255, 92, 176, 0.82), rgba(224, 51, 140, 0.78));
-  backdrop-filter: blur(22px) saturate(1.5);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 8px 24px rgba(224, 51, 140, 0.25);
-}
-
-/* ── 3D MacBook Pro Elements (Prettiflow 3D Engine) ── */
-.xp-stage {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-.xp-laptop {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.xp-base-3d {
-  transform-style: preserve-3d;
-}
-
-.xp-lid-3d {
-  transform-style: preserve-3d;
-  transform-origin: bottom center;
-  will-change: transform;
-}
-
-.mac-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.mac-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.mac-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.16);
-  border-radius: 9999px;
-}
-.mac-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.28);
-}
-
-/* ── Aurora animated blobs ── */
-.aurora-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  will-change: transform;
-}
-
-.aurora-1 {
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.38) 0%, transparent 70%);
-  top: -20%;
-  left: -15%;
-  animation: blobFloat 18s ease-in-out infinite;
-  opacity: 0.65;
-}
-
-.aurora-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.38) 0%, transparent 70%);
-  top: 10%;
-  right: -15%;
-  animation: blobFloat 14s ease-in-out infinite -5s;
-  opacity: 0.55;
-}
-
-.aurora-3 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(244, 114, 182, 0.3) 0%, transparent 70%);
-  bottom: 5%;
-  left: 25%;
-  animation: blobFloat 20s ease-in-out infinite -10s;
-  opacity: 0.45;
-}
-
-@keyframes blobFloat {
-  0%,   100% { transform: translate(0, 0) scale(1); }
-  20%         { transform: translate(50px, -70px) scale(1.12); }
-  40%         { transform: translate(-40px, 40px) scale(0.92); }
-  60%         { transform: translate(60px, 20px) scale(1.06); }
-  80%         { transform: translate(-20px, -40px) scale(0.97); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-/* Section headings */
-.section-heading {
-  letter-spacing: -0.02em;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
+/* ── Custom sleek light scrollbar ── */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: rgba(148, 163, 184, 0.4);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: rgba(100, 116, 139, 0.65);
 }
 
 /* Focus ring */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #0b0b0c;
+  outline: 2px solid #0284c7;
   outline-offset: 3px;
   border-radius: 999px;
 }
 
+/* ── Advanced Morphism System on Clean White Background ── */
 @layer utilities {
-  .bg-grid-white\/\[0\.05\] {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='white' stroke-opacity='0.05'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
-  }
-  .bg-grid-white\/\[0\.03\] {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='white' stroke-opacity='0.03'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
-  }
-  .bg-grid-black\/\[0\.05\] {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='black' stroke-opacity='0.05'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
-  }
-  .animate-spin-slow {
-    animation: spin-slow 9s linear infinite;
-  }
-  .animate-float {
-    animation: float 3.5s ease-in-out infinite;
-  }
-  .glass-neo-card {
-    background: rgba(9, 13, 26, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  /* 1. Prime Frosted Glass (Apple VisionOS / Linear light specular glass) */
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 255, 255, 0.7) 40%,
+      rgba(255, 255, 255, 0.88) 100%
+    );
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 1);
     box-shadow: 
-      12px 12px 36px rgba(0, 0, 0, 0.5), 
-      -8px -8px 24px rgba(255, 255, 255, 0.015), 
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-  .glass-neo-card-hover {
+      0 10px 30px -5px rgba(0, 0, 0, 0.04),
+      0 20px 45px -10px rgba(0, 0, 0, 0.03),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .glass-neo-card-hover:hover {
+
+  .glass-card:hover {
+    border-color: rgba(186, 230, 253, 0.9);
+    border-top-color: #ffffff;
+    box-shadow: 
+      0 20px 50px -10px rgba(0, 0, 0, 0.08),
+      0 0 30px rgba(56, 189, 248, 0.15),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 1);
     transform: translateY(-4px);
-    border-color: rgba(56, 189, 248, 0.25);
+  }
+
+  /* 2. Glass Pill / Capsule (For Navbar & Floating Badges) */
+  .glass-pill {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(248, 250, 252, 0.86) 100%
+    );
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    border-top: 1px solid #ffffff;
     box-shadow: 
-      16px 16px 48px rgba(0, 0, 0, 0.6), 
-      -10px -10px 32px rgba(255, 255, 255, 0.02), 
-      0 0 30px rgba(56, 189, 248, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      0 8px 25px -4px rgba(0, 0, 0, 0.06),
+      0 1px 3px 0 rgba(0, 0, 0, 0.04),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 1);
   }
-  .glass-neo-recessed {
-    background: rgba(2, 6, 23, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.02);
+
+  /* 3. Neumorphic Recessed Well (Inner shadow tray for code, metrics & chips) */
+  .glass-recessed {
+    background: rgba(241, 245, 249, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.85);
     box-shadow: 
-      inset 4px 4px 12px rgba(0, 0, 0, 0.6), 
-      inset -4px -4px 12px rgba(255, 255, 255, 0.01);
+      inset 2px 2px 5px rgba(0, 0, 0, 0.04),
+      inset -2px -2px 5px rgba(255, 255, 255, 0.9);
   }
-  .glass-neo-button {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* 4. Claymorphic Primary Button (3D tactile dark pill with specular highlights) */
+  .clay-btn {
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 
-      4px 4px 10px rgba(0, 0, 0, 0.4), 
-      -4px -4px 10px rgba(255, 255, 255, 0.01), 
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: all 0.2s ease-in-out;
+      0 10px 24px -4px rgba(15, 23, 42, 0.3),
+      0 4px 10px -2px rgba(15, 23, 42, 0.15),
+      inset 0 1px 1px rgba(255, 255, 255, 0.35),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .glass-neo-button:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(56, 189, 248, 0.35);
+  .clay-btn:hover {
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 
-      6px 6px 14px rgba(56, 189, 248, 0.15), 
-      -6px -6px 14px rgba(255, 255, 255, 0.02), 
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: scale(1.02);
+      0 14px 30px -4px rgba(15, 23, 42, 0.4),
+      0 6px 14px -3px rgba(15, 23, 42, 0.2),
+      inset 0 1px 2px rgba(255, 255, 255, 0.45);
   }
-  .glass-neo-button:active {
-    background: rgba(0, 0, 0, 0.3);
+  .clay-btn:active {
+    transform: translateY(1px) scale(0.98);
     box-shadow: 
-      inset 3px 3px 8px rgba(0, 0, 0, 0.6), 
-      inset -3px -3px 8px rgba(255, 255, 255, 0.01);
-    transform: scale(0.98);
+      0 4px 10px -2px rgba(15, 23, 42, 0.15),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-  .text-cyber-glow {
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+
+  /* 4b. Claymorphic Light Button (Tactile white button) */
+  .clay-btn-light {
+    background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    color: #0f172a;
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    border-top: 1px solid #ffffff;
+    box-shadow: 
+      0 8px 20px -4px rgba(0, 0, 0, 0.06),
+      0 2px 6px -2px rgba(0, 0, 0, 0.04),
+      inset 0 2px 2px rgba(255, 255, 255, 1),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
+  .clay-btn-light:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 
+      0 12px 26px -4px rgba(0, 0, 0, 0.09),
+      0 0 16px rgba(56, 189, 248, 0.15);
+  }
+  .clay-btn-light:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  /* 5. Glass Action Button (Translucent Glowing Action on White) */
+  .glass-btn {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(248, 250, 252, 0.85) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    border-top: 1px solid #ffffff;
+    box-shadow: 
+      0 4px 12px -2px rgba(0, 0, 0, 0.05),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+    color: #0f172a;
+    transition: all 0.2s ease;
+  }
+  .glass-btn:hover {
+    background: #ffffff;
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 
+      0 8px 20px -3px rgba(56, 189, 248, 0.18),
+      inset 0 1px 2px 0 #ffffff;
+    transform: translateY(-2px);
+    color: #0284c7;
+  }
+  .glass-btn:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  /* 6. Subtle Cyber Grid for White Background */
   .cyber-grid {
     background-image: 
-      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-    background-size: 20px 20px;
+      linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  /* 7. Pulsing Pastel Aurora Blobs */
+  @keyframes aurora-pulse-light {
+    0%, 100% {
+      transform: scale(1) translate(0, 0);
+      opacity: 0.18;
+    }
+    50% {
+      transform: scale(1.1) translate(15px, -15px);
+      opacity: 0.26;
+    }
+  }
+  .animate-aurora-slow {
+    animation: aurora-pulse-light 10s ease-in-out infinite alternate;
+  }
+  .animate-aurora-reverse {
+    animation: aurora-pulse-light 12s ease-in-out infinite alternate-reverse;
   }
 }

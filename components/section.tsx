@@ -24,16 +24,16 @@ export function Section({
   return (
     <motion.section
       id={id}
-      className={`relative scroll-mt-24 py-10 sm:py-16 ${className ?? ""}`.trim()}
+      className={`relative scroll-mt-24 py-16 sm:py-20 ${className ?? ""}`.trim()}
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
     >
-      <div className={`${base} space-y-5`}>
+      <div className={`${base} space-y-4`}>
         {eyebrow && (
           <motion.p
-            className="text-sm uppercase tracking-[0.3em] text-slate-400"
+            className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-sky-600"
             variants={childVariants}
           >
             {eyebrow}
@@ -41,21 +41,21 @@ export function Section({
         )}
 
         <motion.div variants={childVariants}>
-          <h2 className="section-heading font-display text-3xl font-bold text-white sm:text-4xl mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-2.5">
             {title}
           </h2>
           {/* Gradient accent underline */}
           <div
-            className="h-0.5 w-14 rounded-full"
+            className="h-1 w-12 rounded-full"
             style={{
-              background: "linear-gradient(90deg, #38bdf8, rgba(56,189,248,0))",
+              background: "linear-gradient(90deg, #0284c7, rgba(2, 132, 199, 0.2))",
             }}
           />
         </motion.div>
 
         {intro && (
           <motion.p
-            className="text-base leading-relaxed text-slate-400"
+            className="text-base sm:text-lg leading-relaxed text-slate-600 font-normal max-w-3xl"
             variants={childVariants}
           >
             {intro}
@@ -63,7 +63,7 @@ export function Section({
         )}
 
         {children && (
-          <motion.div variants={childVariants}>
+          <motion.div variants={childVariants} className="pt-2">
             {children}
           </motion.div>
         )}

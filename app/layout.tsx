@@ -49,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("dark", geist.variable)}>
-      <body className="bg-slate-950 text-slate-100 antialiased font-sans selection:bg-sky-500/30 selection:text-sky-200">
+    <html lang="en" className={cn("light", geist.variable)}>
+      <body className="bg-white text-slate-900 antialiased font-sans selection:bg-sky-500/20 selection:text-sky-900">
         <ScrollProgress />
         <SpotlightCursor />
         {children}

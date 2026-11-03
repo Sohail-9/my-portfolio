@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function SpotlightCursor() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(-500);
+  const mouseY = useMotionValue(-500);
 
-  const springConfig = { damping: 20, stiffness: 300 };
+  const springConfig = { damping: 25, stiffness: 250 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
@@ -22,23 +22,18 @@ export function SpotlightCursor() {
   }, [mouseX, mouseY]);
 
   return (
-    <motion.div
-      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
-      style={{
-        background: "transparent",
-      }}
-    >
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <motion.div
-        className="absolute h-[500px] w-[500px] rounded-full"
+        className="absolute h-[600px] w-[600px] rounded-full blur-[90px]"
         style={{
           x: cursorX,
           y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
           background:
-            "radial-gradient(circle, rgba(56,189,248,0.07) 0%, rgba(139,92,246,0.04) 50%, transparent 70%)",
+            "radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 70%)",
         }}
       />
-    </motion.div>
+    </div>
   );
 }

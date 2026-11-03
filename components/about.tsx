@@ -9,36 +9,39 @@ import { Section } from "./section";
 const specConfig = [
   {
     Icon: LuWorkflow,
-    gradient: "from-sky-600/10 to-blue-950/5",
-    border: "border-sky-500/20 hover:border-sky-500/40",
-    iconColor: "text-sky-400",
-    glowColor: "rgba(56,189,248,0.18)",
-    shimmerColor: "rgba(56,189,248,0.08)",
+    border: "border-sky-200 hover:border-sky-400",
+    iconColor: "text-sky-600",
+    glowColor: "rgba(56,189,248,0.2)",
+    topGradient: "from-sky-500 via-blue-500 to-indigo-500",
   },
   {
     Icon: LuDatabase,
-    gradient: "from-emerald-600/10 to-teal-950/5",
-    border: "border-emerald-500/20 hover:border-emerald-500/40",
-    iconColor: "text-emerald-400",
-    glowColor: "rgba(52,211,153,0.18)",
-    shimmerColor: "rgba(52,211,153,0.08)",
+    border: "border-emerald-200 hover:border-emerald-400",
+    iconColor: "text-emerald-600",
+    glowColor: "rgba(16,185,129,0.2)",
+    topGradient: "from-emerald-500 via-teal-500 to-cyan-500",
   },
   {
     Icon: LuBrain,
-    gradient: "from-violet-600/10 to-purple-950/5",
-    border: "border-violet-500/20 hover:border-violet-500/40",
-    iconColor: "text-violet-400",
-    glowColor: "rgba(139,92,246,0.18)",
-    shimmerColor: "rgba(139,92,246,0.08)",
+    border: "border-purple-200 hover:border-purple-400",
+    iconColor: "text-purple-600",
+    glowColor: "rgba(168,85,247,0.2)",
+    topGradient: "from-purple-500 via-fuchsia-500 to-pink-500",
   },
 ];
 
 export function About() {
   return (
-    <Section id="about" title="About Me" className="py-20">
-      <div className="mt-8 grid gap-5 sm:grid-cols-3">
+    <Section
+      id="about"
+      title="Engineering Focus"
+      eyebrow="Core Capabilities"
+      intro="Bridging cutting-edge LLM reasoning systems with high-throughput cloud infrastructure and real-time reactive user interfaces."
+      className="py-16 sm:py-20"
+    >
+      <div className="mt-8 grid gap-6 sm:grid-cols-3">
         {about.specializations.map((spec, i) => {
-          const { Icon, gradient, border, iconColor, glowColor, shimmerColor } = specConfig[i % specConfig.length];
+          const { Icon, border, iconColor, glowColor, topGradient } = specConfig[i % specConfig.length];
           return (
             <motion.div
               key={spec.title}
@@ -46,35 +49,28 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className={`relative overflow-hidden rounded-3xl border ${border} bg-gradient-to-br ${gradient} p-7 cursor-default group transition-all duration-300`}
-              style={{
-                backdropFilter: "blur(20px)",
-                boxShadow: `
-                  12px 12px 30px rgba(0,0,0,0.5), 
-                  -6px -6px 20px rgba(255,255,255,0.015), 
-                  inset 0 1px 0 rgba(255,255,255,0.08),
-                  0 0 20px ${glowColor}
-                `,
-              }}
+              className={`glass-card relative overflow-hidden rounded-3xl ${border} p-7 group cursor-default`}
             >
-              {/* Hover shimmer */}
+              {/* Specular Top Accent Line */}
+              <div className={`absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r ${topGradient}`} />
+
+              {/* Ambient light on hover */}
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at 50% 0%, ${shimmerColor}, transparent 70%)`,
-                }}
+                className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"
+                style={{ background: glowColor }}
               />
 
-              {/* Icon bubble */}
+              {/* Neumorphic Recessed Icon Pod */}
               <div
-                className={`relative z-10 mb-5 inline-flex h-13 w-13 items-center justify-center rounded-2xl glass-neo-recessed ${iconColor} text-2xl border border-white/5`}
+                className={`relative z-10 mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl glass-recessed ${iconColor} text-2xl shadow-sm`}
               >
                 <Icon />
               </div>
 
-              <h3 className="relative z-10 text-lg font-bold text-white mb-2">{spec.title}</h3>
-              <p className="relative z-10 text-sm text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors">
+              <h3 className="relative z-10 text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-sky-600 transition-colors">
+                {spec.title}
+              </h3>
+              <p className="relative z-10 text-sm text-slate-600 leading-relaxed font-normal">
                 {spec.description}
               </p>
             </motion.div>

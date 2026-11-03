@@ -6,23 +6,22 @@ import { motion } from "framer-motion";
 import { experience } from "@/lib/content";
 import { Section } from "./section";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import { Badge } from "@/components/ui/badge";
-import { LuMapPin, LuCalendar } from "react-icons/lu";
+import { LuMapPin, LuCalendar, LuCheck } from "react-icons/lu";
 
 const entryColors = [
   {
     gradient: "from-sky-500 via-blue-500 to-indigo-600",
-    glow: "rgba(56,189,248,0.22)",
-    border: "border-sky-500/25",
-    bulletBg: "bg-sky-400",
-    titleColor: "text-sky-300",
+    glow: "rgba(56, 189, 248, 0.2)",
+    border: "border-sky-200 hover:border-sky-400",
+    titleColor: "text-sky-600",
+    checkColor: "text-sky-600",
   },
   {
     gradient: "from-violet-500 via-purple-500 to-indigo-600",
-    glow: "rgba(139,92,246,0.22)",
-    border: "border-violet-500/25",
-    bulletBg: "bg-violet-400",
-    titleColor: "text-violet-300",
+    glow: "rgba(139, 92, 246, 0.2)",
+    border: "border-violet-200 hover:border-violet-400",
+    titleColor: "text-purple-600",
+    checkColor: "text-purple-600",
   },
 ];
 
@@ -33,10 +32,10 @@ export function Experience() {
       title="Engineering Experience"
       eyebrow="Track Record"
       intro="Production impact across full-stack AI platforms, sandboxed execution environments, multi-agent systems, and enterprise RAG pipelines."
-      className="py-24"
+      className="py-16 sm:py-20"
     >
-      <TracingBeam className="mt-10">
-        <div className="max-w-3xl mx-auto space-y-12">
+      <TracingBeam className="mt-8">
+        <div className="max-w-3xl mx-auto space-y-10">
           {experience.map((entry, index) => {
             const colors = entryColors[index % entryColors.length];
 
@@ -48,105 +47,76 @@ export function Experience() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
-                {/* Timeframe & Location pill */}
-                <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                  <div
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3.5 py-1 text-xs font-semibold text-slate-200 backdrop-blur-sm"
-                    style={{ background: "rgba(255,255,255,0.04)" }}
-                  >
-                    <LuCalendar className="text-xs text-sky-400" />
+                {/* Timeframe & Location glass pills */}
+                <div className="flex flex-wrap items-center gap-2.5 mb-3.5">
+                  <div className="glass-pill inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-bold text-slate-800">
+                    <LuCalendar className="text-xs text-sky-600" />
                     <span>{entry.timeframe}</span>
                   </div>
                   {entry.location && (
-                    <div
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3.5 py-1 text-xs text-slate-400 backdrop-blur-sm"
-                      style={{ background: "rgba(255,255,255,0.02)" }}
-                    >
-                      <LuMapPin className="text-xs text-emerald-400" />
+                    <div className="glass-pill inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-medium text-slate-600">
+                      <LuMapPin className="text-xs text-emerald-600" />
                       <span>{entry.location}</span>
                     </div>
                   )}
                 </div>
 
-                {/* Card */}
+                {/* Light Glass Card */}
                 <div
-                  className={`relative overflow-hidden rounded-3xl border ${colors.border} group transition-all duration-300 hover:border-opacity-60`}
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-                    backdropFilter: "blur(20px)",
-                    boxShadow: `0 12px 60px rgba(0,0,0,0.42), 0 0 40px ${colors.glow}18, inset 0 1px 0 rgba(255,255,255,0.08)`,
-                  }}
+                  className={`glass-card relative overflow-hidden rounded-3xl ${colors.border} p-6 sm:p-8 group shadow-sm`}
                 >
                   {/* Gradient top bar */}
-                  <div className={`h-[3px] w-full bg-gradient-to-r ${colors.gradient}`} />
+                  <div className={`absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r ${colors.gradient}`} />
 
-                  <div className="relative z-10 p-6 sm:p-8">
-                    {/* Company header */}
-                    <div className="flex items-center gap-4 mb-6">
-                      {entry.logo && (
-                        <div
-                          className="h-12 w-12 flex-shrink-0 rounded-2xl p-1.5 border border-white/10 flex items-center justify-center bg-slate-900/80 shadow-md"
-                          style={{
-                            backdropFilter: "blur(10px)",
-                          }}
-                        >
-                          <Image
-                            src={entry.logo}
-                            alt={entry.company}
-                            width={42}
-                            height={42}
-                            className="h-full w-full object-contain"
-                          />
-                        </div>
-                      )}
-                      <div>
-                        <h3 className="text-2xl font-bold text-white tracking-tight">{entry.company}</h3>
-                        <p className={`text-sm font-semibold ${colors.titleColor}`}>{entry.role}</p>
-                      </div>
-                    </div>
-
-                    {/* Structured bullets with distinct engineering domain headings */}
-                    <ul className="space-y-3.5 text-sm text-slate-300 mb-6">
-                      {entry.bullets.map((bullet, i) => {
-                        const colonIdx = bullet.indexOf(":");
-                        const hasCategory = colonIdx !== -1 && colonIdx < 35;
-                        const label = hasCategory ? bullet.slice(0, colonIdx) : null;
-                        const content = hasCategory ? bullet.slice(colonIdx + 1).trim() : bullet;
-
-                        return (
-                          <li key={i} className="flex gap-3 items-start">
-                            <span
-                              className={`mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${colors.bulletBg}`}
-                            />
-                            <div className="leading-relaxed text-slate-300 font-light">
-                              {label && (
-                                <span className="font-semibold text-white mr-1.5">
-                                  {label}:
-                                </span>
-                              )}
-                              <span>{content}</span>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-
-                    {/* Tech stack pills */}
-                    {entry.tech && (
-                      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
-                        {entry.tech.map((t) => (
-                          <Badge
-                            key={t}
-                            variant="secondary"
-                            className="rounded-lg border border-white/10 bg-slate-900/60 text-slate-300 text-[11px] font-mono hover:border-sky-500/30 hover:text-white transition-colors"
-                          >
-                            {t}
-                          </Badge>
-                        ))}
+                  {/* Company Header */}
+                  <div className="flex items-center gap-4 mb-6">
+                    {entry.logo && (
+                      <div className="h-12 w-12 flex-shrink-0 rounded-2xl p-1.5 glass-recessed bg-white flex items-center justify-center shadow-sm">
+                        <Image
+                          src={entry.logo}
+                          alt={entry.company}
+                          width={42}
+                          height={42}
+                          className="h-full w-full object-contain"
+                        />
                       </div>
                     )}
+                    <div>
+                      <h3 className="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        {entry.role}
+                      </h3>
+                      <p className="text-sm font-semibold text-slate-600">
+                        <span className={colors.titleColor}>{entry.company}</span>
+                      </p>
+                    </div>
                   </div>
+
+                  {/* Bullet points */}
+                  <ul className="space-y-3 mb-6">
+                    {entry.bullets.map((bullet, i) => (
+                      <li key={i} className="flex gap-3 items-start text-sm sm:text-[15px] leading-relaxed text-slate-700">
+                        <LuCheck className={`text-base ${colors.checkColor} flex-shrink-0 mt-0.5 font-bold`} />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Technologies Recessed Well */}
+                  {entry.tech && entry.tech.length > 0 && (
+                    <div className="pt-4 border-t border-slate-200/80 flex flex-wrap gap-1.5 items-center">
+                      <span className="text-[11px] font-mono font-bold text-slate-500 mr-1 uppercase tracking-wider">
+                        Stack:
+                      </span>
+                      {entry.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="glass-recessed rounded-lg px-2.5 py-1 text-[11px] font-mono font-medium text-slate-700"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
