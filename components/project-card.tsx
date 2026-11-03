@@ -137,8 +137,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     <button
                       onClick={() => setSelectedStepIdx(idx)}
                       type="button"
-                      className={`inline-flex items-center rounded-xl border px-3 py-1.5 text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${isSelected ? config.activeStepBg : config.inactiveStepBg
-                        }`}
+                      className={`inline-flex items-center rounded-xl border px-3 py-1.5 text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
+                        isSelected ? config.activeStepBg : config.inactiveStepBg
+                      }`}
                     >
                       <span>{s.step}</span>
                     </button>
