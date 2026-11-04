@@ -19,6 +19,7 @@ import {
 } from "react-icons/lu";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { links } from "@/lib/links";
+import { soundEffects } from "@/lib/audio";
 
 interface ActionItem {
   id: string;
@@ -40,7 +41,10 @@ export function CommandMenu() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setIsOpen((prev) => !prev);
+        setIsOpen((prev) => {
+          if (!prev) soundEffects.playPop();
+          return !prev;
+        });
       } else if (e.key === "Escape") {
         setIsOpen(false);
       }
@@ -63,6 +67,7 @@ export function CommandMenu() {
   const copyEmail = useCallback(() => {
     navigator.clipboard.writeText(links.email);
     setCopied(true);
+    soundEffects.playSuccess();
     setTimeout(() => {
       setCopied(false);
       setIsOpen(false);
@@ -114,10 +119,10 @@ export function CommandMenu() {
       // Systems
       {
         id: "sys-prettiflow",
-        title: "PrettiFlow — Sandboxed App Compiler (4k+ Users)",
+        title: "PrettiFlow — Sandboxed App Compiler (100k+ Users)",
         category: "Production Systems",
         icon: LuCpu,
-        perform: () => scrollTo("projects"),
+        perform: () => scrollTo("experience"),
       },
       {
         id: "sys-octaclaw",
@@ -361,6 +366,7 @@ export function CommandMenuTrigger() {
   return (
     <button
       onClick={() => {
+        soundEffects.playPop();
         window.dispatchEvent(
           new KeyboardEvent("keydown", { key: "k", metaKey: true })
         );

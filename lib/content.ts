@@ -44,12 +44,12 @@ export type Project = {
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
   role: "Full-Stack AI Engineer",
-  subtitle: "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. As a founding engineer, built an AI platform from scratch, including sandboxed code execution and deployment infrastructure, that grew to 4,000+ beta users and 500+ daily active users."
+  subtitle: "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. As a founding engineer, built an AI platform from scratch, including sandboxed code execution and deployment infrastructure, that grew to 100,000+ users and 8,000+ daily active users (8k+ DAU)."
 };
 
 export const about = {
   heading: "About Me",
-  summary: "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. As a founding engineer, built an AI platform from scratch, including sandboxed code execution and deployment infrastructure, that grew to 4,000+ beta users and 500+ daily active users.",
+  summary: "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. As a founding engineer, built an AI platform from scratch, including sandboxed code execution and deployment infrastructure, that grew to 100,000+ users and 8,000+ daily active users (8k+ DAU).",
   specializations: [
     {
       title: "LLM Orchestration & Multi-Agent Systems",
@@ -108,7 +108,7 @@ export const experience: ExperienceEntry[] = [
     logo: "/pretti.png",
     tech: ["Next.js", "React", "Node.js", "Python", "Redis Pub/Sub", "WebSockets", "Docker", "AWS", "CLI"],
     bullets: [
-      "Spearheaded full-stack platform architecture from scratch as founding engineer, scaling to 4,000+ beta users and 500+ daily active users.",
+      "Spearheaded full-stack platform architecture from scratch as founding engineer, scaling to 100,000+ users and 8,000+ daily active users (8k+ DAU).",
       "Cut full-stack build times from 15 to 8 minutes by redesigning the pipeline from prompt intake through code generation, provisioning, and live deployment.",
       "Reduced cold-start latency from ~3s to ~100ms by building a pre-warmed sandboxed code execution environment, streaming live results over Redis Pub/Sub and WebSockets.",
       "Built a cross-platform CLI covering infrastructure provisioning, deployment automation, and AI-assisted development workflows.",
@@ -182,7 +182,7 @@ export const projects: Project[] = [
       "Engineered an automated compilation engine that transforms natural language into production-ready deployed Next.js applications in 8 minutes.",
       "Designed a pre-warmed Docker worker container pool that slashed runtime cold-start spin-up latency from ~3s to ~100ms.",
       "Implemented dual-layer security guardrails in the execution layer, including AST-level loop detection and destructive system call filtering.",
-      "Streamed real-time terminal outputs, test status, and live container deployment logs over Redis Pub/Sub channels to Next.js clients."
+      "Streamed real-time container stdout, test status, and live container deployment states over Redis Pub/Sub channels to Next.js clients."
     ],
     tech: [
       "Next.js",

@@ -1,20 +1,40 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { Inter, Space_Grotesk, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import { SpotlightCursor } from "@/components/spotlight-cursor";
 import { ScrollProgress } from "@/components/scroll-progress";
 
-const geist = Geist({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohailshaik.me"),
   title: "Sohail Shaik | Full-Stack AI Engineer",
   description:
-    "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. Founding engineer at PrettiFlow (4,000+ beta users).",
+    "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, focusing on LLM orchestration, Multi-Agent DAGs, and RAG pipelines. Founding engineer at PrettiFlow (100k+ users).",
   openGraph: {
     title: "Sohail Shaik | Full-Stack AI Engineer",
     description:
@@ -49,8 +69,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("light", geist.variable)}>
-      <body className="bg-white text-slate-900 antialiased font-sans selection:bg-sky-500/20 selection:text-sky-900">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased min-h-screen selection:bg-purple-500/20 selection:text-purple-900`}
+        style={{ backgroundColor: "#f6f5ff" }}
+      >
         <ScrollProgress />
         <SpotlightCursor />
         {children}
