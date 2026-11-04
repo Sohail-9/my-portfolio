@@ -21,7 +21,6 @@ import {
 } from "react-icons/lu";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { links } from "@/lib/links";
-import { CommandMenuTrigger } from "./command-menu";
 import { soundEffects } from "@/lib/audio";
 
 const prettiflowPipeline = [
@@ -511,12 +510,12 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Live Status Pill & Command Menu Trigger */}
+        {/* Live Status Pill */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-2.5 mb-5"
+          className="flex items-center justify-center mb-5"
         >
           <div className="glass-pill-violet inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 shadow-2xs">
             <span className="relative flex h-2 w-2">
@@ -527,8 +526,6 @@ export function Hero() {
               Founding Engineer at PrettiFlow · 100k+ Users · 8k+ DAU
             </span>
           </div>
-
-          <CommandMenuTrigger />
         </motion.div>
 
         {/* Name & Title */}
@@ -569,9 +566,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-zinc-600 leading-relaxed font-normal text-pretty"
         >
-          Full-stack AI engineer with <span className="text-zinc-950 font-bold">3+ years</span> building production systems across{" "}
-          <span className="text-zinc-950 font-bold">React/Next.js, Node.js, Python, and PostgreSQL</span>, with a focus on{" "}
-          <span className="text-zinc-950 font-bold">LLM orchestration, Multi-Agent DAGs, and RAG pipelines</span>. As a founding engineer, built an AI platform from scratch that scaled to 100,000+ users and 8,000+ daily active users (8k+ DAU).
+          Architecting <span className="text-zinc-950 font-semibold">production LLM orchestration</span>,{" "}
+          <span className="text-zinc-950 font-semibold">pre-warmed sandbox execution</span>, and{" "}
+          <span className="text-zinc-950 font-semibold">high-throughput RAG pipelines</span> — scaled from scratch to{" "}
+          <span className="text-zinc-950 font-semibold">100k+ users</span> and{" "}
+          <span className="text-zinc-950 font-semibold">8k+ DAU</span>.
         </motion.p>
 
         {/* Action Buttons: Claymorphism, Copy Email & Light Glass */}

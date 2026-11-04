@@ -2,7 +2,7 @@
 
 // Ultra-lightweight Web Audio API synthesizer for tactile micro-interactions
 let audioCtx: AudioContext | null = null;
-let soundEnabled = true;
+let soundEnabled = false;
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === "undefined") return null;

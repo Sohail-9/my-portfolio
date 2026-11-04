@@ -44,12 +44,12 @@ export type Project = {
 export const hero = {
   title: "Hello, I’m Sohail Shaik",
   role: "Full-Stack AI Engineer",
-  subtitle: "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. As a founding engineer, built an AI platform from scratch, including sandboxed code execution and deployment infrastructure, that grew to 100,000+ users and 8,000+ daily active users (8k+ DAU)."
+  subtitle: "Architecting production LLM orchestration, pre-warmed sandbox execution, and high-throughput RAG pipelines — scaled from scratch to 100k+ users and 8k+ DAU."
 };
 
 export const about = {
   heading: "About Me",
-  summary: "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, with a focus on LLM orchestration and RAG pipelines. As a founding engineer, built an AI platform from scratch, including sandboxed code execution and deployment infrastructure, that grew to 100,000+ users and 8,000+ daily active users (8k+ DAU).",
+  summary: "Architecting production LLM orchestration, pre-warmed sandbox execution, and high-throughput RAG pipelines — scaled from scratch to 100k+ users and 8k+ DAU.",
   specializations: [
     {
       title: "LLM Orchestration & Multi-Agent Systems",

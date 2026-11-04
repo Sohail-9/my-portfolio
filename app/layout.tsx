@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sohailshaik.me"),
   title: "Sohail Shaik | Full-Stack AI Engineer",
   description:
-    "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, focusing on LLM orchestration, Multi-Agent DAGs, and RAG pipelines. Founding engineer at PrettiFlow (100k+ users).",
+    "Full-stack AI engineer with 3+ years building production systems across React/Next.js, Node.js, Python, and PostgreSQL, focusing on LLM orchestration, Multi-Agent DAGs, and RAG pipelines. Founding engineer at PrettiFlow (100k+ users, 8k+ DAU).",
   openGraph: {
     title: "Sohail Shaik | Full-Stack AI Engineer",
     description:

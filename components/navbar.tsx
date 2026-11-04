@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { LuFileText, LuMenu, LuX, LuSearch, LuVolume2, LuVolumeX, LuSparkles } from "react-icons/lu";
+import { LuFileText, LuMenu, LuX, LuSparkles } from "react-icons/lu";
 import { links } from "@/lib/links";
 import { soundEffects } from "@/lib/audio";
 
@@ -19,7 +19,6 @@ export function Navbar() {
   const [shimmer, setShimmer] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isMuted, setIsMuted] = useState(false);
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -58,18 +57,6 @@ export function Navbar() {
   const triggerShimmer = () => {
     setShimmer(true);
     setTimeout(() => setShimmer(false), 600);
-  };
-
-  const openCommandMenu = () => {
-    soundEffects.playPop();
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "k", metaKey: true })
-    );
-  };
-
-  const toggleSound = () => {
-    const enabled = soundEffects.toggle();
-    setIsMuted(!enabled);
   };
 
   return (
@@ -144,49 +131,8 @@ export function Navbar() {
           })}
         </div>
 
-        {/* Right Actions: Sound Toggle + ⌘K + Shimmer Clay CTA */}
+        {/* Right Actions: Shimmer Clay CTA */}
         <div className="relative z-10 flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          {/* Sound FX Toggle with Animated Equalizer Soundwave */}
-          <button
-            onClick={toggleSound}
-            type="button"
-            className="p-2 rounded-full text-zinc-500 hover:text-zinc-900 hover:bg-white/60 transition-colors cursor-pointer border border-transparent hover:border-white/60 flex items-center justify-center min-w-[32px] min-h-[32px]"
-            title={isMuted ? "Unmute UI Audio Haptics" : "Mute UI Audio Haptics"}
-          >
-            {isMuted ? (
-              <LuVolumeX className="w-3.5 h-3.5 text-rose-500" />
-            ) : (
-              <div className="flex items-center gap-[2.5px] h-3.5 px-0.5">
-                <motion.span
-                  className="w-[2px] bg-emerald-500 rounded-full"
-                  animate={{ height: ["6px", "14px", "6px"] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.span
-                  className="w-[2px] bg-emerald-500 rounded-full"
-                  animate={{ height: ["12px", "4px", "12px"] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
-                />
-                <motion.span
-                  className="w-[2px] bg-emerald-500 rounded-full"
-                  animate={{ height: ["8px", "14px", "8px"] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                />
-              </div>
-            )}
-          </button>
-
-          {/* ⌘K Trigger Button */}
-          <button
-            onClick={openCommandMenu}
-            type="button"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono text-zinc-600 hover:text-zinc-900 bg-white/40 hover:bg-white/80 transition-colors cursor-pointer border border-white/70 shadow-2xs"
-            title="Open Command Palette (⌘K)"
-          >
-            <LuSearch className="w-3 h-3 text-violet-600" />
-            <kbd className="text-[10px] font-bold text-zinc-500">⌘K</kbd>
-          </button>
-
           {/* Shimmer Clay CTA (matching octaclaw-fe Navbar CTA) */}
           <a
             href={links.cvUrl}
@@ -257,16 +203,6 @@ export function Navbar() {
                   {item.label}
                 </a>
               ))}
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openCommandMenu();
-                }}
-                className="mt-2 text-left rounded-xl px-4 py-2.5 text-sm font-semibold text-violet-700 bg-violet-50/70 flex items-center justify-between"
-              >
-                <span>Command Palette</span>
-                <kbd className="text-xs font-mono font-bold">⌘K</kbd>
-              </button>
             </div>
           </motion.div>
         )}

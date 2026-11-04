@@ -7,7 +7,6 @@ import { MetricsStrip } from "@/components/metrics-strip";
 import { Experience } from "@/components/experience";
 import { Skills } from "@/components/skills";
 import { Footer } from "@/components/footer";
-import { CommandMenu } from "@/components/command-menu";
 
 export default function Home() {
   return (
@@ -48,9 +47,6 @@ export default function Home() {
         <Skills />
         <Footer />
       </div>
-
-      {/* ── Command Palette (⌘K) ── */}
-      <CommandMenu />
     </main>
   );
 }
