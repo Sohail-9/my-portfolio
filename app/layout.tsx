@@ -72,7 +72,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased min-h-screen selection:bg-purple-500/20 selection:text-purple-900`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased min-h-screen selection:bg-violet-500/20 selection:text-violet-950`}
         style={{ backgroundColor: "#f6f5ff" }}
       >
         <ScrollProgress />

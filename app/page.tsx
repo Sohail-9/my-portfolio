@@ -3,9 +3,7 @@
 import React from "react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { MetricsStrip } from "@/components/metrics-strip";
-import { Experience } from "@/components/experience";
-import { Skills } from "@/components/skills";
+import { Projects } from "@/components/projects";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -42,9 +40,7 @@ export default function Home() {
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <MetricsStrip />
-        <Experience />
-        <Skills />
+        <Projects />
         <Footer />
       </div>
     </main>
